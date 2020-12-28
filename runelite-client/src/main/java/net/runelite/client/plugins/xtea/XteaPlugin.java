@@ -33,6 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.client.RuneLite;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -52,6 +53,9 @@ public class XteaPlugin extends Plugin
 
 	@Inject
 	private Client client;
+
+	@Inject
+	private RuneLite rsclient;
 
 	private HashMap<Integer, Integer[]> xteas;
 
@@ -97,15 +101,22 @@ public class XteaPlugin extends Plugin
 
 			xteas.put(region, ArrayUtils.toObject(keys));
 
-			log.info("Submitting region {} keys {}, {}, {}, {}", region, keys[0], keys[1], keys[2], keys[3]);
-
 			//Don't post non encrypted regions
 			if (keys[0] == 0 && keys[1] == 0 && keys[2] == 0 && keys[3] == 0)
 			{
 				continue;
 			}
 
-			xteaClient.submit(region, keys);
+			if (rsclient.allowPrivateServer)
+			{
+				log.info("not submitting xteas for private server");
+				return;
+			}
+			else
+			{
+				log.info("Submitting region {} keys {}, {}, {}, {}", region, keys[0], keys[1], keys[2], keys[3]);
+				xteaClient.submit(region, keys);
+			}
 		}
 	}
 

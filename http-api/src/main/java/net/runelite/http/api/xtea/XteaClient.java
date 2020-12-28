@@ -49,7 +49,6 @@ public class XteaClient
 
 	public void submit(int region, int[] keys)
 	{
-
 		HttpUrl url = RuneLiteAPI.getXteaBase().newBuilder()
 			.addPathSegment("submit")
 			.addQueryParameter("region", String.valueOf(region))

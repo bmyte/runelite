@@ -63,8 +63,7 @@ public class ClientLoader implements Supplier<Applet>
 		this.worldSupplier = new WorldSupplier(okHttpClient);
 	}
 
-	private static Applet loadRLPlus(final RSConfig config)
-		throws ClassNotFoundException, InstantiationException, IllegalAccessException
+	private static Applet loadRLPlus(final RSConfig config) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException
 	{
 		RuneLiteSplashScreen.stage(.465, "Starting Open Old School RuneScape");
 
@@ -114,8 +113,7 @@ public class ClientLoader implements Supplier<Applet>
 		return loadFromClass(config, clientClass);
 	}
 
-	private static Applet loadFromClass(final RSConfig config, final Class<?> clientClass)
-		throws IllegalAccessException, InstantiationException
+	private static Applet loadFromClass(final RSConfig config, final Class<?> clientClass) throws IllegalAccessException, InstantiationException
 	{
 		final Applet rs = (Applet) clientClass.newInstance();
 		rs.setStub(new RSAppletStub(config));

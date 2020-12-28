@@ -1793,13 +1793,14 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	private static BigInteger modulus;
+	public static BigInteger modulus;
 
 	@Inject
 	@Override
 	public void setModulus(BigInteger modulus)
 	{
 		RSClientMixin.modulus = modulus;
+		logger.info("modulus updated: " + modulus);
 	}
 
 	@Copy("forceDisconnect")
