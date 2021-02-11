@@ -121,14 +121,14 @@ public class Cache
 		}
 	}
 
-	private static Store loadStore(String cache) throws IOException
+	public static Store loadStore(String cache) throws IOException
 	{
 		Store store = new Store(new File(cache));
 		store.load();
 		return store;
 	}
 
-	private static void dumpItems(Store store, File itemdir) throws IOException
+	public static void dumpItems(Store store, File itemdir) throws IOException
 	{
 		ItemManager dumper = new ItemManager(store);
 		dumper.load();
@@ -136,7 +136,7 @@ public class Cache
 		dumper.java(itemdir);
 	}
 
-	private static void dumpNpcs(Store store, File npcdir) throws IOException
+	public static void dumpNpcs(Store store, File npcdir) throws IOException
 	{
 		NpcManager dumper = new NpcManager(store);
 		dumper.load();
@@ -144,7 +144,7 @@ public class Cache
 		dumper.java(npcdir);
 	}
 
-	private static void dumpObjects(Store store, File objectdir) throws IOException
+	public static void dumpObjects(Store store, File objectdir) throws IOException
 	{
 		ObjectManager dumper = new ObjectManager(store);
 		dumper.load();
@@ -152,7 +152,7 @@ public class Cache
 		dumper.java(objectdir);
 	}
 
-	private static void dumpSprites(Store store, File spritedir) throws IOException
+	public static void dumpSprites(Store store, File spritedir) throws IOException
 	{
 		SpriteManager dumper = new SpriteManager(store);
 		dumper.load();
