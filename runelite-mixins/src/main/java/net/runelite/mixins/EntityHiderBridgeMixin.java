@@ -88,9 +88,6 @@ public abstract class EntityHiderBridgeMixin implements RSClient
 	public static List<Integer> hiddenNpcIndices = new ArrayList<>();
 
 	@Inject
-	public static List<Integer> hiddenNpcIndices = new ArrayList<>();
-
-	@Inject
 	@Override
 	public void setIsHidingEntities(boolean state)
 	{
@@ -223,31 +220,4 @@ public abstract class EntityHiderBridgeMixin implements RSClient
 		hiddenNpcsName.put(npc, --i);
 	}
 
-	@Inject
-	@Override
-	public void setHiddenNpcIndices(List<Integer> npcIndices)
-	{
-		hiddenNpcIndices = new ArrayList<>(npcIndices);
-	}
-
-	@Inject
-	@Override
-	public List<Integer> getHiddenNpcIndices()
-	{
-		return new ArrayList<>(hiddenNpcIndices);
-	}
-
-	@Inject
-	@Override
-	public void setHiddenNpcIndices(List<Integer> npcIndices)
-	{
-		hiddenNpcIndices = npcIndices;
-	}
-
-	@Inject
-	@Override
-	public List<Integer> getHiddenNpcIndices()
-	{
-		return hiddenNpcIndices;
-	}
 }

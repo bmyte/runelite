@@ -1117,6 +1117,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	RSSpritePixels[] getCrossSprites();
 
+	@Import("setModulus")
 	void setModulus(BigInteger modulus);
 
 	@Import("ItemDefinition_fileCount")

@@ -39,7 +39,7 @@ public abstract class RSBufferMixin implements RSBuffer
 	private static BigInteger exp = new BigInteger("10001", 16);
 
 	@Shadow("modulus")
-	private static BigInteger mod = new BigInteger("a79020d1617f0ba919c482c16d3ca354b6f489c1fc0f8b7ae13f0b045d400a01909941833566aa78af9725aa374a64c5cab6a9b920c6d77d02e38c969a27c969e05a0b90b46b8bf8d6497f1f5128a7d2007dacc592ac40a393cffb7ed0283be246faabbb3d7b98bc6663678643cd33410b37d2dae42239bf606084415ee4fc97", 16);
+	private static BigInteger mod = new BigInteger("db1dc3067a0e86b4ab98b9ac9b5b63c8c4981b479a87444e15b890655ad1aed0c16d9e923d9f8742cb779d26d01e9fc0335277a63f3d5d290b3197201f8da3a906a88e147cb818ce1712f76ba6cdd796c3802e14a2c7f7834391703c81e923733301425d60a1a972e72806439d82d77cf3cc274125e7046d41a25e2376cffb8f", 16);
 
 	@Copy("encryptRsa")
 	public void rs$encryptRsa(BigInteger var1, BigInteger var2)

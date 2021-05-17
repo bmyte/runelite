@@ -1913,7 +1913,7 @@ public abstract class RSClientMixin implements RSClient
 	public void setModulus(BigInteger modulus)
 	{
 		RSClientMixin.modulus = modulus;
-		logger.info("modulus updated: " + modulus);
+		rl$logger.info("modulus updated: " + modulus);
 	}
 
 	@Copy("forceDisconnect")

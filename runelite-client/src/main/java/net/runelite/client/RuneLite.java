@@ -406,43 +406,6 @@ public class RuneLite
 		SplashScreen.stop();
 
 		clientUI.show();
-<<<<<<< HEAD
-
-		//Set the world if specified via CLI args - will not work until clientUI.init is called
-		Optional<Integer> worldArg = Optional.ofNullable(System.getProperty("cli.world")).map(Integer::parseInt);
-		worldArg.ifPresent(this::setWorld);
-	}
-
-	private void setWorld(int cliWorld)
-	{
-		int correctedWorld = cliWorld < 300 ? cliWorld + 300 : cliWorld;
-
-		if (correctedWorld <= 300 || client.getWorld() == correctedWorld)
-		{
-			return;
-		}
-
-		final WorldResult worldResult = worldService.getWorlds();
-
-		if (worldResult == null)
-		{
-			log.warn("Failed to lookup worlds.");
-			return;
-		}
-
-		final World world = worldResult.findWorld(correctedWorld);
-
-		if (world != null)
-		{
-			final net.runelite.api.World rsWorld = client.createWorld();
-			rsWorld.setActivity(world.getActivity());
-			rsWorld.setAddress(world.getAddress());
-			rsWorld.setId(world.getId());
-			rsWorld.setPlayerCount(world.getPlayers());
-			rsWorld.setLocation(world.getLocation());
-			rsWorld.setTypes(WorldUtil.toWorldTypes(world.getTypes()));
-=======
->>>>>>> 829f0b134b80ad67628bc1031c3a8facef9fb568
 
 		//Set the world if specified via CLI args - will not work until clientUI.init is called
 		Optional<Integer> worldArg = Optional.ofNullable(System.getProperty("cli.world")).map(Integer::parseInt);

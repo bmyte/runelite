@@ -39,13 +39,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import javax.imageio.ImageIO;
 import javax.swing.GrayFilter;
-import java.util.function.Predicate;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.IndexedSprite;
-import net.runelite.api.Sprite;
+import net.runelite.api.SpritePixels;
 
 /**
  * Various Image/BufferedImage utilities.
@@ -211,7 +211,38 @@ public class ImageUtil
 	 */
 	public static BufferedImage resizeImage(final BufferedImage image, final int newWidth, final int newHeight)
 	{
-		final Image resized = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+		return resizeImage(image, newWidth, newHeight, false);
+	}
+
+	/**
+	 * Re-size a BufferedImage to the given dimensions.
+	 *
+	 * @param image the BufferedImage.
+	 * @param newWidth The width to set the BufferedImage to.
+	 * @param newHeight The height to set the BufferedImage to.
+	 * @param preserveAspectRatio Whether to preserve the original image's aspect ratio. When {@code true}, the image
+	 *                               will be scaled to have a maximum of {@code newWidth} width and {@code newHeight}
+	 *                               height.
+	 * @return The BufferedImage with the specified dimensions
+	 */
+	public static BufferedImage resizeImage(final BufferedImage image, final int newWidth, final int newHeight, final boolean preserveAspectRatio)
+	{
+		final Image resized;
+		if (preserveAspectRatio)
+		{
+			if (image.getWidth() > image.getHeight())
+			{
+				resized = image.getScaledInstance(newWidth, -1, Image.SCALE_SMOOTH);
+			}
+			else
+			{
+				resized = image.getScaledInstance(-1, newHeight, Image.SCALE_SMOOTH);
+			}
+		}
+		else
+		{
+			resized = image.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+		}
 		return ImageUtil.bufferedImageFromImage(resized);
 	}
 
@@ -295,21 +326,7 @@ public class ImageUtil
 	 */
 	public static BufferedImage outlineImage(final BufferedImage image, final Color color)
 	{
-		return outlineImage(image, color, ColorUtil::isNotFullyTransparent, false);
-	}
-
-	/**
-	 * Outlines pixels of a BufferedImage with the given color, using a given predicate to colorize
-	 * the given image for outlining.
-	 *
-	 * @param image         The image to be outlined.
-	 * @param color         The color to use for the outline.
-	 * @param fillCondition The predicate to be consumed by {@link #fillImage(BufferedImage, Color, Predicate) fillImage(BufferedImage, Color, Predicate)}
-	 * @return              The BufferedImage with its edges outlined with the given color.
-	 */
-	public static BufferedImage outlineImage(final BufferedImage image, final Color color, final Predicate<Color> fillCondition)
-	{
-		return outlineImage(image, color, fillCondition, false);
+		return outlineImage(image, color, false);
 	}
 
 	/**
@@ -324,23 +341,7 @@ public class ImageUtil
 	 */
 	public static BufferedImage outlineImage(final BufferedImage image, final Color color, final Boolean outlineCorners)
 	{
-		return outlineImage(image, color, ColorUtil::isNotFullyTransparent, outlineCorners);
-	}
-
-	/**
-	 * Outlines pixels of a BufferedImage with the given color, using a given predicate to colorize
-	 * the given image for outlining. Optionally outlines corners in addition to edges.
-	 *
-	 * @param image          The image to be outlined.
-	 * @param color          The color to use for the outline.
-	 * @param fillCondition  The predicate to be consumed by {@link #fillImage(BufferedImage, Color, Predicate) fillImage(BufferedImage, Color, Predicate)}
-	 * @param outlineCorners Whether to draw an outline around corners, or only around edges.
-	 * @return               The BufferedImage with its edges--and optionally, corners--outlined
-	 * 	                     with the given color.
-	 */
-	public static BufferedImage outlineImage(final BufferedImage image, final Color color, final Predicate<Color> fillCondition, final Boolean outlineCorners)
-	{
-		final BufferedImage filledImage = fillImage(image, color, fillCondition);
+		final BufferedImage filledImage = fillImage(image, color);
 		final BufferedImage outlinedImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
 		final Graphics2D g2d = outlinedImage.createGraphics();
@@ -349,7 +350,7 @@ public class ImageUtil
 			for (int y = -1; y <= 1; y++)
 			{
 				if ((x == 0 && y == 0)
-					|| (!outlineCorners && Math.abs(x) + Math.abs(y) != 1))
+						|| (!outlineCorners && Math.abs(x) + Math.abs(y) != 1))
 				{
 					continue;
 				}
@@ -364,15 +365,24 @@ public class ImageUtil
 	}
 
 	/**
+	 * @see #loadImageResource(Class, String)
+	 */
+	@Deprecated
+	public static BufferedImage getResourceStreamFromClass(Class<?> c, String path)
+	{
+		return loadImageResource(c, path);
+	}
+
+	/**
 	 * Reads an image resource from a given path relative to a given class.
 	 * This method is primarily shorthand for the synchronization and error handling required for
-	 * loading image resources from classes.
+	 * loading image resources from the classpath.
 	 *
-	 * @param c    The class to be referenced for resource path.
+	 * @param c    The class to be referenced for the package path.
 	 * @param path The path, relative to the given class.
 	 * @return     A {@link BufferedImage} of the loaded image resource from the given path.
 	 */
-	public static BufferedImage getResourceStreamFromClass(final Class c, final String path)
+	public static BufferedImage loadImageResource(final Class<?> c, final String path)
 	{
 		try
 		{
@@ -383,6 +393,19 @@ public class ImageUtil
 		}
 		catch (IllegalArgumentException e)
 		{
+			final String filePath;
+
+			if (path.startsWith("/"))
+			{
+				filePath = path;
+			}
+			else
+			{
+				filePath = c.getPackage().getName().replace('.', '/') + "/" + path;
+			}
+
+			log.warn("Failed to load image from class: {}, path: {}", c.getName(), filePath);
+
 			throw new IllegalArgumentException(path, e);
 		}
 		catch (IOException e)
@@ -400,28 +423,14 @@ public class ImageUtil
 	 */
 	public static BufferedImage fillImage(final BufferedImage image, final Color color)
 	{
-		return fillImage(image, color, ColorUtil::isNotFullyTransparent);
-	}
-
-	/**
-	 * 	Fills pixels of the given image with the given color based on a given fill condition
-	 * 	predicate.
-	 *
-	 * @param image         The image which should have its non-transparent pixels filled.
-	 * @param color         The color with which to fill pixels.
-	 * @param fillCondition The condition on which to fill pixels with the given color.
-	 * @return              The given image with all pixels fulfilling the fill condition predicate
-	 *                      set to the given color.
-	 */
-	static BufferedImage fillImage(final BufferedImage image, final Color color, final Predicate<Color> fillCondition)
-	{
 		final BufferedImage filledImage = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		for (int x = 0; x < filledImage.getWidth(); x++)
 		{
 			for (int y = 0; y < filledImage.getHeight(); y++)
 			{
-				final Color pixelColor = new Color(image.getRGB(x, y), true);
-				if (!fillCondition.test(pixelColor))
+				int pixel = image.getRGB(x, y);
+				int a = pixel >>> 24;
+				if (a == 0)
 				{
 					continue;
 				}
@@ -430,6 +439,124 @@ public class ImageUtil
 			}
 		}
 		return filledImage;
+	}
+
+	/**
+	 * Performs a rescale operation on the image's color components.
+	 *
+	 * @param image   The image to be adjusted.
+	 * @param scales  An array of scale operations to be performed on the image's color components.
+	 * @param offsets An array of offset operations to be performed on the image's color components.
+	 * @return        The modified image after applying the given adjustments.
+	 */
+	private static BufferedImage offset(final BufferedImage image, final float[] scales, final float[] offsets)
+	{
+		return new RescaleOp(scales, offsets, null).filter(image, null);
+	}
+
+
+	/**
+	 * Converts the buffered image into a sprite image and returns it
+	 * @param image  The image to be converted
+	 * @param client Current client instance
+	 * @return       The buffered image as a sprite image
+	 */
+	public static SpritePixels getImageSpritePixels(BufferedImage image, Client client)
+	{
+		int[] pixels = new int[image.getWidth() * image.getHeight()];
+
+		try
+		{
+			PixelGrabber g = new PixelGrabber(image, 0, 0, image.getWidth(), image.getHeight(), pixels, 0, image.getWidth());
+			g.setColorModel(new DirectColorModel(32, 0xff0000, 0xff00, 0xff, 0xff000000));
+			g.grabPixels();
+
+			// Make any fully transparent pixels fully black, because the sprite draw routines
+			// check for == 0, not actual transparency
+			for (int i = 0; i < pixels.length; i++)
+			{
+				if ((pixels[i] & 0xFF000000) == 0)
+				{
+					pixels[i] = 0;
+				}
+			}
+		}
+		catch (InterruptedException ex)
+		{
+			log.debug("PixelGrabber was interrupted: ", ex);
+		}
+
+		return client.createSpritePixels(pixels, image.getWidth(), image.getHeight());
+	}
+
+	/**
+	 * Converts an image into an {@code IndexedSprite} instance.
+	 *
+	 * The passed in image can only have at max 255 different colors.
+	 *
+	 * @param image  The image to be converted
+	 * @param client Current client instance
+	 * @return		 The image as an {@code IndexedSprite}
+	 */
+	public static IndexedSprite getImageIndexedSprite(BufferedImage image, Client client)
+	{
+		final byte[] pixels = new byte[image.getWidth() * image.getHeight()];
+		final List<Integer> palette = new ArrayList<>();
+		/*
+			When drawing the indexed sprite, palette idx 0 is seen as fully transparent,
+			so pad the palette out so that our colors start at idx 1.
+		 */
+		palette.add(0);
+
+		final int[] sourcePixels = image.getRGB(0, 0,
+				image.getWidth(), image.getHeight(),
+				null, 0, image.getWidth());
+
+		/*
+			Build a color palette and assign the pixels to positions in the palette.
+		 */
+		for (int j = 0; j < sourcePixels.length; j++)
+		{
+			final int argb = sourcePixels[j];
+			final int a = (argb >> 24) & 0xFF;
+			final int rgb = argb & 0xFF_FF_FF;
+
+			// Default to not drawing the pixel.
+			int paletteIdx = 0;
+
+			// If the pixel is fully opaque, draw it.
+			if (a == 0xFF)
+			{
+				paletteIdx = palette.indexOf(rgb);
+
+				if (paletteIdx == -1)
+				{
+					paletteIdx = palette.size();
+					palette.add(rgb);
+				}
+			}
+
+			pixels[j] = (byte) paletteIdx;
+		}
+
+		if (palette.size() > 256)
+		{
+			throw new RuntimeException("Passed in image had " + (palette.size() - 1)
+					+ " different colors, exceeding the max of 255.");
+		}
+
+		final IndexedSprite sprite = client.createIndexedSprite();
+
+		sprite.setPixels(pixels);
+		sprite.setPalette(Ints.toArray(palette));
+		sprite.setWidth(image.getWidth());
+		sprite.setHeight(image.getHeight());
+		sprite.setOriginalWidth(image.getWidth());
+		sprite.setOriginalHeight(image.getHeight());
+		sprite.setOffsetX(0);
+		sprite.setOffsetY(0);
+
+		return sprite;
 	}
 
 	/**
@@ -483,127 +610,45 @@ public class ImageUtil
 	}
 
 	/**
-	 * Performs a rescale operation on the image's color components.
-	 *
-	 * @param image   The image to be adjusted.
-	 * @param scales  An array of scale operations to be performed on the image's color components.
-	 * @param offsets An array of offset operations to be performed on the image's color components.
-	 * @return        The modified image after applying the given adjustments.
+	 * Draw fg centered on top of bg
 	 */
-	private static BufferedImage offset(final BufferedImage image, final float[] scales, final float[] offsets)
+	public static SpritePixels mergeSprites(final Client client, final SpritePixels bg, final SpritePixels fg)
 	{
-		return new RescaleOp(scales, offsets, null).filter(image, null);
-	}
+		assert fg.getHeight() <= bg.getHeight() && fg.getWidth() <= bg.getWidth() : "Background has to be larger than foreground";
 
+		final int[] canvas = Arrays.copyOf(bg.getPixels(), bg.getWidth() * bg.getHeight());
+		final SpritePixels result = client.createSpritePixels(canvas, bg.getWidth(), bg.getHeight());
 
-	/**
-	 * Converts the buffered image into a sprite image and returns it
-	 * @param image  The image to be converted
-	 * @param client Current client instance
-	 * @return       The buffered image as a sprite image
-	 */
-	public static Sprite getImageSprite(BufferedImage image, Client client)
-	{
-		int[] pixels = new int[image.getWidth() * image.getHeight()];
+		final int bgWid = bg.getWidth();
+		final int fgHgt = fg.getHeight();
+		final int fgWid = fg.getWidth();
 
-		try
+		final int xOffset = (bgWid - fgWid) / 2;
+		final int yOffset = (bg.getHeight() - fgHgt) / 2;
+
+		final int[] fgPixels = fg.getPixels();
+
+		for (int y1 = yOffset, y2 = 0; y2 < fgHgt; y1++, y2++)
 		{
-			PixelGrabber g = new PixelGrabber(image, 0, 0, image.getWidth(), image.getHeight(), pixels, 0, image.getWidth());
-			g.setColorModel(new DirectColorModel(32, 0xff0000, 0xff00, 0xff, 0xff000000));
-			g.grabPixels();
+			int i1 = y1 * bgWid + xOffset;
+			int i2 = y2 * fgWid;
 
-			// Make any fully transparent pixels fully black, because the sprite draw routines
-			// check for == 0, not actual transparency
-			for (int i = 0; i < pixels.length; i++)
+			for (int x = 0; x < fgWid; x++, i1++, i2++)
 			{
-				if ((pixels[i] & 0xFF000000) == 0)
+				if (fgPixels[i2] > 0)
 				{
-					pixels[i] = 0;
+					canvas[i1] = fgPixels[i2];
 				}
 			}
 		}
-		catch (InterruptedException ex)
-		{
-			log.debug("PixelGrabber was interrupted: ", ex);
-		}
 
-		return client.createSprite(pixels, image.getWidth(), image.getHeight());
-	}
-
-	/**
-	 * Converts an image into an {@code IndexedSprite} instance.
-	 *
-	 * The passed in image can only have at max 255 different colors.
-	 *
-	 * @param image  The image to be converted
-	 * @param client Current client instance
-	 * @return		 The image as an {@code IndexedSprite}
-	 */
-	public static IndexedSprite getImageIndexedSprite(BufferedImage image, Client client)
-	{
-		final byte[] pixels = new byte[image.getWidth() * image.getHeight()];
-		final List<Integer> palette = new ArrayList<>();
-		/*
-			When drawing the indexed sprite, palette idx 0 is seen as fully transparent,
-			so pad the palette out so that our colors start at idx 1.
-		 */
-		palette.add(0);
-
-		final int[] sourcePixels = image.getRGB(0, 0,
-			image.getWidth(), image.getHeight(),
-			null, 0, image.getWidth());
-
-		/*
-			Build a color palette and assign the pixels to positions in the palette.
-		 */
-		for (int j = 0; j < sourcePixels.length; j++)
-		{
-			final int argb = sourcePixels[j];
-			final int a = (argb >> 24) & 0xFF;
-			final int rgb = argb & 0xFF_FF_FF;
-
-			// Default to not drawing the pixel.
-			int paletteIdx = 0;
-
-			// If the pixel is fully opaque, draw it.
-			if (a == 0xFF)
-			{
-				paletteIdx = palette.indexOf(rgb);
-
-				if (paletteIdx == -1)
-				{
-					paletteIdx = palette.size();
-					palette.add(rgb);
-				}
-			}
-
-			pixels[j] = (byte) paletteIdx;
-		}
-
-		if (palette.size() > 256)
-		{
-			throw new RuntimeException("Passed in image had " + (palette.size() - 1)
-				+ " different colors, exceeding the max of 255.");
-		}
-
-		final IndexedSprite sprite = client.createIndexedSprite();
-
-		sprite.setPixels(pixels);
-		sprite.setPalette(Ints.toArray(palette));
-		sprite.setWidth(image.getWidth());
-		sprite.setHeight(image.getHeight());
-		sprite.setOriginalWidth(image.getWidth());
-		sprite.setOriginalHeight(image.getHeight());
-		sprite.setOffsetX(0);
-		sprite.setOffsetY(0);
-
-		return sprite;
+		return result;
 	}
 
 	/**
 	 * Resize Sprite sprite to given width (newW) and height (newH)
 	 */
-	public static Sprite resizeSprite(final Client client, final Sprite sprite, int newW, int newH)
+	public static SpritePixels resizeSprite(final Client client, final SpritePixels sprite, int newW, int newH)
 	{
 		assert newW > 0 && newH > 0;
 
@@ -618,7 +663,7 @@ public class ImageUtil
 		final int[] canvas = new int[newW * newH];
 		final int[] pixels = sprite.getPixels();
 
-		final Sprite result = client.createSprite(canvas, newW, newH);
+		final SpritePixels result = client.createSpritePixels(canvas, newW, newH);
 
 		int pixelX = 0;
 		int pixelY = 0;
@@ -692,82 +737,5 @@ public class ImageUtil
 		client.scaleSprite(canvas, pixels, 0, pixelX, pixelY, canvasIdx, canvasOffset, newW, newH, pixelW, pixelH, oldW);
 
 		return result;
-	}
-
-	/**
-	 * Draw fg centered on top of bg
-	 */
-	public static Sprite mergeSprites(final Client client, final Sprite bg, final Sprite fg)
-	{
-		assert fg.getHeight() <= bg.getHeight() && fg.getWidth() <= bg.getWidth() : "Background has to be larger than foreground";
-
-		final int[] canvas = Arrays.copyOf(bg.getPixels(), bg.getWidth() * bg.getHeight());
-		final Sprite result = client.createSprite(canvas, bg.getWidth(), bg.getHeight());
-
-		final int bgWid = bg.getWidth();
-		final int fgHgt = fg.getHeight();
-		final int fgWid = fg.getWidth();
-
-		final int xOffset = (bgWid - fgWid) / 2;
-		final int yOffset = (bg.getHeight() - fgHgt) / 2;
-
-		final int[] fgPixels = fg.getPixels();
-
-		for (int y1 = yOffset, y2 = 0; y2 < fgHgt; y1++, y2++)
-		{
-			int i1 = y1 * bgWid + xOffset;
-			int i2 = y2 * fgWid;
-
-			for (int x = 0; x < fgWid; x++, i1++, i2++)
-			{
-				if (fgPixels[i2] > 0)
-				{
-					canvas[i1] = fgPixels[i2];
-				}
-			}
-		}
-
-		return result;
-	}
-
-	/**
-	 * Reads an image resource from a given path relative to a given class.
-	 * This method is primarily shorthand for the synchronization and error handling required for
-	 * loading image resources from the classpath.
-	 *
-	 * @param c    The class to be referenced for the package path.
-	 * @param path The path, relative to the given class.
-	 * @return     A {@link BufferedImage} of the loaded image resource from the given path.
-	 */
-	public static BufferedImage loadImageResource(final Class<?> c, final String path)
-	{
-		try
-		{
-			synchronized (ImageIO.class)
-			{
-				return ImageIO.read(c.getResourceAsStream(path));
-			}
-		}
-		catch (IllegalArgumentException e)
-		{
-			final String filePath;
-
-			if (path.startsWith("/"))
-			{
-				filePath = path;
-			}
-			else
-			{
-				filePath = c.getPackage().getName().replace('.', '/') + "/" + path;
-			}
-
-			log.warn("Failed to load image from class: {}, path: {}", c.getName(), filePath);
-
-			throw new IllegalArgumentException(path, e);
-		}
-		catch (IOException e)
-		{
-			throw new RuntimeException(path, e);
-		}
 	}
 }

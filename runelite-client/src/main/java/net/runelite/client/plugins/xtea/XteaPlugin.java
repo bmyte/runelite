@@ -89,24 +89,6 @@ public class XteaPlugin extends Plugin
 
 			sentRegions.add(region);
 
-<<<<<<< HEAD
-			//Don't post non encrypted regions
-			if (keys[0] == 0 && keys[1] == 0 && keys[2] == 0 && keys[3] == 0)
-			{
-				continue;
-			}
-
-			if (rsclient.allowPrivateServer)
-			{
-				log.info("not submitting xteas for private server");
-				return;
-			}
-			else
-			{
-				log.info("Submitting region {} keys {}, {}, {}, {}", region, keys[0], keys[1], keys[2], keys[3]);
-				xteaClient.submit(region, keys);
-			}
-=======
 			log.debug("Region {} keys {}, {}, {}, {}", region, keys[0], keys[1], keys[2], keys[3]);
 
 			XteaKey xteaKey = new XteaKey();
@@ -118,7 +100,6 @@ public class XteaPlugin extends Plugin
 		if (xteaRequest.getKeys().isEmpty())
 		{
 			return;
->>>>>>> 829f0b134b80ad67628bc1031c3a8facef9fb568
 		}
 
 		xteaClient.submit(xteaRequest);
