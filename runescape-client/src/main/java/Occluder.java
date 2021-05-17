@@ -2,149 +2,112 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ed")
+@ObfuscatedName("fd")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("jf")
-	@ObfuscatedSignature(
-		descriptor = "Lhe;"
-	)
-	@Export("hoveredItemContainer")
-	static Widget hoveredItemContainer;
-	@ObfuscatedName("lf")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1001038233
-	)
-	@Export("menuWidth")
-	static int menuWidth;
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = -961555273
+		intValue = 231812381
 	)
 	@Export("minTileX")
 	int minTileX;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -115587993
+		intValue = 897356107
 	)
 	@Export("maxTileX")
 	int maxTileX;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -2031501137
+		intValue = 1764781541
 	)
 	@Export("minTileY")
 	int minTileY;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -2011315243
+		intValue = -1759651047
 	)
 	@Export("maxTileY")
 	int maxTileY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1543277097
+		intValue = 418466411
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 1717742133
+		intValue = -419810531
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -274411845
+		intValue = 1880707225
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("p")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -698195239
+		intValue = 327372073
 	)
 	@Export("minZ")
 	int minZ;
-	@ObfuscatedName("l")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 1418804225
+		intValue = -1759977967
 	)
 	@Export("maxZ")
 	int maxZ;
-	@ObfuscatedName("z")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1159677951
+		intValue = -129815607
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("u")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 253591851
+		intValue = 2058617869
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(
-		intValue = -1918923367
-	)
-	int field1921;
 	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 1725164325
+		intValue = -1358030565
 	)
-	int field1925;
+	int field2021;
+	@ObfuscatedName("d")
+	@ObfuscatedGetter(
+		intValue = 2087386633
+	)
+	int field2019;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1353837759
+		intValue = -263403349
 	)
-	int field1923;
-	@ObfuscatedName("i")
+	int field2023;
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1307252971
+		intValue = 151544725
 	)
-	int field1924;
-	@ObfuscatedName("f")
+	int field2024;
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = -164056125
+		intValue = 1510098795
 	)
-	int field1929;
-	@ObfuscatedName("a")
+	int field2016;
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 635255003
+		intValue = -546604535
 	)
-	int field1926;
-	@ObfuscatedName("b")
+	int field2012;
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1055944847
+		intValue = 1373604239
 	)
-	int field1927;
+	int field2026;
 
 	Occluder() {
 	} // L: 23
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(B)[Lig;",
-		garbageValue = "79"
-	)
-	static class238[] method3377() {
-		return new class238[]{class238.field3111, class238.field3114}; // L: 35
-	}
-
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1625020333"
-	)
-	public static int method3378() {
-		return ++MouseHandler.MouseHandler_idleCycles - 1; // L: 59
-	}
-
-	@ObfuscatedName("p")
-	@Export("Entity_unpackID")
-	public static int Entity_unpackID(long var0) {
-		return (int)(var0 >>> 17 & 4294967295L); // L: 77
-	}
 }

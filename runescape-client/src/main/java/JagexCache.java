@@ -5,42 +5,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fu")
+@ObfuscatedName("dd")
 @Implements("JagexCache")
 public class JagexCache {
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@Export("JagexCache_locationFile")
 	static File JagexCache_locationFile;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@Export("cacheDir")
-	public static File cacheDir;
-	@ObfuscatedName("p")
-	@Export("ByteArrayPool_altSizeArrayCounts")
-	public static int[] ByteArrayPool_altSizeArrayCounts;
+	static File cacheDir;
 	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = 502349843
+	)
+	@Export("idxCount")
+	static int idxCount;
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lmz;"
+		descriptor = "Lnx;"
 	)
 	@Export("JagexCache_randomDat")
 	public static BufferedFile JagexCache_randomDat;
-	@ObfuscatedName("m")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "Lmz;"
+		descriptor = "Lnx;"
 	)
 	@Export("JagexCache_dat2File")
 	public static BufferedFile JagexCache_dat2File;
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lmz;"
+		descriptor = "Lnx;"
 	)
 	@Export("JagexCache_idx255File")
 	public static BufferedFile JagexCache_idx255File;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = -622132541
-	)
-	@Export("cacheGamebuild")
-	public static int cacheGamebuild;
 
 	static {
 		JagexCache_randomDat = null; // L: 22
@@ -48,29 +45,12 @@ public class JagexCache {
 		JagexCache_idx255File = null; // L: 24
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)I",
-		garbageValue = "-6"
+		descriptor = "(I)I",
+		garbageValue = "1018942980"
 	)
-	@Export("hashString")
-	public static int hashString(CharSequence var0) {
-		int var1 = var0.length(); // L: 140
-		int var2 = 0; // L: 141
-
-		for (int var3 = 0; var3 < var1; ++var3) { // L: 142
-			var2 = (var2 << 5) - var2 + Varps.charToByteCp1252(var0.charAt(var3));
-		}
-
-		return var2; // L: 143
-	}
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "3"
-	)
-	public static boolean method3566() {
-		return class206.musicPlayerStatus != 0 ? true : class206.midiPcmStream.isReady(); // L: 68 69
+	static final int method2541() {
+		return ViewportMouse.ViewportMouse_y; // L: 91
 	}
 }

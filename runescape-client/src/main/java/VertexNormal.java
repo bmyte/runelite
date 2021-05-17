@@ -4,36 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eb")
+@ObfuscatedName("ge")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lib;"
-	)
-	@Export("ItemDefinition_modelArchive")
-	static AbstractArchive ItemDefinition_modelArchive;
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1772389683
+		intValue = 1974778043
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1686806459
+		intValue = -537542863
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 987567799
+		intValue = 987855995
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -730921547
+		intValue = -1799823947
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -42,7 +36,7 @@ public class VertexNormal {
 	} // L: 9
 
 	@ObfuscatedSignature(
-		descriptor = "(Leb;)V"
+		descriptor = "(Lge;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x; // L: 12
@@ -51,44 +45,31 @@ public class VertexNormal {
 		this.magnitude = var1.magnitude; // L: 15
 	} // L: 16
 
-	@ObfuscatedName("iy")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2064562109"
+		descriptor = "(Lir;Lir;S)V",
+		garbageValue = "6851"
 	)
-	static final void method3068() {
-		boolean var0 = false; // L: 8473
+	public static void method3782(AbstractArchive var0, AbstractArchive var1) {
+		HealthBarDefinition.HealthBarDefinition_archive = var0; // L: 30
+		HealthBarDefinition.HitSplatDefinition_spritesArchive = var1; // L: 31
+	} // L: 32
 
-		while (!var0) { // L: 8474
-			var0 = true; // L: 8475
-
-			for (int var1 = 0; var1 < Client.menuOptionsCount - 1; ++var1) { // L: 8476
-				if (Client.menuOpcodes[var1] < 1000 && Client.menuOpcodes[var1 + 1] > 1000) { // L: 8477
-					String var2 = Client.menuTargets[var1]; // L: 8478
-					Client.menuTargets[var1] = Client.menuTargets[var1 + 1]; // L: 8479
-					Client.menuTargets[var1 + 1] = var2; // L: 8480
-					String var3 = Client.menuActions[var1]; // L: 8481
-					Client.menuActions[var1] = Client.menuActions[var1 + 1]; // L: 8482
-					Client.menuActions[var1 + 1] = var3; // L: 8483
-					int var4 = Client.menuOpcodes[var1]; // L: 8484
-					Client.menuOpcodes[var1] = Client.menuOpcodes[var1 + 1]; // L: 8485
-					Client.menuOpcodes[var1 + 1] = var4; // L: 8486
-					var4 = Client.menuArguments1[var1]; // L: 8487
-					Client.menuArguments1[var1] = Client.menuArguments1[var1 + 1]; // L: 8488
-					Client.menuArguments1[var1 + 1] = var4; // L: 8489
-					var4 = Client.menuArguments2[var1]; // L: 8490
-					Client.menuArguments2[var1] = Client.menuArguments2[var1 + 1]; // L: 8491
-					Client.menuArguments2[var1 + 1] = var4; // L: 8492
-					var4 = Client.menuIdentifiers[var1]; // L: 8493
-					Client.menuIdentifiers[var1] = Client.menuIdentifiers[var1 + 1]; // L: 8494
-					Client.menuIdentifiers[var1 + 1] = var4; // L: 8495
-					boolean var5 = Client.menuShiftClick[var1]; // L: 8496
-					Client.menuShiftClick[var1] = Client.menuShiftClick[var1 + 1]; // L: 8497
-					Client.menuShiftClick[var1 + 1] = var5; // L: 8498
-					var0 = false; // L: 8499
-				}
-			}
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(Lir;II)Low;",
+		garbageValue = "577836402"
+	)
+	public static IndexedSprite method3783(AbstractArchive var0, int var1) {
+		byte[] var3 = var0.takeFileFlat(var1); // L: 190
+		boolean var2;
+		if (var3 == null) { // L: 191
+			var2 = false; // L: 192
+		} else {
+			class244.SpriteBuffer_decode(var3); // L: 195
+			var2 = true; // L: 196
 		}
 
-	} // L: 8503
+		return !var2 ? null : ArchiveLoader.method2076(); // L: 198 199
+	}
 }

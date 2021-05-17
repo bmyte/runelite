@@ -7,37 +7,31 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fa")
+@ObfuscatedName("dt")
 @Implements("TaskHandler")
 public class TaskHandler implements Runnable {
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@Export("javaVendor")
 	public static String javaVendor;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@Export("javaVersion")
 	public static String javaVersion;
-	@ObfuscatedName("df")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
-	)
-	@Export("js5Socket")
-	static AbstractSocket js5Socket;
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(
-		descriptor = "Lfd;"
+		descriptor = "Lep;"
 	)
 	@Export("current")
 	Task current;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lfd;"
+		descriptor = "Lep;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@Export("isClosed")
 	boolean isClosed;
 
@@ -61,10 +55,10 @@ public class TaskHandler implements Runnable {
 		this.thread.start(); // L: 31
 	} // L: 32
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "60003222"
+		garbageValue = "732898192"
 	)
 	@Export("close")
 	public final void close() {
@@ -80,10 +74,10 @@ public class TaskHandler implements Runnable {
 
 	} // L: 43
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(IIILjava/lang/Object;I)Lfd;",
-		garbageValue = "-108529883"
+		descriptor = "(IIILjava/lang/Object;I)Lep;",
+		garbageValue = "743067634"
 	)
 	@Export("newTask")
 	final Task newTask(int var1, int var2, int var3, Object var4) {
@@ -104,20 +98,20 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IB)Lfd;",
-		garbageValue = "0"
+		descriptor = "(Ljava/lang/String;IB)Lep;",
+		garbageValue = "-31"
 	)
 	@Export("newSocketTask")
 	public final Task newSocketTask(String var1, int var2) {
 		return this.newTask(1, var2, 0, var1); // L: 108
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Runnable;II)Lfd;",
-		garbageValue = "-1137156097"
+		descriptor = "(Ljava/lang/Runnable;IB)Lep;",
+		garbageValue = "-100"
 	)
 	@Export("newThreadTask")
 	public final Task newThreadTask(Runnable var1, int var2) {
@@ -172,16 +166,37 @@ public class TaskHandler implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(IZIZI)V",
-		garbageValue = "766328157"
+		descriptor = "(I)V",
+		garbageValue = "1532861557"
 	)
-	@Export("sortWorldList")
-	static void sortWorldList(int var0, boolean var1, int var2, boolean var3) {
-		if (World.World_worlds != null) { // L: 171
-			class25.doWorldSorting(0, World.World_worlds.length - 1, var0, var1, var2, var3); // L: 172
+	static void method2524() {
+		Players.Players_count = 0; // L: 616
+
+		for (int var0 = 0; var0 < 2048; ++var0) { // L: 617
+			Players.field1352[var0] = null; // L: 618
+			Players.field1351[var0] = 1; // L: 619
 		}
 
-	} // L: 174
+	} // L: 621
+
+	@ObfuscatedName("lx")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "800079546"
+	)
+	static void method2523() {
+		if (class105.field1331 != null) { // L: 11737
+			Client.field623 = Client.cycle; // L: 11738
+			class105.field1331.method4657(); // L: 11739
+
+			for (int var0 = 0; var0 < Client.players.length; ++var0) { // L: 11740
+				if (Client.players[var0] != null) { // L: 11741
+					class105.field1331.method4656((Client.players[var0].x >> 7) + ItemLayer.baseX, (Client.players[var0].y >> 7) + Tile.baseY); // L: 11742
+				}
+			}
+		}
+
+	} // L: 11746
 }

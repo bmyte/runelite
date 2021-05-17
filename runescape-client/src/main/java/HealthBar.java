@@ -3,34 +3,36 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cb")
+@ObfuscatedName("ct")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("x")
+	@ObfuscatedName("h")
+	static int[] field1311;
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lie;"
+		descriptor = "Ljg;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Ljn;"
+		descriptor = "Ljc;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lie;)V"
+		descriptor = "(Ljg;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque(); // L: 12
 		this.definition = var1; // L: 15
 	} // L: 16
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-1617546911"
+		descriptor = "(IIIIB)V",
+		garbageValue = "35"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -44,8 +46,8 @@ public class HealthBar extends Node {
 				return; // L: 25
 			}
 
-			if (var7.cycle <= var1) {
-				var5 = var7; // L: 27
+			if (var7.cycle <= var1) { // L: 27
+				var5 = var7;
 			}
 		}
 
@@ -63,10 +65,10 @@ public class HealthBar extends Node {
 		}
 	} // L: 31 35
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lci;",
-		garbageValue = "241304774"
+		descriptor = "(II)Lcl;",
+		garbageValue = "-1462227076"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -77,7 +79,7 @@ public class HealthBar extends Node {
 				var2 = var3; // L: 43
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) { // L: 47
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) { // L: 47
 				return var2;
 			} else {
 				var2.remove(); // L: 49
@@ -88,13 +90,13 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "127"
+		garbageValue = "-1"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method4840(); // L: 55
+		return this.updates.method4787(); // L: 55
 	}
 }

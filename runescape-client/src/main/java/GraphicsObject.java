@@ -4,66 +4,70 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ce")
+@ObfuscatedName("cf")
 @Implements("GraphicsObject")
-public final class GraphicsObject extends Entity {
-	@ObfuscatedName("a")
-	public static String[] field1117;
-	@ObfuscatedName("h")
+public final class GraphicsObject extends Renderable {
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = 1733253917
+		intValue = -1860444775
+	)
+	@Export("loginBoxCenter")
+	static int loginBoxCenter;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -1442514319
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -561629891
+		intValue = -255937363
 	)
 	@Export("cycleStart")
 	int cycleStart;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 843078799
-	)
-	@Export("y")
-	int y;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -391213595
+		intValue = -1558185979
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("t")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 1438235689
+		intValue = -799404683
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("j")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 697288519
+		intValue = -1197647983
+	)
+	@Export("y")
+	int y;
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = 921468661
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Ljy;"
+		descriptor = "Lkw;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("p")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -737281837
+		intValue = 1763592485
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("l")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -2023288775
+		intValue = 1659206025
 	)
 	@Export("frameCycle")
 	int frameCycle;
-	@ObfuscatedName("z")
+	@ObfuscatedName("n")
 	@Export("isFinished")
 	boolean isFinished;
 
@@ -77,20 +81,20 @@ public final class GraphicsObject extends Entity {
 		this.y = var4; // L: 24
 		this.height = var5; // L: 25
 		this.cycleStart = var7 + var6; // L: 26
-		int var8 = TileItem.SpotAnimationDefinition_get(this.id).sequence; // L: 27
+		int var8 = Varps.SpotAnimationDefinition_get(this.id).sequence; // L: 27
 		if (var8 != -1) { // L: 28
 			this.isFinished = false; // L: 29
-			this.sequenceDefinition = ParamDefinition.SequenceDefinition_get(var8); // L: 30
+			this.sequenceDefinition = class225.SequenceDefinition_get(var8); // L: 30
 		} else {
 			this.isFinished = true; // L: 32
 		}
 
 	} // L: 33
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "1007700617"
+		garbageValue = "1392688450"
 	)
 	@Export("advance")
 	final void advance(int var1) {
@@ -109,14 +113,14 @@ public final class GraphicsObject extends Entity {
 		}
 	} // L: 46
 
-	@ObfuscatedName("l")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(I)Leh;",
-		garbageValue = "-1814248977"
+		descriptor = "(I)Lgv;",
+		garbageValue = "1835906978"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = TileItem.SpotAnimationDefinition_get(this.id); // L: 49
+		SpotAnimationDefinition var1 = Varps.SpotAnimationDefinition_get(this.id); // L: 49
 		Model var2;
 		if (!this.isFinished) { // L: 51
 			var2 = var1.getModel(this.frame);
@@ -127,44 +131,49 @@ public final class GraphicsObject extends Entity {
 		return var2 == null ? null : var2; // L: 53
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "14"
+		descriptor = "(II)Lkc;",
+		garbageValue = "-2021558872"
 	)
-	public static void method2090() {
-		synchronized(KeyHandler.KeyHandler_instance) { // L: 164
-			++KeyHandler.KeyHandler_idleCycles; // L: 165
-			KeyHandler.field415 = KeyHandler.field417; // L: 166
-			KeyHandler.field414 = 0; // L: 167
-			int var1;
-			if (KeyHandler.field410 < 0) { // L: 168
-				for (var1 = 0; var1 < 112; ++var1) { // L: 169
-					KeyHandler.KeyHandler_pressedKeys[var1] = false;
-				}
-
-				KeyHandler.field410 = KeyHandler.field401; // L: 170
-			} else {
-				while (KeyHandler.field401 != KeyHandler.field410) { // L: 173
-					var1 = KeyHandler.field408[KeyHandler.field401]; // L: 174
-					KeyHandler.field401 = KeyHandler.field401 + 1 & 127; // L: 175
-					if (var1 < 0) { // L: 176
-						KeyHandler.KeyHandler_pressedKeys[~var1] = false;
-					} else {
-						if (!KeyHandler.KeyHandler_pressedKeys[var1] && KeyHandler.field414 < KeyHandler.field413.length - 1) { // L: 178
-							KeyHandler.field413[++KeyHandler.field414 - 1] = var1; // L: 179
-						}
-
-						KeyHandler.KeyHandler_pressedKeys[var1] = true; // L: 181
-					}
-				}
+	@Export("getNpcDefinition")
+	public static NPCComposition getNpcDefinition(int var0) {
+		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0); // L: 62
+		if (var1 != null) { // L: 63
+			return var1;
+		} else {
+			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0); // L: 64
+			var1 = new NPCComposition(); // L: 65
+			var1.id = var0; // L: 66
+			if (var2 != null) { // L: 67
+				var1.decode(new Buffer(var2));
 			}
 
-			if (KeyHandler.field414 > 0) { // L: 185
-				KeyHandler.KeyHandler_idleCycles = 0;
-			}
-
-			KeyHandler.field417 = KeyHandler.field419; // L: 186
+			var1.postDecode(); // L: 68
+			NPCComposition.NpcDefinition_cached.put(var1, (long)var0); // L: 69
+			return var1; // L: 70
 		}
-	} // L: 188
+	}
+
+	@ObfuscatedName("kq")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "-733559314"
+	)
+	static final void method1913(int var0, int var1) {
+		class3 var2 = var0 >= 0 ? Client.field820[var0] : IsaacCipher.field4266; // L: 11538
+		if (var2 != null && var1 >= 0 && var1 < var2.method46()) { // L: 11539
+			class9 var3 = (class9)var2.field27.get(var1); // L: 11540
+			if (var3.field66 == -1) {
+				String var4 = var3.field65; // L: 11542
+				PacketWriter var5 = Client.packetWriter; // L: 11543
+				PacketBufferNode var6 = ObjectComposition.getPacketBufferNode(ClientPacket.field2316, var5.isaacCipher); // L: 11544
+				var6.packetBuffer.writeByte(3 + Friend.stringCp1252NullTerminatedByteSize(var4)); // L: 11545
+				var6.packetBuffer.writeByte(var0); // L: 11546
+				var6.packetBuffer.writeShort(var1); // L: 11547
+				var6.packetBuffer.writeStringCp1252NullTerminated(var4); // L: 11548
+				var5.addNode(var6); // L: 11549
+			}
+		}
+	} // L: 11541 11550
 }

@@ -4,19 +4,28 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ei")
+@ObfuscatedName("da")
 @Implements("UrlRequest")
 public class UrlRequest {
-	@ObfuscatedName("st")
-	@Export("foundItemIds")
-	static short[] foundItemIds;
-	@ObfuscatedName("h")
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Lir;"
+	)
+	@Export("Widget_spritesArchive")
+	public static AbstractArchive Widget_spritesArchive;
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "Lfp;"
+	)
+	@Export("worldMapEvent")
+	static WorldMapEvent worldMapEvent;
+	@ObfuscatedName("f")
 	@Export("url")
 	final URL url;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@Export("isDone0")
 	volatile boolean isDone0;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@Export("response0")
 	volatile byte[] response0;
 
@@ -24,20 +33,20 @@ public class UrlRequest {
 		this.url = var1; // L: 96
 	} // L: 97
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "109"
+		descriptor = "(I)Z",
+		garbageValue = "-1850686662"
 	)
 	@Export("isDone")
 	public boolean isDone() {
 		return this.isDone0; // L: 100
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(I)[B",
-		garbageValue = "-884175242"
+		descriptor = "(B)[B",
+		garbageValue = "79"
 	)
 	@Export("getResponse")
 	public byte[] getResponse() {

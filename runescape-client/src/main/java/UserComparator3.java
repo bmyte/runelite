@@ -3,10 +3,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fv")
+@ObfuscatedName("di")
 @Implements("UserComparator3")
 public class UserComparator3 extends AbstractUserComparator {
-	@ObfuscatedName("h")
+	@ObfuscatedName("k")
+	@Export("ByteArrayPool_alternativeSizes")
+	static int[] ByteArrayPool_alternativeSizes;
+	@ObfuscatedName("f")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +17,10 @@ public class UserComparator3 extends AbstractUserComparator {
 		this.reversed = var1; // L: 10
 	} // L: 11
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lkz;Lkz;B)I",
-		garbageValue = "96"
+		descriptor = "(Llg;Llg;I)I",
+		garbageValue = "-1718548069"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,140 +35,43 @@ public class UserComparator3 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 21
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lky;B)V",
-		garbageValue = "10"
+		descriptor = "(IB)Lkz;",
+		garbageValue = "73"
 	)
-	static final void method3515(PacketBuffer var0) {
-		int var1 = 0; // L: 89
-		var0.importIndex(); // L: 90
-
-		byte[] var10000;
-		int var2;
-		int var4;
-		int var5;
-		for (var2 = 0; var2 < Players.Players_count; ++var2) { // L: 91
-			var5 = Players.Players_indices[var2]; // L: 92
-			if ((Players.field1252[var5] & 1) == 0) { // L: 93
-				if (var1 > 0) { // L: 94
-					--var1; // L: 95
-					var10000 = Players.field1252; // L: 96
-					var10000[var5] = (byte)(var10000[var5] | 2);
-				} else {
-					var4 = var0.readBits(1); // L: 99
-					if (var4 == 0) { // L: 100
-						var1 = Skills.method4146(var0); // L: 101
-						var10000 = Players.field1252; // L: 102
-						var10000[var5] = (byte)(var10000[var5] | 2);
-					} else {
-						class349.readPlayerUpdate(var0, var5); // L: 105
-					}
-				}
-			}
-		}
-
-		var0.exportIndex(); // L: 108
-		if (var1 != 0) { // L: 109
-			throw new RuntimeException(); // L: 110
+	@Export("getParamDefinition")
+	public static ParamComposition getParamDefinition(int var0) {
+		ParamComposition var1 = (ParamComposition)ParamComposition.ParamDefinition_cached.get((long)var0); // L: 25
+		if (var1 != null) { // L: 26
+			return var1;
 		} else {
-			var0.importIndex(); // L: 112
-
-			for (var2 = 0; var2 < Players.Players_count; ++var2) { // L: 113
-				var5 = Players.Players_indices[var2]; // L: 114
-				if ((Players.field1252[var5] & 1) != 0) { // L: 115
-					if (var1 > 0) { // L: 116
-						--var1; // L: 117
-						var10000 = Players.field1252; // L: 118
-						var10000[var5] = (byte)(var10000[var5] | 2);
-					} else {
-						var4 = var0.readBits(1); // L: 121
-						if (var4 == 0) { // L: 122
-							var1 = Skills.method4146(var0); // L: 123
-							var10000 = Players.field1252; // L: 124
-							var10000[var5] = (byte)(var10000[var5] | 2);
-						} else {
-							class349.readPlayerUpdate(var0, var5); // L: 127
-						}
-					}
-				}
+			byte[] var2 = ParamComposition.ParamDefinition_archive.takeFile(11, var0); // L: 27
+			var1 = new ParamComposition(); // L: 28
+			if (var2 != null) { // L: 29
+				var1.decode(new Buffer(var2));
 			}
 
-			var0.exportIndex(); // L: 130
-			if (var1 != 0) { // L: 131
-				throw new RuntimeException(); // L: 132
-			} else {
-				var0.importIndex(); // L: 134
-
-				for (var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) { // L: 135
-					var5 = Players.Players_emptyIndices[var2]; // L: 136
-					if ((Players.field1252[var5] & 1) != 0) { // L: 137
-						if (var1 > 0) { // L: 138
-							--var1; // L: 139
-							var10000 = Players.field1252; // L: 140
-							var10000[var5] = (byte)(var10000[var5] | 2);
-						} else {
-							var4 = var0.readBits(1); // L: 143
-							if (var4 == 0) { // L: 144
-								var1 = Skills.method4146(var0); // L: 145
-								var10000 = Players.field1252; // L: 146
-								var10000[var5] = (byte)(var10000[var5] | 2);
-							} else if (WorldMapSection0.updateExternalPlayer(var0, var5)) { // L: 149
-								var10000 = Players.field1252;
-								var10000[var5] = (byte)(var10000[var5] | 2);
-							}
-						}
-					}
-				}
-
-				var0.exportIndex(); // L: 152
-				if (var1 != 0) { // L: 153
-					throw new RuntimeException(); // L: 154
-				} else {
-					var0.importIndex(); // L: 156
-
-					for (var2 = 0; var2 < Players.Players_emptyIdxCount; ++var2) { // L: 157
-						var5 = Players.Players_emptyIndices[var2]; // L: 158
-						if ((Players.field1252[var5] & 1) == 0) { // L: 159
-							if (var1 > 0) { // L: 160
-								--var1; // L: 161
-								var10000 = Players.field1252; // L: 162
-								var10000[var5] = (byte)(var10000[var5] | 2);
-							} else {
-								var4 = var0.readBits(1); // L: 165
-								if (var4 == 0) { // L: 166
-									var1 = Skills.method4146(var0); // L: 167
-									var10000 = Players.field1252; // L: 168
-									var10000[var5] = (byte)(var10000[var5] | 2);
-								} else if (WorldMapSection0.updateExternalPlayer(var0, var5)) { // L: 171
-									var10000 = Players.field1252;
-									var10000[var5] = (byte)(var10000[var5] | 2);
-								}
-							}
-						}
-					}
-
-					var0.exportIndex(); // L: 174
-					if (var1 != 0) { // L: 175
-						throw new RuntimeException(); // L: 176
-					} else {
-						Players.Players_count = 0; // L: 178
-						Players.Players_emptyIdxCount = 0; // L: 179
-
-						for (var2 = 1; var2 < 2048; ++var2) { // L: 180
-							var10000 = Players.field1252; // L: 181
-							var10000[var2] = (byte)(var10000[var2] >> 1);
-							Player var3 = Client.players[var2]; // L: 182
-							if (var3 != null) { // L: 183
-								Players.Players_indices[++Players.Players_count - 1] = var2;
-							} else {
-								Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var2; // L: 184
-							}
-						}
-
-					}
-				}
-			}
+			var1.postDecode(); // L: 30
+			ParamComposition.ParamDefinition_cached.put(var1, (long)var0); // L: 31
+			return var1; // L: 32
 		}
-	} // L: 186
+	}
+
+	@ObfuscatedName("g")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "97099503"
+	)
+	@Export("hashString")
+	public static int hashString(CharSequence var0) {
+		int var1 = var0.length(); // L: 161
+		int var2 = 0; // L: 162
+
+		for (int var3 = 0; var3 < var1; ++var3) { // L: 163
+			var2 = (var2 << 5) - var2 + Messages.charToByteCp1252(var0.charAt(var3));
+		}
+
+		return var2; // L: 164
+	}
 }

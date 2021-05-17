@@ -4,36 +4,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
+@ObfuscatedName("cl")
 @Implements("HealthBarUpdate")
 public class HealthBarUpdate extends Node {
-	@ObfuscatedName("n")
+	@ObfuscatedName("sy")
 	@ObfuscatedGetter(
-		intValue = 942035737
+		longValue = 6142810320644924851L
 	)
-	@Export("musicTrackGroupId")
-	static int musicTrackGroupId;
-	@ObfuscatedName("h")
+	static long field1272;
+	@ObfuscatedName("fp")
 	@ObfuscatedGetter(
-		intValue = -1928856017
+		longValue = 4363745212267804777L
+	)
+	static long field1277;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 1723297803
 	)
 	@Export("cycle")
 	int cycle;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 187911795
+		intValue = -802786453
 	)
 	@Export("health")
 	int health;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1933333849
+		intValue = -1934136823
 	)
 	@Export("health2")
 	int health2;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -280255585
+		intValue = 1369623823
 	)
 	@Export("cycleOffset")
 	int cycleOffset;
@@ -45,10 +49,10 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4; // L: 15
 	} // L: 16
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(IIIII)V",
-		garbageValue = "2048204816"
+		garbageValue = "-2137849778"
 	)
 	@Export("set")
 	void set(int var1, int var2, int var3, int var4) {
@@ -58,77 +62,44 @@ public class HealthBarUpdate extends Node {
 		this.cycleOffset = var4; // L: 22
 	} // L: 23
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lie;",
-		garbageValue = "-68"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "1311777255"
 	)
-	public static HealthBarDefinition method1826(int var0) {
-		HealthBarDefinition var1 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.get((long)var0); // L: 37
-		if (var1 != null) { // L: 38
-			return var1;
+	static final void method2180(String var0) {
+		StringBuilder var10000 = (new StringBuilder()).append(var0);
+		Object var10001 = null;
+		String var1 = var10000.append(" is already on your ignore list").toString(); // L: 182
+		class69.addGameMessage(30, "", var1); // L: 184
+	} // L: 186
+
+	@ObfuscatedName("fo")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-481083146"
+	)
+	static final void method2181() {
+		if (Client.logoutTimer > 0) { // L: 2438
+			class23.logOut(); // L: 2439
 		} else {
-			byte[] var2 = class225.HealthBarDefinition_archive.takeFile(33, var0); // L: 39
-			var1 = new HealthBarDefinition(); // L: 40
-			if (var2 != null) { // L: 41
-				var1.decode(new Buffer(var2));
-			}
-
-			HealthBarDefinition.HealthBarDefinition_cached.put(var1, (long)var0); // L: 42
-			return var1; // L: 43
+			Client.timer.method5578(); // L: 2442
+			class20.updateGameState(40); // L: 2443
+			Client.field686 = Client.packetWriter.getSocket(); // L: 2444
+			Client.packetWriter.removeSocket(); // L: 2445
 		}
-	}
+	} // L: 2440 2446
 
-	@ObfuscatedName("aa")
+	@ObfuscatedName("fw")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "307117656"
+		descriptor = "(IIB)V",
+		garbageValue = "59"
 	)
-	static int method1823(int var0) {
-		return (int)Math.pow(2.0D, (double)((float)var0 / 256.0F + 7.0F)); // L: 3259
-	}
-
-	@ObfuscatedName("kc")
-	@ObfuscatedSignature(
-		descriptor = "(Lhe;I)Z",
-		garbageValue = "-1439133446"
-	)
-	static final boolean method1825(Widget var0) {
-		int var1 = var0.contentType; // L: 10843
-		if (var1 == 205) { // L: 10844
-			Client.logoutTimer = 250; // L: 10845
-			return true; // L: 10846
-		} else {
-			int var2;
-			int var3;
-			if (var1 >= 300 && var1 <= 313) { // L: 10848
-				var2 = (var1 - 300) / 2; // L: 10849
-				var3 = var1 & 1; // L: 10850
-				Client.playerAppearance.changeAppearance(var2, var3 == 1); // L: 10851
-			}
-
-			if (var1 >= 314 && var1 <= 323) { // L: 10853
-				var2 = (var1 - 314) / 2; // L: 10854
-				var3 = var1 & 1; // L: 10855
-				Client.playerAppearance.method4043(var2, var3 == 1); // L: 10856
-			}
-
-			if (var1 == 324) {
-				Client.playerAppearance.changeSex(false); // L: 10858
-			}
-
-			if (var1 == 325) { // L: 10859
-				Client.playerAppearance.changeSex(true);
-			}
-
-			if (var1 == 326) { // L: 10860
-				PacketBufferNode var4 = ItemContainer.getPacketBufferNode(ClientPacket.field2239, Client.packetWriter.isaacCipher); // L: 10862
-				Client.playerAppearance.write(var4.packetBuffer); // L: 10863
-				Client.packetWriter.addNode(var4); // L: 10864
-				return true; // L: 10865
-			} else {
-				return false; // L: 10867
-			}
+	static void method2175(int var0, int var1) {
+		if (Login.clientPreferences.musicVolume != 0 && var0 != -1) { // L: 3103
+			PacketBufferNode.method3898(class10.archive11, var0, 0, Login.clientPreferences.musicVolume, false); // L: 3104
+			Client.field842 = true; // L: 3105
 		}
-	}
+
+	} // L: 3107
 }

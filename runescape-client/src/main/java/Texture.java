@@ -3,33 +3,33 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("eg")
+@ObfuscatedName("fc")
 @Implements("Texture")
 public class Texture extends Node {
-	@ObfuscatedName("i")
+	@ObfuscatedName("j")
 	@Export("Texture_animatedPixels")
 	static int[] Texture_animatedPixels;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@Export("averageRGB")
 	int averageRGB;
-	@ObfuscatedName("j")
-	boolean field1640;
-	@ObfuscatedName("n")
+	@ObfuscatedName("e")
+	boolean field1849;
+	@ObfuscatedName("k")
 	@Export("fileIds")
 	int[] fileIds;
-	@ObfuscatedName("p")
-	int[] field1642;
+	@ObfuscatedName("g")
+	int[] field1851;
+	@ObfuscatedName("h")
+	int[] field1852;
+	@ObfuscatedName("n")
+	int[] field1844;
 	@ObfuscatedName("l")
-	int[] field1648;
-	@ObfuscatedName("z")
-	int[] field1637;
-	@ObfuscatedName("u")
 	@Export("animationDirection")
 	int animationDirection;
-	@ObfuscatedName("e")
+	@ObfuscatedName("m")
 	@Export("animationSpeed")
 	int animationSpeed;
-	@ObfuscatedName("m")
+	@ObfuscatedName("d")
 	@Export("pixels")
 	int[] pixels;
 	@ObfuscatedName("c")
@@ -37,12 +37,12 @@ public class Texture extends Node {
 	boolean isLoaded;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;)V"
+		descriptor = "(Lnu;)V"
 	)
 	Texture(Buffer var1) {
 		this.isLoaded = false; // L: 25
 		this.averageRGB = var1.readUnsignedShort(); // L: 29
-		this.field1640 = var1.readUnsignedByte() == 1; // L: 30
+		this.field1849 = var1.readUnsignedByte() == 1; // L: 30
 		int var2 = var1.readUnsignedByte(); // L: 31
 		if (var2 >= 1 && var2 <= 4) { // L: 32
 			this.fileIds = new int[var2]; // L: 35
@@ -53,25 +53,25 @@ public class Texture extends Node {
 			}
 
 			if (var2 > 1) { // L: 37
-				this.field1642 = new int[var2 - 1]; // L: 38
+				this.field1851 = new int[var2 - 1]; // L: 38
 
 				for (var3 = 0; var3 < var2 - 1; ++var3) { // L: 39
-					this.field1642[var3] = var1.readUnsignedByte();
+					this.field1851[var3] = var1.readUnsignedByte();
 				}
 			}
 
 			if (var2 > 1) { // L: 41
-				this.field1648 = new int[var2 - 1]; // L: 42
+				this.field1852 = new int[var2 - 1]; // L: 42
 
 				for (var3 = 0; var3 < var2 - 1; ++var3) { // L: 43
-					this.field1648[var3] = var1.readUnsignedByte();
+					this.field1852[var3] = var1.readUnsignedByte();
 				}
 			}
 
-			this.field1637 = new int[var2]; // L: 45
+			this.field1844 = new int[var2]; // L: 45
 
 			for (var3 = 0; var3 < var2; ++var3) { // L: 46
-				this.field1637[var3] = var1.readInt();
+				this.field1844[var3] = var1.readInt();
 			}
 
 			this.animationDirection = var1.readUnsignedByte(); // L: 47
@@ -82,9 +82,9 @@ public class Texture extends Node {
 		}
 	} // L: 50
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(DILib;)Z"
+		descriptor = "(DILir;)Z"
 	)
 	@Export("load")
 	boolean load(double var1, int var3, AbstractArchive var4) {
@@ -99,11 +99,11 @@ public class Texture extends Node {
 		this.pixels = new int[var5]; // L: 57
 
 		for (int var6 = 0; var6 < this.fileIds.length; ++var6) { // L: 58
-			IndexedSprite var7 = FloorOverlayDefinition.method4789(var4, this.fileIds[var6]); // L: 59
+			IndexedSprite var7 = VertexNormal.method3783(var4, this.fileIds[var6]); // L: 59
 			var7.normalize(); // L: 60
 			byte[] var8 = var7.pixels; // L: 61
 			int[] var9 = var7.palette; // L: 62
-			int var10 = this.field1637[var6]; // L: 63
+			int var10 = this.field1844[var6]; // L: 63
 			if ((var10 & -16777216) == 16777216) { // L: 64
 			}
 
@@ -134,7 +134,7 @@ public class Texture extends Node {
 			if (var6 == 0) { // L: 79
 				var11 = 0;
 			} else {
-				var11 = this.field1642[var6 - 1]; // L: 80
+				var11 = this.field1851[var6 - 1]; // L: 80
 			}
 
 			if (var11 == 0) { // L: 81
@@ -178,13 +178,13 @@ public class Texture extends Node {
 		return true; // L: 105
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@Export("reset")
 	void reset() {
 		this.pixels = null; // L: 109
 	} // L: 110
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@Export("animate")
 	void animate(int var1) {
 		if (this.pixels != null) { // L: 113

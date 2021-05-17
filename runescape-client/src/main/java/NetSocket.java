@@ -9,74 +9,76 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fw")
+@ObfuscatedName("ek")
 @Implements("NetSocket")
 public final class NetSocket extends AbstractSocket implements Runnable {
-	@ObfuscatedName("h")
+	@ObfuscatedName("d")
+	static boolean field1498;
+	@ObfuscatedName("f")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("v")
-	@Export("outputStream")
-	OutputStream outputStream;
-	@ObfuscatedName("x")
+	@ObfuscatedName("o")
 	@Export("socket")
 	Socket socket;
-	@ObfuscatedName("w")
+	@ObfuscatedName("u")
+	@Export("outputStream")
+	OutputStream outputStream;
+	@ObfuscatedName("p")
 	@Export("isClosed")
 	boolean isClosed;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lfa;"
+		descriptor = "Ldt;"
 	)
 	@Export("taskHandler")
 	TaskHandler taskHandler;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Lfd;"
+		descriptor = "Lep;"
 	)
 	@Export("task")
 	Task task;
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@Export("outBuffer")
 	byte[] outBuffer;
-	@ObfuscatedName("p")
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = -1457420997
+		intValue = 1893029663
 	)
 	@Export("outLength")
 	int outLength;
-	@ObfuscatedName("l")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 976468503
+		intValue = -1275635837
 	)
 	@Export("outOffset")
 	int outOffset;
-	@ObfuscatedName("z")
+	@ObfuscatedName("n")
 	@Export("exceptionWriting")
 	boolean exceptionWriting;
-	@ObfuscatedName("u")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 464417007
+		intValue = -1698435769
 	)
 	@Export("bufferLength")
 	final int bufferLength;
-	@ObfuscatedName("e")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1893306917
+		intValue = 190776071
 	)
 	@Export("maxPacketLength")
 	final int maxPacketLength;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/net/Socket;Lfa;I)V"
+		descriptor = "(Ljava/net/Socket;Ldt;I)V"
 	)
 	public NetSocket(Socket var1, TaskHandler var2, int var3) throws IOException {
-		this.isClosed = false;
+		this.isClosed = false; // L: 16
 		this.outLength = 0; // L: 20
-		this.outOffset = 0;
-		this.exceptionWriting = false;
+		this.outOffset = 0; // L: 21
+		this.exceptionWriting = false; // L: 22
 		this.taskHandler = var2; // L: 28
-		this.socket = var1;
+		this.socket = var1; // L: 29
 		this.bufferLength = var3; // L: 30
 		this.maxPacketLength = var3 - 100; // L: 31
 		this.socket.setSoTimeout(30000); // L: 32
@@ -87,10 +89,10 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 		this.outputStream = this.socket.getOutputStream(); // L: 37
 	} // L: 38
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-10"
+		descriptor = "(I)V",
+		garbageValue = "-1705512918"
 	)
 	@Export("close")
 	public void close() {
@@ -102,7 +104,7 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 
 			if (this.task != null) { // L: 46
 				while (this.task.status == 0) { // L: 47
-					class236.sleepExact(1L); // L: 48
+					GrandExchangeEvent.sleepExact(1L); // L: 48
 				}
 
 				if (this.task.status == 1) { // L: 50
@@ -117,30 +119,30 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 		}
 	} // L: 58
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "0"
+		garbageValue = "-75"
 	)
 	@Export("readUnsignedByte")
 	public int readUnsignedByte() throws IOException {
 		return this.isClosed ? 0 : this.inputStream.read(); // L: 65 66
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1974658106"
+		descriptor = "(B)I",
+		garbageValue = "-65"
 	)
 	@Export("available")
 	public int available() throws IOException {
 		return this.isClosed ? 0 : this.inputStream.available(); // L: 70 71
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-7"
+		descriptor = "(II)Z",
+		garbageValue = "1604537239"
 	)
 	@Export("isAvailable")
 	public boolean isAvailable(int var1) throws IOException {
@@ -151,10 +153,10 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
 		descriptor = "([BIIB)I",
-		garbageValue = "98"
+		garbageValue = "121"
 	)
 	@Export("read")
 	public int read(byte[] var1, int var2, int var3) throws IOException {
@@ -176,10 +178,10 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "2119529681"
+		garbageValue = "277239733"
 	)
 	@Export("write0")
 	void write0(byte[] var1, int var2, int var3) throws IOException {
@@ -211,15 +213,19 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 		}
 	} // L: 111
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "-2028715299"
+		garbageValue = "199608149"
 	)
 	@Export("write")
 	public void write(byte[] var1, int var2, int var3) throws IOException {
 		this.write0(var1, var2, var3); // L: 160
 	} // L: 161
+
+	protected void finalize() {
+		this.close(); // L: 61
+	} // L: 62
 
 	public void run() {
 		try {
@@ -260,7 +266,7 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 					this.outLength = (var1 + this.outLength) % this.bufferLength; // L: 137
 
 					try {
-						if (this.outOffset == this.outLength) { // L: 139
+						if (this.outLength == this.outOffset) { // L: 139
 							this.outputStream.flush();
 						}
 					} catch (IOException var8) { // L: 141
@@ -288,144 +294,21 @@ public final class NetSocket extends AbstractSocket implements Runnable {
 				break;
 			}
 		} catch (Exception var12) { // L: 154
-			PlayerAppearance.RunException_sendStackTrace((String)null, var12); // L: 155
+			class223.RunException_sendStackTrace((String)null, var12); // L: 155
 		}
 
 	} // L: 157
 
-	protected void finalize() {
-		this.close(); // L: 61
-	} // L: 62
-
-	@ObfuscatedName("h")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;Lla;I)Lla;",
-		garbageValue = "-1038873122"
+		descriptor = "(II)I",
+		garbageValue = "1850245175"
 	)
-	@Export("readStringIntParameters")
-	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
-		int var2 = var0.readUnsignedByte(); // L: 16
-		int var3;
-		if (var1 == null) { // L: 17
-			var3 = World.method1870(var2); // L: 18
-			var1 = new IterableNodeHashTable(var3); // L: 19
+	public static int method2587(int var0) {
+		if (var0 > 0) { // L: 206
+			return 1;
+		} else {
+			return var0 < 0 ? -1 : 0; // L: 207 208
 		}
-
-		for (var3 = 0; var3 < var2; ++var3) { // L: 21
-			boolean var4 = var0.readUnsignedByte() == 1; // L: 22
-			int var5 = var0.readMedium(); // L: 23
-			Object var6;
-			if (var4) {
-				var6 = new ObjectNode(var0.readStringCp1252NullTerminated()); // L: 25
-			} else {
-				var6 = new IntegerNode(var0.readInt()); // L: 26
-			}
-
-			var1.put((Node)var6, (long)var5); // L: 27
-		}
-
-		return var1; // L: 29
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(B)[Llj;",
-		garbageValue = "8"
-	)
-	@Export("FillMode_values")
-	public static class333[] FillMode_values() {
-		return new class333[]{class333.field3897, class333.field3898, class333.SOLID}; // L: 15
-	}
-
-	@ObfuscatedName("gh")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "327738104"
-	)
-	static final void method3608() {
-		if (GameObject.Client_plane != Client.field874) { // L: 3735
-			Client.field874 = GameObject.Client_plane; // L: 3736
-			int var0 = GameObject.Client_plane; // L: 3737
-			int[] var1 = class25.sceneMinimapSprite.pixels; // L: 3739
-			int var2 = var1.length; // L: 3740
-
-			int var3;
-			for (var3 = 0; var3 < var2; ++var3) { // L: 3741
-				var1[var3] = 0;
-			}
-
-			int var4;
-			int var5;
-			for (var3 = 1; var3 < 103; ++var3) { // L: 3742
-				var4 = (103 - var3) * 2048 + 24628; // L: 3743
-
-				for (var5 = 1; var5 < 103; ++var5) { // L: 3744
-					if ((Tiles.Tiles_renderFlags[var0][var5][var3] & 24) == 0) { // L: 3745
-						ArchiveLoader.scene.drawTileMinimap(var1, var4, 512, var0, var5, var3);
-					}
-
-					if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var5][var3] & 8) != 0) {
-						ArchiveLoader.scene.drawTileMinimap(var1, var4, 512, var0 + 1, var5, var3); // L: 3746
-					}
-
-					var4 += 4; // L: 3747
-				}
-			}
-
-			var3 = (238 + (int)(Math.random() * 20.0D) - 10 << 16) + (238 + (int)(Math.random() * 20.0D) - 10 << 8) + (238 + (int)(Math.random() * 20.0D) - 10); // L: 3750
-			var4 = 238 + (int)(Math.random() * 20.0D) - 10 << 16; // L: 3751
-			class25.sceneMinimapSprite.setRaster(); // L: 3752
-
-			int var6;
-			for (var5 = 1; var5 < 103; ++var5) { // L: 3753
-				for (var6 = 1; var6 < 103; ++var6) { // L: 3754
-					if ((Tiles.Tiles_renderFlags[var0][var6][var5] & 24) == 0) { // L: 3755
-						class1.drawObject(var0, var6, var5, var3, var4);
-					}
-
-					if (var0 < 3 && (Tiles.Tiles_renderFlags[var0 + 1][var6][var5] & 8) != 0) { // L: 3756
-						class1.drawObject(var0 + 1, var6, var5, var3, var4);
-					}
-				}
-			}
-
-			Client.mapIconCount = 0; // L: 3759
-
-			for (var5 = 0; var5 < 104; ++var5) { // L: 3760
-				for (var6 = 0; var6 < 104; ++var6) { // L: 3761
-					long var7 = ArchiveLoader.scene.getFloorDecorationTag(GameObject.Client_plane, var5, var6); // L: 3762
-					if (0L != var7) { // L: 3763
-						int var9 = Occluder.Entity_unpackID(var7); // L: 3764
-						int var10 = WorldMapDecoration.getObjectDefinition(var9).mapIconId; // L: 3765
-						if (var10 >= 0 && UserComparator10.WorldMapElement_get(var10).field3263) { // L: 3766 3767
-							Client.mapIcons[Client.mapIconCount] = UserComparator10.WorldMapElement_get(var10).getSpriteBool(false); // L: 3770
-							Client.mapIconXs[Client.mapIconCount] = var5; // L: 3771
-							Client.mapIconYs[Client.mapIconCount] = var6; // L: 3772
-							++Client.mapIconCount; // L: 3773
-						}
-					}
-				}
-			}
-
-			WorldMapIcon_0.rasterProvider.apply(); // L: 3778
-		}
-
-	} // L: 3781
-
-	@ObfuscatedName("hc")
-	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "-60"
-	)
-	static int method3587(int var0, int var1) {
-		int var2 = var1 - 334; // L: 5287
-		if (var2 < 0) { // L: 5288
-			var2 = 0;
-		} else if (var2 > 100) { // L: 5289
-			var2 = 100;
-		}
-
-		int var3 = (Client.zoomWidth - Client.zoomHeight) * var2 / 100 + Client.zoomHeight; // L: 5290
-		return var0 * var3 / 256; // L: 5291
 	}
 }

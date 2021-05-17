@@ -4,150 +4,144 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jc")
+@ObfuscatedName("kh")
 @Implements("Timer")
 public class Timer {
-	@ObfuscatedName("su")
-	@ObfuscatedSignature(
-		descriptor = "Lcd;"
-	)
-	@Export("clientPreferences")
-	static ClientPreferences clientPreferences;
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		longValue = 3770281443563997935L
+		longValue = -2229775801046207963L
 	)
-	long field3620;
-	@ObfuscatedName("v")
+	long field3776;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		longValue = -2250207918034291381L
+		longValue = -2890453841099618337L
 	)
-	long field3616;
-	@ObfuscatedName("x")
-	public boolean field3614;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		longValue = -2802156095156479445L
-	)
-	long field3615;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		longValue = -1144199365391722153L
-	)
-	long field3622;
-	@ObfuscatedName("j")
-	@ObfuscatedGetter(
-		longValue = -6579691889222792449L
-	)
-	long field3613;
-	@ObfuscatedName("n")
-	@ObfuscatedGetter(
-		intValue = 121997523
-	)
-	int field3618;
+	long field3772;
+	@ObfuscatedName("u")
+	public boolean field3773;
 	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1353523553
+		longValue = -7962001912981584977L
 	)
-	int field3619;
-	@ObfuscatedName("l")
+	long field3774;
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1070107525
+		longValue = 8981361987879773313L
 	)
-	int field3612;
-	@ObfuscatedName("z")
+	long field3771;
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = -1445210843
+		longValue = 329501522501233997L
 	)
-	int field3621;
+	long field3778;
+	@ObfuscatedName("k")
+	@ObfuscatedGetter(
+		intValue = 1107893853
+	)
+	int field3775;
+	@ObfuscatedName("g")
+	@ObfuscatedGetter(
+		intValue = 1705593105
+	)
+	int field3777;
+	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = 825874723
+	)
+	int field3779;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = 2111113097
+	)
+	int field3780;
 
 	public Timer() {
-		this.field3620 = -1L; // L: 7
-		this.field3616 = -1L; // L: 8
-		this.field3614 = false; // L: 9
-		this.field3615 = 0L; // L: 10
-		this.field3622 = 0L; // L: 11
-		this.field3613 = 0L; // L: 12
-		this.field3618 = 0; // L: 13
-		this.field3619 = 0; // L: 14
-		this.field3612 = 0; // L: 15
-		this.field3621 = 0; // L: 16
+		this.field3776 = -1L; // L: 7
+		this.field3772 = -1L; // L: 8
+		this.field3773 = false; // L: 9
+		this.field3774 = 0L; // L: 10
+		this.field3771 = 0L; // L: 11
+		this.field3778 = 0L; // L: 12
+		this.field3775 = 0; // L: 13
+		this.field3777 = 0; // L: 14
+		this.field3779 = 0; // L: 15
+		this.field3780 = 0; // L: 16
 	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-16"
-	)
-	public void method5010() {
-		this.field3620 = class298.currentTimeMillis(); // L: 19
-	} // L: 20
-
-	@ObfuscatedName("v")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1990101755"
+		garbageValue = "-2125552653"
 	)
-	public void method5018() {
-		if (-1L != this.field3620) { // L: 23
-			this.field3622 = class298.currentTimeMillis() - this.field3620; // L: 24
-			this.field3620 = -1L; // L: 25
+	public void method5577() {
+		this.field3776 = ObjectSound.currentTimeMillis(); // L: 19
+	} // L: 20
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1077201550"
+	)
+	public void method5578() {
+		if (this.field3776 != -1L) { // L: 23
+			this.field3771 = ObjectSound.currentTimeMillis() - this.field3776; // L: 24
+			this.field3776 = -1L; // L: 25
 		}
 
 	} // L: 27
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
 		descriptor = "(IB)V",
-		garbageValue = "11"
+		garbageValue = "20"
 	)
-	public void method5033(int var1) {
-		this.field3616 = class298.currentTimeMillis(); // L: 30
-		this.field3618 = var1; // L: 31
+	public void method5579(int var1) {
+		this.field3772 = ObjectSound.currentTimeMillis(); // L: 30
+		this.field3775 = var1; // L: 31
 	} // L: 32
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "820461529"
+		garbageValue = "-44027989"
 	)
-	public void method5013() {
-		if (this.field3616 != -1L) { // L: 35
-			this.field3615 = class298.currentTimeMillis() - this.field3616; // L: 36
-			this.field3616 = -1L; // L: 37
+	public void method5587() {
+		if (-1L != this.field3772) { // L: 35
+			this.field3774 = ObjectSound.currentTimeMillis() - this.field3772; // L: 36
+			this.field3772 = -1L; // L: 37
 		}
 
-		++this.field3612; // L: 39
-		this.field3614 = true; // L: 40
+		++this.field3779; // L: 39
+		this.field3773 = true; // L: 40
 	} // L: 41
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "0"
+		garbageValue = "13"
 	)
-	public void method5014() {
-		this.field3614 = false; // L: 44
-		this.field3619 = 0; // L: 45
+	public void method5581() {
+		this.field3773 = false; // L: 44
+		this.field3777 = 0; // L: 45
 	} // L: 46
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-105042609"
+		garbageValue = "-170289943"
 	)
-	public void method5015() {
-		this.method5013(); // L: 49
+	public void method5582() {
+		this.method5587(); // L: 49
 	} // L: 50
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;I)V",
-		garbageValue = "1266632335"
+		descriptor = "(Lnu;B)V",
+		garbageValue = "114"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
-		long var2 = this.field3622; // L: 53
+		long var2 = this.field3771; // L: 53
 		var2 /= 10L; // L: 55
 		if (var2 < 0L) { // L: 56
 			var2 = 0L;
@@ -156,7 +150,7 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var2); // L: 58
-		long var4 = this.field3615; // L: 60
+		long var4 = this.field3774; // L: 60
 		var4 /= 10L; // L: 62
 		if (var4 < 0L) { // L: 63
 			var4 = 0L;
@@ -165,7 +159,7 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var4); // L: 65
-		long var6 = this.field3613; // L: 67
+		long var6 = this.field3778; // L: 67
 		var6 /= 10L; // L: 69
 		if (var6 < 0L) { // L: 70
 			var6 = 0L;
@@ -174,9 +168,9 @@ public class Timer {
 		}
 
 		var1.writeShort((int)var6); // L: 72
-		var1.writeShort(this.field3618); // L: 74
-		var1.writeShort(this.field3619); // L: 75
-		var1.writeShort(this.field3612); // L: 76
-		var1.writeShort(this.field3621); // L: 77
+		var1.writeShort(this.field3775); // L: 74
+		var1.writeShort(this.field3777); // L: 75
+		var1.writeShort(this.field3779); // L: 76
+		var1.writeShort(this.field3780); // L: 77
 	} // L: 78
 }

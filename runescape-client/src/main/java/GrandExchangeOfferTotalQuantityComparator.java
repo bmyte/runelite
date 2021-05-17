@@ -4,25 +4,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("b")
+@ObfuscatedName("ix")
 @Implements("GrandExchangeOfferTotalQuantityComparator")
 final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
-	@ObfuscatedName("bn")
-	static String field75;
-	@ObfuscatedName("fc")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lku;"
-	)
-	@Export("fontBold12")
-	static Font fontBold12;
-	@ObfuscatedName("gw")
-	@Export("regionLandArchiveIds")
-	static int[] regionLandArchiveIds;
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(La;La;B)I",
-		garbageValue = "5"
+		descriptor = "(Ljt;Ljt;I)I",
+		garbageValue = "-838249653"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -36,18 +24,4 @@ final class GrandExchangeOfferTotalQuantityComparator implements Comparator {
 	public boolean equals(Object var1) {
 		return super.equals(var1); // L: 77
 	}
-
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)V",
-		garbageValue = "-1658797049"
-	)
-	static final void method165(String var0) {
-		StringBuilder var10000 = new StringBuilder();
-		Object var10001 = null; // L: 186
-		var10000 = var10000.append("Please remove ").append(var0);
-		var10001 = null;
-		String var1 = var10000.append(" from your friend list first").toString();
-		class234.addGameMessage(30, "", var1); // L: 188
-	} // L: 190
 }

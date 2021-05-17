@@ -4,61 +4,44 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aw")
+@ObfuscatedName("ff")
 @Implements("WorldMapSection1")
 public class WorldMapSection1 implements WorldMapSection {
-	@ObfuscatedName("z")
-	@ObfuscatedGetter(
-		intValue = -2133335865
-	)
-	@Export("pcmSampleLength")
-	static int pcmSampleLength;
-	@ObfuscatedName("at")
-	@ObfuscatedGetter(
-		intValue = 2029810381
-	)
-	static int field313;
-	@ObfuscatedName("bd")
-	static String field317;
-	@ObfuscatedName("lm")
-	@ObfuscatedSignature(
-		descriptor = "Lcq;"
-	)
-	@Export("tempMenuAction")
-	static MenuAction tempMenuAction;
 	@ObfuscatedName("h")
+	public static short[] field1753;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1765160595
+		intValue = -1410379801
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 526004841
+		intValue = -1271552449
 	)
 	@Export("planes")
 	int planes;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1672936937
+		intValue = -1025111875
 	)
 	@Export("regionStartX")
 	int regionStartX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -73066687
+		intValue = -151560709
 	)
 	@Export("regionStartY")
 	int regionStartY;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1072528651
+		intValue = -857538819
 	)
 	@Export("regionEndX")
 	int regionEndX;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 1416924829
+		intValue = 1507190369
 	)
 	@Export("regionEndY")
 	int regionEndY;
@@ -66,10 +49,10 @@ public class WorldMapSection1 implements WorldMapSection {
 	WorldMapSection1() {
 	} // L: 14
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lav;S)V",
-		garbageValue = "19050"
+		descriptor = "(Leq;I)V",
+		garbageValue = "-609192354"
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
@@ -91,10 +74,10 @@ public class WorldMapSection1 implements WorldMapSection {
 
 	} // L: 21
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)Z",
-		garbageValue = "241939554"
+		garbageValue = "-2146205978"
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
@@ -105,20 +88,20 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "639074408"
+		garbageValue = "-916390789"
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
 		return var1 >> 6 == this.regionEndX && var2 >> 6 == this.regionEndY; // L: 31
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(IIII)[I",
-		garbageValue = "1868308301"
+		garbageValue = "1101045563"
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
@@ -130,10 +113,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)Lhs;",
-		garbageValue = "0"
+		descriptor = "(III)Lhk;",
+		garbageValue = "1643926479"
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
@@ -146,10 +129,10 @@ public class WorldMapSection1 implements WorldMapSection {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;B)V",
-		garbageValue = "125"
+		descriptor = "(Lnu;I)V",
+		garbageValue = "-576756767"
 	)
 	@Export("read")
 	public void read(Buffer var1) {
@@ -162,96 +145,65 @@ public class WorldMapSection1 implements WorldMapSection {
 		this.postRead(); // L: 60
 	} // L: 61
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-154945566"
+		descriptor = "(B)V",
+		garbageValue = "-28"
 	)
 	@Export("postRead")
 	void postRead() {
 	} // L: 63
 
-	@ObfuscatedName("fi")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1319638735"
+		descriptor = "(CI)C",
+		garbageValue = "-1918017802"
 	)
-	@Export("forceDisconnect")
-	static final void forceDisconnect(int var0) {
-		WorldMapRectangle.logOut(); // L: 2940
-		switch(var0) { // L: 2941
-		case 1:
-			Login.loginIndex = 24; // L: 2950
-			GameShell.setLoginResponseString("", "You were disconnected from the server.", ""); // L: 2951
-			break;
-		case 2:
-			Messages.method2285(); // L: 2944
+	static char method3154(char var0) {
+		if (var0 == 198) { // L: 95
+			return 'E';
+		} else if (var0 == 230) { // L: 96
+			return 'e';
+		} else if (var0 == 223) {
+			return 's'; // L: 97
+		} else if (var0 == 338) { // L: 98
+			return 'E';
+		} else {
+			return (char)(var0 == 339 ? 'e' : '\u0000'); // L: 99 100
 		}
-
-	} // L: 2956
-
-	@ObfuscatedName("ie")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-546925347"
-	)
-	static boolean method624(int var0) {
-		return var0 == 57 || var0 == 58 || var0 == 1007 || var0 == 25 || var0 == 30; // L: 8551
 	}
 
-	@ObfuscatedName("kp")
-	static final void method626(double var0) {
-		Rasterizer3D.Rasterizer3D_setBrightness(var0); // L: 10642
-		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness(var0); // L: 10643
-		ItemDefinition.ItemDefinition_cachedSprites.clear(); // L: 10645
-		Timer.clientPreferences.field1057 = var0; // L: 10647
-		GrandExchangeOffer.savePreferences(); // L: 10648
-	} // L: 10649
-
-	@ObfuscatedName("lz")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZB)V",
-		garbageValue = "71"
+		descriptor = "(Lir;Ljava/lang/String;Ljava/lang/String;I)Low;",
+		garbageValue = "-466976069"
 	)
-	@Export("findItemDefinitions")
-	static void findItemDefinitions(String var0, boolean var1) {
-		var0 = var0.toLowerCase(); // L: 11102
-		short[] var2 = new short[16]; // L: 11103
-		int var3 = 0; // L: 11104
-
-		for (int var4 = 0; var4 < Varcs.ItemDefinition_fileCount; ++var4) { // L: 11105
-			ItemDefinition var9 = SecureRandomCallable.ItemDefinition_get(var4); // L: 11106
-			if ((!var1 || var9.isTradable) && var9.noteTemplate == -1 && var9.name.toLowerCase().indexOf(var0) != -1) { // L: 11107 11108 11109
-				if (var3 >= 250) { // L: 11110
-					PacketBufferNode.foundItemIdCount = -1; // L: 11111
-					UrlRequest.foundItemIds = null; // L: 11112
-					return; // L: 11113
-				}
-
-				if (var3 >= var2.length) { // L: 11115
-					short[] var6 = new short[var2.length * 2]; // L: 11116
-
-					for (int var7 = 0; var7 < var3; ++var7) { // L: 11117
-						var6[var7] = var2[var7];
-					}
-
-					var2 = var6; // L: 11118
-				}
-
-				var2[var3++] = (short)var4; // L: 11120
-			}
+	@Export("SpriteBuffer_getIndexedSpriteByName")
+	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
+		int var3 = var0.getGroupId(var1); // L: 152
+		int var4 = var0.getFileId(var3, var2); // L: 153
+		byte[] var7 = var0.takeFile(var3, var4); // L: 158
+		boolean var6;
+		if (var7 == null) { // L: 159
+			var6 = false; // L: 160
+		} else {
+			class244.SpriteBuffer_decode(var7); // L: 163
+			var6 = true; // L: 164
 		}
 
-		UrlRequest.foundItemIds = var2; // L: 11122
-		NetCache.foundItemIndex = 0; // L: 11123
-		PacketBufferNode.foundItemIdCount = var3; // L: 11124
-		String[] var8 = new String[PacketBufferNode.foundItemIdCount]; // L: 11125
-
-		for (int var5 = 0; var5 < PacketBufferNode.foundItemIdCount; ++var5) { // L: 11126
-			var8[var5] = SecureRandomCallable.ItemDefinition_get(var2[var5]).name;
+		IndexedSprite var5;
+		if (!var6) { // L: 166
+			var5 = null; // L: 167
+		} else {
+			var5 = ArchiveLoader.method2076(); // L: 170
 		}
 
-		short[] var10 = UrlRequest.foundItemIds; // L: 11127
-		class89.sortItemsByName(var8, var10, 0, var8.length - 1); // L: 11129
-	} // L: 11131
+		return var5; // L: 172
+	}
+
+	@ObfuscatedName("k")
+	@Export("Entity_unpackID")
+	public static int Entity_unpackID(long var0) {
+		return (int)(var0 >>> 17 & 4294967295L); // L: 77
+	}
 }

@@ -4,70 +4,82 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lr")
+@ObfuscatedName("li")
 @Implements("AbstractSocket")
 public abstract class AbstractSocket {
 	protected AbstractSocket() {
 	} // L: 7
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-10"
+		descriptor = "(I)V",
+		garbageValue = "-1705512918"
 	)
 	@Export("close")
 	public abstract void close();
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "0"
+		garbageValue = "-75"
 	)
 	@Export("readUnsignedByte")
 	public abstract int readUnsignedByte() throws IOException;
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "1974658106"
+		descriptor = "(B)I",
+		garbageValue = "-65"
 	)
 	@Export("available")
 	public abstract int available() throws IOException;
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-7"
+		descriptor = "(II)Z",
+		garbageValue = "1604537239"
 	)
 	@Export("isAvailable")
 	public abstract boolean isAvailable(int var1) throws IOException;
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
 		descriptor = "([BIIB)I",
-		garbageValue = "98"
+		garbageValue = "121"
 	)
 	@Export("read")
 	public abstract int read(byte[] var1, int var2, int var3) throws IOException;
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
 		descriptor = "([BIII)V",
-		garbageValue = "-2028715299"
+		garbageValue = "199608149"
 	)
 	@Export("write")
 	public abstract void write(byte[] var1, int var2, int var3) throws IOException;
 
-	@ObfuscatedName("lp")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "([BIB)V",
-		garbageValue = "66"
+		descriptor = "(II)V",
+		garbageValue = "-1917773732"
 	)
-	static void method5846(byte[] var0, int var1) {
-		if (Client.randomDatData == null) { // L: 11134
-			Client.randomDatData = new byte[24];
-		}
+	@Export("runWidgetOnLoadListener")
+	static void runWidgetOnLoadListener(int var0) {
+		if (var0 != -1) { // L: 4271
+			if (class15.loadInterface(var0)) { // L: 4272
+				Widget[] var1 = Widget.Widget_interfaceComponents[var0]; // L: 4273
 
-		class311.writeRandomDat(var0, var1, Client.randomDatData, 0, 24); // L: 11135
-	} // L: 11136
+				for (int var2 = 0; var2 < var1.length; ++var2) { // L: 4274
+					Widget var3 = var1[var2]; // L: 4275
+					if (var3.onLoad != null) { // L: 4276
+						ScriptEvent var4 = new ScriptEvent(); // L: 4277
+						var4.widget = var3; // L: 4278
+						var4.args = var3.onLoad; // L: 4279
+						FaceNormal.runScript(var4, 5000000, 0); // L: 4280
+					}
+				}
+
+			}
+		}
+	} // L: 4283
 }

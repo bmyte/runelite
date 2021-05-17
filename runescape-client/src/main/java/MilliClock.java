@@ -4,123 +4,123 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fg")
+@ObfuscatedName("ei")
 @Implements("MilliClock")
 public class MilliClock extends Clock {
-	@ObfuscatedName("sy")
+	@ObfuscatedName("dw")
 	@ObfuscatedSignature(
-		descriptor = "Lcm;"
+		descriptor = "Lig;"
 	)
-	@Export("friendSystem")
-	public static FriendSystem friendSystem;
-	@ObfuscatedName("h")
-	long[] field2030;
-	@ObfuscatedName("v")
+	@Export("archive13")
+	static Archive archive13;
+	@ObfuscatedName("f")
+	long[] field1509;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -367823923
+		intValue = -57079655
 	)
-	int field2031;
-	@ObfuscatedName("x")
+	int field1502;
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -830034537
+		intValue = 1775737415
 	)
-	int field2032;
-	@ObfuscatedName("w")
+	int field1504;
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		longValue = 4655820028414698343L
+		longValue = -7099522440067611417L
 	)
-	long field2038;
-	@ObfuscatedName("t")
+	long field1505;
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 744937881
+		intValue = -193436617
 	)
-	int field2034;
-	@ObfuscatedName("j")
+	int field1503;
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 802438317
+		intValue = 1791483173
 	)
-	int field2035;
+	int field1506;
 
-	public MilliClock() {
-		this.field2030 = new long[10]; // L: 7
-		this.field2031 = 256; // L: 15
-		this.field2032 = 1; // L: 16
-		this.field2034 = 0; // L: 17
-		this.field2038 = class298.currentTimeMillis(); // L: 18
+	MilliClock() {
+		this.field1509 = new long[10]; // L: 7
+		this.field1502 = 256; // L: 15
+		this.field1504 = 1; // L: 16
+		this.field1503 = 0; // L: 17
+		this.field1505 = ObjectSound.currentTimeMillis(); // L: 18
 
 		for (int var1 = 0; var1 < 10; ++var1) { // L: 19
-			this.field2030[var1] = this.field2038; // L: 20
+			this.field1509[var1] = this.field1505; // L: 20
 		}
 
 	} // L: 22
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2095078818"
+		descriptor = "(S)V",
+		garbageValue = "-629"
 	)
 	@Export("mark")
 	public void mark() {
 		for (int var1 = 0; var1 < 10; ++var1) { // L: 25
-			this.field2030[var1] = 0L; // L: 26
+			this.field1509[var1] = 0L; // L: 26
 		}
 
 	} // L: 28
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "-680717242"
+		garbageValue = "1172254968"
 	)
 	@Export("wait")
 	public int wait(int var1, int var2) {
-		int var3 = this.field2031; // L: 31
-		int var4 = this.field2032; // L: 32
-		this.field2031 = 300; // L: 33
-		this.field2032 = 1; // L: 34
-		this.field2038 = class298.currentTimeMillis(); // L: 35
-		if (0L == this.field2030[this.field2035]) { // L: 36
-			this.field2031 = var3; // L: 37
-			this.field2032 = var4; // L: 38
-		} else if (this.field2038 > this.field2030[this.field2035]) { // L: 40
-			this.field2031 = (int)((long)(var1 * 2560) / (this.field2038 - this.field2030[this.field2035]));
+		int var3 = this.field1502; // L: 31
+		int var4 = this.field1504; // L: 32
+		this.field1502 = 300; // L: 33
+		this.field1504 = 1; // L: 34
+		this.field1505 = ObjectSound.currentTimeMillis(); // L: 35
+		if (0L == this.field1509[this.field1506]) { // L: 36
+			this.field1502 = var3; // L: 37
+			this.field1504 = var4; // L: 38
+		} else if (this.field1505 > this.field1509[this.field1506]) { // L: 40
+			this.field1502 = (int)((long)(var1 * 2560) / (this.field1505 - this.field1509[this.field1506]));
 		}
 
-		if (this.field2031 < 25) { // L: 41
-			this.field2031 = 25;
+		if (this.field1502 < 25) { // L: 41
+			this.field1502 = 25;
 		}
 
-		if (this.field2031 > 256) { // L: 42
-			this.field2031 = 256; // L: 43
-			this.field2032 = (int)((long)var1 - (this.field2038 - this.field2030[this.field2035]) / 10L); // L: 44
+		if (this.field1502 > 256) { // L: 42
+			this.field1502 = 256; // L: 43
+			this.field1504 = (int)((long)var1 - (this.field1505 - this.field1509[this.field1506]) / 10L); // L: 44
 		}
 
-		if (this.field2032 > var1) { // L: 46
-			this.field2032 = var1;
+		if (this.field1504 > var1) { // L: 46
+			this.field1504 = var1;
 		}
 
-		this.field2030[this.field2035] = this.field2038; // L: 47
-		this.field2035 = (this.field2035 + 1) % 10; // L: 48
+		this.field1509[this.field1506] = this.field1505; // L: 47
+		this.field1506 = (this.field1506 + 1) % 10; // L: 48
 		int var5;
-		if (this.field2032 > 1) { // L: 49
+		if (this.field1504 > 1) { // L: 49
 			for (var5 = 0; var5 < 10; ++var5) { // L: 50
-				if (this.field2030[var5] != 0L) { // L: 51
-					this.field2030[var5] += (long)this.field2032;
+				if (this.field1509[var5] != 0L) { // L: 51
+					this.field1509[var5] += (long)this.field1504;
 				}
 			}
 		}
 
-		if (this.field2032 < var2) { // L: 54
-			this.field2032 = var2;
+		if (this.field1504 < var2) { // L: 54
+			this.field1504 = var2;
 		}
 
-		class236.sleepExact((long)this.field2032); // L: 55
+		GrandExchangeEvent.sleepExact((long)this.field1504); // L: 55
 
-		for (var5 = 0; this.field2034 < 256; this.field2034 += this.field2031) { // L: 56 57 59
+		for (var5 = 0; this.field1503 < 256; this.field1503 += this.field1502) { // L: 56 57 59
 			++var5; // L: 58
 		}
 
-		this.field2034 &= 255; // L: 61
+		this.field1503 &= 255; // L: 61
 		return var5; // L: 62
 	}
 }

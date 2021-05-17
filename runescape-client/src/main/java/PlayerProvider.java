@@ -3,13 +3,13 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dw")
+@ObfuscatedName("be")
 @Implements("PlayerProvider")
 public interface PlayerProvider {
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ldp;",
-		garbageValue = "-2011148953"
+		descriptor = "(B)Lbh;",
+		garbageValue = "87"
 	)
 	@Export("player")
 	PcmPlayer player();

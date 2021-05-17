@@ -1,57 +1,50 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kf")
+@ObfuscatedName("lu")
 @Implements("IgnoreList")
 public class IgnoreList extends UserList {
-	@ObfuscatedName("o")
-	@ObfuscatedGetter(
-		intValue = -1712737799
-	)
-	@Export("canvasWidth")
-	public static int canvasWidth;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lmu;"
+		descriptor = "Lmf;"
 	)
 	@Export("loginType")
 	final LoginType loginType;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lmu;)V"
+		descriptor = "(Lmf;)V"
 	)
 	public IgnoreList(LoginType var1) {
 		super(400); // L: 12
 		this.loginType = var1; // L: 13
 	} // L: 14
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lju;",
-		garbageValue = "-99"
+		descriptor = "(I)Llt;",
+		garbageValue = "-1522637653"
 	)
 	@Export("newInstance")
 	User newInstance() {
 		return new Ignored(); // L: 17
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lju;",
-		garbageValue = "-1524839332"
+		descriptor = "(II)[Llt;",
+		garbageValue = "1232560537"
 	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new Ignored[var1]; // L: 21
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;II)V",
-		garbageValue = "1401176897"
+		descriptor = "(Lnu;II)V",
+		garbageValue = "-696903519"
 	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
@@ -65,69 +58,33 @@ public class IgnoreList extends UserList {
 				if (var5 != null && var5.hasCleanName()) { // L: 31
 					Ignored var7 = (Ignored)this.getByCurrentUsername(var5); // L: 32
 					if (var4) { // L: 33
-						Ignored var8 = (Ignored)this.getByCurrentUsername(var6);
-						if (var8 != null && var8 != var7) {
-							if (var7 != null) {
-								this.remove(var8);
+						Ignored var8 = (Ignored)this.getByCurrentUsername(var6); // L: 34
+						if (var8 != null && var7 != var8) { // L: 35
+							if (var7 != null) { // L: 36
+								this.remove(var8); // L: 37
 							} else {
-								var7 = var8;
+								var7 = var8; // L: 40
 							}
 						}
 					}
 
-					if (var7 != null) {
-						this.changeName(var7, var5, var6);
+					if (var7 != null) { // L: 44
+						this.changeName(var7, var5, var6); // L: 45
 						continue;
 					}
 
-					if (this.getSize() < 400) {
-						int var9 = this.getSize();
-						var7 = (Ignored)this.addLast(var5, var6);
+					if (this.getSize() < 400) { // L: 47
+						int var9 = this.getSize(); // L: 48
+						var7 = (Ignored)this.addLast(var5, var6); // L: 49
 						var7.id = var9; // L: 50
 					}
 					continue;
 				}
 
-				throw new IllegalStateException();
+				throw new IllegalStateException(); // L: 53
 			}
 
 			return; // L: 54
 		}
-	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(IS)I",
-		garbageValue = "-18749"
-	)
-	@Export("iLog")
-	public static int iLog(int var0) {
-		int var1 = 0; // L: 34
-		if (var0 < 0 || var0 >= 65536) { // L: 35
-			var0 >>>= 16; // L: 36
-			var1 += 16; // L: 37
-		}
-
-		if (var0 >= 256) { // L: 39
-			var0 >>>= 8; // L: 40
-			var1 += 8; // L: 41
-		}
-
-		if (var0 >= 16) { // L: 43
-			var0 >>>= 4; // L: 44
-			var1 += 4; // L: 45
-		}
-
-		if (var0 >= 4) { // L: 47
-			var0 >>>= 2; // L: 48
-			var1 += 2; // L: 49
-		}
-
-		if (var0 >= 1) { // L: 51
-			var0 >>>= 1; // L: 52
-			++var1; // L: 53
-		}
-
-		return var0 + var1; // L: 55
 	}
 }

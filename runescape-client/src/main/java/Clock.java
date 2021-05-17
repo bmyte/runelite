@@ -3,54 +3,92 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fl")
+@ObfuscatedName("et")
 @Implements("Clock")
 public abstract class Clock {
 	Clock() {
 	} // L: 4
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "2095078818"
+		descriptor = "(S)V",
+		garbageValue = "-629"
 	)
 	@Export("mark")
 	public abstract void mark();
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "-680717242"
+		garbageValue = "1172254968"
 	)
 	@Export("wait")
 	public abstract int wait(int var1, int var2);
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "([BIIB)Ljava/lang/String;",
-		garbageValue = "74"
+		descriptor = "(I)V",
+		garbageValue = "-1662768639"
 	)
-	@Export("decodeStringCp1252")
-	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2]; // L: 136
-		int var4 = 0; // L: 137
+	public static void method2600() {
+		HitSplatDefinition.HitSplatDefinition_cached.clear(); // L: 177
+		HitSplatDefinition.HitSplatDefinition_cachedSprites.clear(); // L: 178
+		HitSplatDefinition.HitSplatDefinition_cachedFonts.clear(); // L: 179
+	} // L: 180
 
-		for (int var5 = 0; var5 < var2; ++var5) { // L: 138
-			int var6 = var0[var5 + var1] & 255; // L: 139
-			if (var6 != 0) { // L: 140
-				if (var6 >= 128 && var6 < 160) { // L: 141
-					char var7 = class298.cp1252AsciiExtension[var6 - 128]; // L: 142
-					if (var7 == 0) { // L: 143
-						var7 = '?';
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "765268969"
+	)
+	public static void method2610() {
+		ItemComposition.ItemDefinition_cachedSprites.clear(); // L: 578
+	} // L: 579
+
+	@ObfuscatedName("jh")
+	@ObfuscatedSignature(
+		descriptor = "([Lhu;II)V",
+		garbageValue = "974266875"
+	)
+	@Export("runComponentCloseListeners")
+	static final void runComponentCloseListeners(Widget[] var0, int var1) {
+		for (int var2 = 0; var2 < var0.length; ++var2) { // L: 10884
+			Widget var3 = var0[var2]; // L: 10885
+			if (var3 != null) { // L: 10886
+				if (var3.type == 0) { // L: 10887
+					if (var3.children != null) { // L: 10888
+						runComponentCloseListeners(var3.children, var1);
 					}
 
-					var6 = var7; // L: 144
+					InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id); // L: 10889
+					if (var4 != null) { // L: 10890
+						class379.runIntfCloseListeners(var4.group, var1);
+					}
 				}
 
-				var3[var4++] = (char)var6; // L: 146
+				ScriptEvent var5;
+				if (var1 == 0 && var3.onDialogAbort != null) { // L: 10892
+					var5 = new ScriptEvent(); // L: 10893
+					var5.widget = var3; // L: 10894
+					var5.args = var3.onDialogAbort; // L: 10895
+					class19.runScriptEvent(var5); // L: 10896
+				}
+
+				if (var1 == 1 && var3.onSubChange != null) { // L: 10898
+					if (var3.childIndex >= 0) { // L: 10899
+						Widget var6 = class139.getWidget(var3.id); // L: 10900
+						if (var6 == null || var6.children == null || var3.childIndex >= var6.children.length || var3 != var6.children[var3.childIndex]) { // L: 10901
+							continue;
+						}
+					}
+
+					var5 = new ScriptEvent(); // L: 10905
+					var5.widget = var3; // L: 10906
+					var5.args = var3.onSubChange; // L: 10907
+					class19.runScriptEvent(var5); // L: 10908
+				}
 			}
 		}
 
-		return new String(var3, 0, var4); // L: 148
-	}
+	} // L: 10911
 }

@@ -4,68 +4,43 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aj")
+@ObfuscatedName("es")
 @Implements("WorldMapIcon_0")
 public class WorldMapIcon_0 extends AbstractWorldMapIcon {
-	@ObfuscatedName("sv")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	public static class248 field148;
-	@ObfuscatedName("m")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -2114229287
-	)
-	static int field146;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Llu;"
-	)
-	@Export("rasterProvider")
-	public static AbstractRasterProvider rasterProvider;
-	@ObfuscatedName("az")
-	@Export("client")
-	@ObfuscatedSignature(
-		descriptor = "Lclient;"
-	)
-	static Client client;
-	@ObfuscatedName("gk")
-	@Export("regionLandArchives")
-	static byte[][] regionLandArchives;
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = 660088057
+		intValue = 1471201003
 	)
 	@Export("element")
 	final int element;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lah;"
+		descriptor = "Lfi;"
 	)
 	@Export("label")
 	final WorldMapLabel label;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1542772613
+		intValue = 1556775175
 	)
 	@Export("subWidth")
 	final int subWidth;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 112630785
+		intValue = 142982873
 	)
 	@Export("subHeight")
 	final int subHeight;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhs;Lhs;ILah;)V"
+		descriptor = "(Lhk;Lhk;ILfi;)V"
 	)
 	WorldMapIcon_0(Coord var1, Coord var2, int var3, WorldMapLabel var4) {
 		super(var1, var2); // L: 14
 		this.element = var3; // L: 15
 		this.label = var4; // L: 16
-		WorldMapElement var5 = UserComparator10.WorldMapElement_get(this.getElement()); // L: 17
-		Sprite var6 = var5.getSpriteBool(false); // L: 18
+		WorldMapElement var5 = ByteArrayPool.WorldMapElement_get(this.getElement()); // L: 17
+		SpritePixels var6 = var5.getSpriteBool(false); // L: 18
 		if (var6 != null) { // L: 19
 			this.subWidth = var6.subWidth; // L: 20
 			this.subHeight = var6.subHeight; // L: 21
@@ -76,82 +51,43 @@ public class WorldMapIcon_0 extends AbstractWorldMapIcon {
 
 	} // L: 27
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-359753179"
+		descriptor = "(B)I",
+		garbageValue = "-52"
 	)
 	@Export("getElement")
 	public int getElement() {
 		return this.element; // L: 30
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lah;",
-		garbageValue = "1889474780"
+		descriptor = "(I)Lfi;",
+		garbageValue = "634413820"
 	)
 	@Export("getLabel")
 	WorldMapLabel getLabel() {
 		return this.label; // L: 34
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-79"
+		descriptor = "(I)I",
+		garbageValue = "-1975622360"
 	)
 	@Export("getSubWidth")
 	int getSubWidth() {
 		return this.subWidth; // L: 38
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "1082591682"
+		garbageValue = "-1420825097"
 	)
 	@Export("getSubHeight")
 	int getSubHeight() {
 		return this.subHeight; // L: 42
 	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljd;",
-		garbageValue = "-1562808952"
-	)
-	@Export("getNpcDefinition")
-	public static NPCDefinition getNpcDefinition(int var0) {
-		NPCDefinition var1 = (NPCDefinition)NPCDefinition.NpcDefinition_cached.get((long)var0); // L: 62
-		if (var1 != null) { // L: 63
-			return var1;
-		} else {
-			byte[] var2 = NPCDefinition.NpcDefinition_archive.takeFile(9, var0); // L: 64
-			var1 = new NPCDefinition(); // L: 65
-			var1.id = var0; // L: 66
-			if (var2 != null) { // L: 67
-				var1.decode(new Buffer(var2));
-			}
-
-			var1.postDecode(); // L: 68
-			NPCDefinition.NpcDefinition_cached.put(var1, (long)var0); // L: 69
-			return var1; // L: 70
-		}
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(IZII)V",
-		garbageValue = "1525295907"
-	)
-	public static final void method270(int var0, boolean var1, int var2) {
-		if (var0 >= 8000 && var0 <= 48000) { // L: 49
-			PcmPlayer.field1443 = var0; // L: 50
-			PcmPlayer.PcmPlayer_stereo = var1; // L: 51
-			PcmPlayer.field1424 = var2; // L: 52
-		} else {
-			throw new IllegalArgumentException();
-		}
-	} // L: 53
 }

@@ -4,54 +4,47 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gv")
+@ObfuscatedName("gy")
 @Implements("PacketBufferNode")
 public class PacketBufferNode extends Node {
-	@ObfuscatedName("so")
-	@ObfuscatedGetter(
-		intValue = -1389539327
-	)
-	@Export("foundItemIdCount")
-	static int foundItemIdCount;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "[Lgv;"
+		descriptor = "[Lgy;"
 	)
 	@Export("PacketBufferNode_packetBufferNodes")
 	static PacketBufferNode[] PacketBufferNode_packetBufferNodes;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 388445817
+		intValue = 1286692403
 	)
 	@Export("PacketBufferNode_packetBufferNodeCount")
 	static int PacketBufferNode_packetBufferNodeCount;
-	@ObfuscatedName("dk")
-	@ObfuscatedSignature(
-		descriptor = "Lil;"
+	@ObfuscatedName("dr")
+	@ObfuscatedGetter(
+		longValue = 2196332218574994447L
 	)
-	@Export("archive12")
-	static Archive archive12;
-	@ObfuscatedName("h")
+	static long field2348;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lgb;"
+		descriptor = "Lgx;"
 	)
 	@Export("clientPacket")
 	ClientPacket clientPacket;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1047967593
+		intValue = -1793898605
 	)
 	@Export("clientPacketLength")
 	int clientPacketLength;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lnk;"
 	)
 	@Export("packetBuffer")
 	public PacketBuffer packetBuffer;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -3253035
+		intValue = 356559831
 	)
 	@Export("index")
 	public int index;
@@ -64,20 +57,114 @@ public class PacketBufferNode extends Node {
 	PacketBufferNode() {
 	} // L: 19
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-111"
+		descriptor = "(I)V",
+		garbageValue = "-546801970"
 	)
 	@Export("release")
 	public void release() {
-		if (PacketBufferNode_packetBufferNodeCount < PacketBufferNode_packetBufferNodes.length) { // L: 61
-			PacketBufferNode_packetBufferNodes[++PacketBufferNode_packetBufferNodeCount - 1] = this; // L: 62
+		if (PacketBufferNode_packetBufferNodeCount < PacketBufferNode_packetBufferNodes.length) { // L: 58
+			PacketBufferNode_packetBufferNodes[++PacketBufferNode_packetBufferNodeCount - 1] = this; // L: 59
 		}
-	} // L: 63
+	} // L: 60
 
-	@ObfuscatedName("h")
-	static boolean method3682(long var0) {
-		return Widget.Entity_unpackSceneX(var0) == 2; // L: 44
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Lir;IIIZI)V",
+		garbageValue = "-1085289699"
+	)
+	public static void method3898(AbstractArchive var0, int var1, int var2, int var3, boolean var4) {
+		class210.musicPlayerStatus = 1; // L: 26
+		class210.musicTrackArchive = var0; // L: 27
+		FaceNormal.musicTrackGroupId = var1; // L: 28
+		WorldMapID.musicTrackFileId = var2; // L: 29
+		class375.musicTrackVolume = var3; // L: 30
+		class210.musicTrackBoolean = var4; // L: 31
+		class1.pcmSampleLength = 10000; // L: 32
+	} // L: 33
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(ZZB)I",
+		garbageValue = "1"
+	)
+	public static int method3896(boolean var0, boolean var1) {
+		byte var2 = 0; // L: 264
+		int var3 = var2 + NetCache.NetCache_pendingPriorityWritesCount + NetCache.NetCache_pendingPriorityResponsesCount; // L: 265
+		return var3; // L: 266
 	}
+
+	@ObfuscatedName("hr")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "387339011"
+	)
+	static final void method3888() {
+		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) { // L: 6848 6849 6892
+			if (var0.hitpoints > 0) { // L: 6850
+				--var0.hitpoints;
+			}
+
+			boolean var1;
+			int var2;
+			int var3;
+			ObjectComposition var4;
+			if (var0.hitpoints == 0) { // L: 6851
+				if (var0.objectId >= 0) { // L: 6853
+					var2 = var0.objectId; // L: 6855
+					var3 = var0.field1203; // L: 6856
+					var4 = class19.getObjectDefinition(var2); // L: 6858
+					if (var3 == 11) { // L: 6859
+						var3 = 10;
+					}
+
+					if (var3 >= 5 && var3 <= 8) { // L: 6860
+						var3 = 4;
+					}
+
+					var1 = var4.method5173(var3); // L: 6861
+					if (!var1) { // L: 6863
+						continue;
+					}
+				}
+
+				class7.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.objectId, var0.field1199, var0.field1203); // L: 6865
+				var0.remove(); // L: 6866
+			} else {
+				if (var0.delay > 0) { // L: 6870
+					--var0.delay;
+				}
+
+				if (var0.delay == 0 && var0.x >= 1 && var0.y >= 1 && var0.x <= 102 && var0.y <= 102) { // L: 6871
+					if (var0.id >= 0) { // L: 6873
+						var2 = var0.id; // L: 6875
+						var3 = var0.field1196; // L: 6876
+						var4 = class19.getObjectDefinition(var2); // L: 6878
+						if (var3 == 11) { // L: 6879
+							var3 = 10;
+						}
+
+						if (var3 >= 5 && var3 <= 8) { // L: 6880
+							var3 = 4;
+						}
+
+						var1 = var4.method5173(var3); // L: 6881
+						if (!var1) { // L: 6883
+							continue;
+						}
+					}
+
+					class7.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.id, var0.orientation, var0.field1196); // L: 6885
+					var0.delay = -1; // L: 6886
+					if (var0.objectId == var0.id && var0.objectId == -1) { // L: 6887
+						var0.remove();
+					} else if (var0.id == var0.objectId && var0.orientation == var0.field1199 && var0.field1196 == var0.field1203) { // L: 6888
+						var0.remove();
+					}
+				}
+			}
+		}
+
+	} // L: 6894
 }

@@ -1,136 +1,149 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fp")
+@ObfuscatedName("dr")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
+	@ObfuscatedName("sc")
+	@ObfuscatedSignature(
+		descriptor = "Lmo;"
+	)
+	@Export("platformInfo")
+	static PlatformInfo platformInfo;
 	@ObfuscatedName("h")
+	@ObfuscatedGetter(
+		intValue = -1639190955
+	)
+	@Export("ItemDefinition_fileCount")
+	public static int ItemDefinition_fileCount;
+	@ObfuscatedName("f")
 	@Export("reversed")
 	final boolean reversed;
 
 	public UserComparator8(boolean var1) {
-		this.reversed = var1; // L: 11
-	} // L: 12
+		this.reversed = var1;
+	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lkz;Lkz;I)I",
-		garbageValue = "-617956062"
+		descriptor = "(Llg;Llg;I)I",
+		garbageValue = "1545225379"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
-		if (Client.worldId == var1.world) { // L: 15
+		if (Client.worldId == var1.world) {
 			if (var2.world != Client.worldId) {
-				return this.reversed ? -1 : 1; // L: 16
+				return this.reversed ? -1 : 1;
 			}
 		} else if (var2.world == Client.worldId) {
-			return this.reversed ? 1 : -1; // L: 19
+			return this.reversed ? 1 : -1;
 		}
 
-		return this.compareUser(var1, var2); // L: 21
+		return this.compareUser(var1, var2);
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 25
+		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("fa")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "62"
+		descriptor = "([Ljk;II)Ljk;",
+		garbageValue = "476276664"
 	)
-	@Export("getLoginError")
-	static void getLoginError(int var0) {
-		if (var0 == -3) { // L: 2791
-			GameShell.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
-		} else if (var0 == -2) { // L: 2792
-			GameShell.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
-		} else if (var0 == -1) { // L: 2793
-			GameShell.setLoginResponseString("No response from server.", "Please try using a different world.", "");
-		} else if (var0 == 3) { // L: 2794
-			Login.loginIndex = 3; // L: 2795
-			Login.field1190 = 1; // L: 2796
-		} else if (var0 == 4) { // L: 2798
-			Login.loginIndex = 12; // L: 2800
-			Login.field1199 = 0; // L: 2801
-		} else if (var0 == 5) { // L: 2804
-			Login.field1190 = 2; // L: 2805
-			GameShell.setLoginResponseString("Your account has not logged out from its last", "session or the server is too busy right now.", "Please try again in a few minutes."); // L: 2806
-		} else if (var0 != 68 && (Client.onMobile || var0 != 6)) { // L: 2808
-			if (var0 == 7) { // L: 2811
-				GameShell.setLoginResponseString("This world is full.", "Please use a different world.", "");
-			} else if (var0 == 8) { // L: 2812
-				GameShell.setLoginResponseString("Unable to connect.", "Login server offline.", "");
-			} else if (var0 == 9) { // L: 2813
-				GameShell.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
-			} else if (var0 == 10) { // L: 2814
-				GameShell.setLoginResponseString("Unable to connect.", "Bad session id.", "");
-			} else if (var0 == 11) { // L: 2815
-				GameShell.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
-			} else if (var0 == 12) { // L: 2816
-				GameShell.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
-			} else if (var0 == 13) { // L: 2817
-				GameShell.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
-			} else if (var0 == 14) { // L: 2818
-				GameShell.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
-			} else if (var0 == 16) { // L: 2819
-				GameShell.setLoginResponseString("Too many login attempts.", "Please wait a few minutes before trying again.", "");
-			} else if (var0 == 17) { // L: 2820
-				GameShell.setLoginResponseString("You are standing in a members-only area.", "To play on this world move to a free area first", "");
-			} else if (var0 == 18) { // L: 2821
-				Login.loginIndex = 12; // L: 2823
-				Login.field1199 = 1; // L: 2824
-			} else if (var0 == 19) { // L: 2827
-				GameShell.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
-			} else if (var0 == 20) { // L: 2828
-				GameShell.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
-			} else if (var0 == 22) { // L: 2829
-				GameShell.setLoginResponseString("Malformed login packet.", "Please try again.", "");
-			} else if (var0 == 23) { // L: 2830
-				GameShell.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
-			} else if (var0 == 24) { // L: 2831
-				GameShell.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
-			} else if (var0 == 25) { // L: 2832
-				GameShell.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
-			} else if (var0 == 26) { // L: 2833
-				GameShell.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
-			} else if (var0 == 27) { // L: 2834
-				GameShell.setLoginResponseString("", "Service unavailable.", "");
-			} else if (var0 == 31) { // L: 2835
-				GameShell.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
-			} else if (var0 == 32) {
-				GameShell.setLoginResponseString("Your attempt to log into your account was", "unsuccessful.  Don't worry, you can sort", "this out by visiting the billing system."); // L: 2836
-			} else if (var0 == 37) { // L: 2837
-				GameShell.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
-			} else if (var0 == 38) { // L: 2838
-				GameShell.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
-			} else if (var0 == 55) { // L: 2839
-				Login.loginIndex = 8; // L: 2840
-			} else {
-				if (var0 == 56) { // L: 2842
-					GameShell.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", ""); // L: 2843
-					WorldMapCacheName.updateGameState(11); // L: 2844
-					return; // L: 2845
-				}
+	@Export("findEnumerated")
+	public static Enumerated findEnumerated(Enumerated[] var0, int var1) {
+		Enumerated[] var2 = var0;
 
-				if (var0 == 57) { // L: 2847
-					GameShell.setLoginResponseString("The code you entered was incorrect.", "Please try again.", ""); // L: 2848
-					WorldMapCacheName.updateGameState(11); // L: 2849
-					return; // L: 2850
-				}
-
-				if (var0 == 61) { // L: 2852
-					Login.loginIndex = 7; // L: 2853
-				} else {
-					GameShell.setLoginResponseString("Unexpected server response", "Please try using a different world.", ""); // L: 2855
-				}
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			Enumerated var4 = var2[var3]; // L: 19
+			if (var1 == var4.rsOrdinal()) {
+				return var4;
 			}
-		} else {
-			GameShell.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", ""); // L: 2809
 		}
 
-		WorldMapCacheName.updateGameState(10); // L: 2856
-	} // L: 2857
+		return null;
+	}
+
+	@ObfuscatedName("f")
+	public static final int method2427(double var0, double var2, double var4) {
+		double var6 = var4; // L: 9
+		double var8 = var4; // L: 10
+		double var10 = var4; // L: 11
+		if (var2 != 0.0D) { // L: 12
+			double var12;
+			if (var4 < 0.5D) { // L: 14
+				var12 = var4 * (1.0D + var2);
+			} else {
+				var12 = var4 + var2 - var2 * var4; // L: 15
+			}
+
+			double var14 = var4 * 2.0D - var12; // L: 16
+			double var16 = var0 + 0.3333333333333333D; // L: 17
+			if (var16 > 1.0D) { // L: 18
+				--var16;
+			}
+
+			double var20 = var0 - 0.3333333333333333D; // L: 20
+			if (var20 < 0.0D) { // L: 21
+				++var20;
+			}
+
+			if (6.0D * var16 < 1.0D) { // L: 22
+				var6 = var14 + 6.0D * (var12 - var14) * var16;
+			} else if (var16 * 2.0D < 1.0D) { // L: 23
+				var6 = var12;
+			} else if (3.0D * var16 < 2.0D) { // L: 24
+				var6 = var14 + (0.6666666666666666D - var16) * (var12 - var14) * 6.0D;
+			} else {
+				var6 = var14; // L: 25
+			}
+
+			if (6.0D * var0 < 1.0D) { // L: 26
+				var8 = var14 + 6.0D * (var12 - var14) * var0;
+			} else if (2.0D * var0 < 1.0D) { // L: 27
+				var8 = var12;
+			} else if (var0 * 3.0D < 2.0D) {
+				var8 = 6.0D * (0.6666666666666666D - var0) * (var12 - var14) + var14; // L: 28
+			} else {
+				var8 = var14; // L: 29
+			}
+
+			if (var20 * 6.0D < 1.0D) { // L: 30
+				var10 = var14 + (var12 - var14) * 6.0D * var20;
+			} else if (2.0D * var20 < 1.0D) { // L: 31
+				var10 = var12;
+			} else if (var20 * 3.0D < 2.0D) { // L: 32
+				var10 = var14 + 6.0D * (0.6666666666666666D - var20) * (var12 - var14);
+			} else {
+				var10 = var14; // L: 33
+			}
+		}
+
+		int var22 = (int)(var6 * 256.0D); // L: 35
+		int var13 = (int)(256.0D * var8); // L: 36
+		int var23 = (int)(var10 * 256.0D); // L: 37
+		int var15 = var23 + (var13 << 8) + (var22 << 16); // L: 38
+		return var15; // L: 39
+	}
+
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "32"
+	)
+	@Export("clearItemContainer")
+	static void clearItemContainer(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0); // L: 63
+		if (var1 != null) { // L: 64
+			for (int var2 = 0; var2 < var1.ids.length; ++var2) { // L: 65
+				var1.ids[var2] = -1; // L: 66
+				var1.quantities[var2] = 0; // L: 67
+			}
+
+		}
+	} // L: 69
 }

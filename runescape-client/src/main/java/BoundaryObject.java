@@ -4,123 +4,98 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ev")
+@ObfuscatedName("gs")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 787394595
+		intValue = 1487980993
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 1840852053
+		intValue = -2109183059
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1985466901
+		intValue = 184751419
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -760967019
+		intValue = -1907463847
 	)
 	@Export("orientationA")
 	int orientationA;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -1039727293
+		intValue = 334995477
 	)
 	@Export("orientationB")
 	int orientationB;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Ler;"
+		descriptor = "Lfm;"
 	)
-	@Export("entity1")
-	public Entity entity1;
-	@ObfuscatedName("n")
+	@Export("renderable1")
+	public Renderable renderable1;
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Ler;"
+		descriptor = "Lfm;"
 	)
-	@Export("entity2")
-	public Entity entity2;
-	@ObfuscatedName("p")
+	@Export("renderable2")
+	public Renderable renderable2;
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		longValue = 6107262315709824135L
+		longValue = 4648548109869818167L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("l")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 582235775
+		intValue = 512629061
 	)
 	@Export("flags")
 	int flags;
 
 	BoundaryObject() {
-		this.tag = 0L;
-		this.flags = 0;
-	}
+		this.tag = 0L; // L: 11
+		this.flags = 0; // L: 12
+	} // L: 14
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("fg")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
-		garbageValue = "-2018740830"
+		descriptor = "(B)V",
+		garbageValue = "77"
 	)
-	public static String method3343(CharSequence var0) {
-		int var1 = var0.length(); // L: 11
-		StringBuilder var2 = new StringBuilder(var1); // L: 12
+	@Export("playPcmPlayers")
+	static final void playPcmPlayers() {
+		if (class43.pcmPlayer1 != null) { // L: 3059
+			class43.pcmPlayer1.run();
+		}
 
-		for (int var3 = 0; var3 < var1; ++var3) { // L: 13
-			char var4 = var0.charAt(var3); // L: 14
-			if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') { // L: 15
-				if (var4 == ' ') { // L: 16
-					var2.append('+');
-				} else {
-					byte var5 = Varps.charToByteCp1252(var4); // L: 18
-					var2.append('%'); // L: 19
-					int var6 = var5 >> 4 & 15; // L: 20
-					if (var6 >= 10) { // L: 21
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48)); // L: 22
-					}
+		if (ApproximateRouteStrategy.pcmPlayer0 != null) { // L: 3060
+			ApproximateRouteStrategy.pcmPlayer0.run();
+		}
 
-					var6 = var5 & 15; // L: 23
-					if (var6 >= 10) { // L: 24
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-				}
-			} else {
-				var2.append(var4);
+	} // L: 3061
+
+	@ObfuscatedName("jk")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "-230387884"
+	)
+	static boolean method3787(int var0) {
+		for (int var1 = 0; var1 < Client.field827; ++var1) { // L: 10872
+			if (Client.field792[var1] == var0) { // L: 10873
+				return true;
 			}
 		}
 
-		return var2.toString(); // L: 28
-	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "-57"
-	)
-	public static boolean method3342(int var0) {
-		return var0 == WorldMapDecorationType.field2766.id; // L: 46
-	}
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Z",
-		garbageValue = "14"
-	)
-	public static boolean method3341(int var0) {
-		return (var0 >> 29 & 1) != 0; // L: 25
+		return false; // L: 10875
 	}
 }

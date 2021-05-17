@@ -3,19 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("aq")
+@ObfuscatedName("ea")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
-	@ObfuscatedName("ds")
-	@ObfuscatedSignature(
-		descriptor = "Lil;"
-	)
-	@Export("archive1")
-	static Archive archive1;
-	@ObfuscatedName("et")
-	@Export("worldHost")
-	static String worldHost;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@Export("tileColors")
 	final int[] tileColors;
 
@@ -27,57 +18,53 @@ public final class WorldMapSprite {
 		this.tileColors = var1; // L: 15
 	} // L: 16
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-323058581"
+		descriptor = "(IIB)I",
+		garbageValue = "-92"
 	)
 	@Export("getTileColor")
 	final int getTileColor(int var1, int var2) {
-		return this.tileColors[var1 + var2 * 64]; // L: 24
+		return this.tileColors[var2 * 64 + var1]; // L: 19
 	}
 
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-327345288"
-	)
-	static final int method468(int var0, int var1) {
-		int var2 = GrandExchangeOffer.method190(var0 - 1, var1 - 1) + GrandExchangeOffer.method190(var0 + 1, var1 - 1) + GrandExchangeOffer.method190(var0 - 1, 1 + var1) + GrandExchangeOffer.method190(1 + var0, 1 + var1); // L: 848
-		int var3 = GrandExchangeOffer.method190(var0 - 1, var1) + GrandExchangeOffer.method190(1 + var0, var1) + GrandExchangeOffer.method190(var0, var1 - 1) + GrandExchangeOffer.method190(var0, 1 + var1); // L: 849
-		int var4 = GrandExchangeOffer.method190(var0, var1); // L: 850
-		return var2 / 16 + var3 / 8 + var4 / 4; // L: 851
-	}
-
-	@ObfuscatedName("hi")
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1287826553"
+		garbageValue = "-2142917261"
 	)
-	static final void method467() {
-		for (GraphicsObject var0 = (GraphicsObject)Client.graphicsObjects.last(); var0 != null; var0 = (GraphicsObject)Client.graphicsObjects.previous()) { // L: 4771 4772 4779
-			if (var0.plane == GameObject.Client_plane && !var0.isFinished) { // L: 4773
-				if (Client.cycle >= var0.cycleStart) { // L: 4774
-					var0.advance(Client.field850); // L: 4775
-					if (var0.isFinished) {
-						var0.remove(); // L: 4776
-					} else {
-						ArchiveLoader.scene.drawEntity(var0.plane, var0.x, var0.y, var0.height, 60, var0, 0, -1L, false); // L: 4777
-					}
-				}
-			} else {
-				var0.remove();
-			}
+	static final void method3108() {
+		if (!ViewportMouse.ViewportMouse_false0) { // L: 95
+			int var0 = Scene.Scene_cameraPitchSine; // L: 96
+			int var1 = Scene.Scene_cameraPitchCosine; // L: 97
+			int var2 = Scene.Scene_cameraYawSine; // L: 98
+			int var3 = Scene.Scene_cameraYawCosine; // L: 99
+			byte var4 = 50; // L: 100
+			short var5 = 3500; // L: 101
+			int var6 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.Rasterizer3D_clipMidX) * var4 / Rasterizer3D.Rasterizer3D_zoom; // L: 102
+			int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.Rasterizer3D_clipMidY) * var4 / Rasterizer3D.Rasterizer3D_zoom; // L: 103
+			int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.Rasterizer3D_clipMidX) * var5 / Rasterizer3D.Rasterizer3D_zoom; // L: 104
+			int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.Rasterizer3D_clipMidY) * var5 / Rasterizer3D.Rasterizer3D_zoom; // L: 105
+			int var10 = Rasterizer3D.method3400(var7, var4, var1, var0); // L: 107
+			int var11 = Rasterizer3D.method3367(var7, var4, var1, var0); // L: 108
+			var7 = var10; // L: 109
+			var10 = Rasterizer3D.method3400(var9, var5, var1, var0); // L: 110
+			int var12 = Rasterizer3D.method3367(var9, var5, var1, var0); // L: 111
+			var9 = var10; // L: 112
+			var10 = Rasterizer3D.method3379(var6, var11, var3, var2); // L: 113
+			var11 = Rasterizer3D.method3380(var6, var11, var3, var2); // L: 114
+			var6 = var10; // L: 115
+			var10 = Rasterizer3D.method3379(var8, var12, var3, var2); // L: 116
+			var12 = Rasterizer3D.method3380(var8, var12, var3, var2); // L: 117
+			UserComparator10.field1439 = (var10 + var6) / 2; // L: 119
+			MusicPatchPcmStream.field2544 = (var7 + var9) / 2; // L: 120
+			WorldMapLabelSize.field1568 = (var11 + var12) / 2; // L: 121
+			ViewportMouse.field2135 = (var10 - var6) / 2; // L: 122
+			ViewportMouse.field2136 = (var9 - var7) / 2; // L: 123
+			Varps.field2580 = (var12 - var11) / 2; // L: 124
+			Login.field1018 = Math.abs(ViewportMouse.field2135); // L: 125
+			ViewportMouse.field2137 = Math.abs(ViewportMouse.field2136); // L: 126
+			class24.field189 = Math.abs(Varps.field2580); // L: 127
 		}
-
-	} // L: 4781
-
-	@ObfuscatedName("iw")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "646610765"
-	)
-	static final int method463() {
-		return Client.menuOptionsCount - 1; // L: 8524
-	}
+	} // L: 128
 }

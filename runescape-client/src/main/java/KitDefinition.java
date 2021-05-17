@@ -4,58 +4,52 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("if")
+@ObfuscatedName("jq")
 @Implements("KitDefinition")
 public class KitDefinition extends DualNode {
-	@ObfuscatedName("oz")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lfi;"
-	)
-	@Export("mouseWheel")
-	static MouseWheel mouseWheel;
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Lib;"
+		descriptor = "Lir;"
 	)
 	@Export("KitDefinition_archive")
 	public static AbstractArchive KitDefinition_archive;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1665100339
+		intValue = -827532557
 	)
 	@Export("KitDefinition_fileCount")
 	public static int KitDefinition_fileCount;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lez;"
+		descriptor = "Lgf;"
 	)
 	@Export("KitDefinition_cached")
-	static EvictingDualNodeHashTable KitDefinition_cached;
-	@ObfuscatedName("t")
+	public static EvictingDualNodeHashTable KitDefinition_cached;
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 240118187
+		intValue = -2145544887
 	)
 	@Export("bodypartID")
 	public int bodypartID;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@Export("models2")
 	int[] models2;
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@Export("recolorFrom")
 	short[] recolorFrom;
-	@ObfuscatedName("p")
+	@ObfuscatedName("g")
 	@Export("recolorTo")
 	short[] recolorTo;
-	@ObfuscatedName("l")
+	@ObfuscatedName("h")
 	@Export("retextureFrom")
 	short[] retextureFrom;
-	@ObfuscatedName("z")
+	@ObfuscatedName("n")
 	@Export("retextureTo")
 	short[] retextureTo;
-	@ObfuscatedName("u")
+	@ObfuscatedName("l")
 	@Export("models")
 	int[] models;
-	@ObfuscatedName("e")
+	@ObfuscatedName("m")
 	@Export("nonSelectable")
 	public boolean nonSelectable;
 
@@ -69,10 +63,10 @@ public class KitDefinition extends DualNode {
 		this.nonSelectable = false; // L: 22
 	} // L: 24
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;S)V",
-		garbageValue = "24464"
+		descriptor = "(Lnu;I)V",
+		garbageValue = "-1899530791"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -86,10 +80,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;IB)V",
-		garbageValue = "-62"
+		descriptor = "(Lnu;IB)V",
+		garbageValue = "0"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -100,30 +94,30 @@ public class KitDefinition extends DualNode {
 			int var4;
 			if (var2 == 2) { // L: 46
 				var3 = var1.readUnsignedByte(); // L: 47
-				this.models2 = new int[var3];
+				this.models2 = new int[var3]; // L: 48
 
-				for (var4 = 0; var4 < var3; ++var4) {
+				for (var4 = 0; var4 < var3; ++var4) { // L: 49
 					this.models2[var4] = var1.readUnsignedShort();
 				}
 			} else if (var2 == 3) { // L: 51
 				this.nonSelectable = true;
 			} else if (var2 == 40) { // L: 52
-				var3 = var1.readUnsignedByte();
-				this.recolorFrom = new short[var3];
-				this.recolorTo = new short[var3];
+				var3 = var1.readUnsignedByte(); // L: 53
+				this.recolorFrom = new short[var3]; // L: 54
+				this.recolorTo = new short[var3]; // L: 55
 
-				for (var4 = 0; var4 < var3; ++var4) {
-					this.recolorFrom[var4] = (short)var1.readUnsignedShort();
+				for (var4 = 0; var4 < var3; ++var4) { // L: 56
+					this.recolorFrom[var4] = (short)var1.readUnsignedShort(); // L: 57
 					this.recolorTo[var4] = (short)var1.readUnsignedShort(); // L: 58
 				}
-			} else if (var2 == 41) {
-				var3 = var1.readUnsignedByte();
-				this.retextureFrom = new short[var3];
-				this.retextureTo = new short[var3];
+			} else if (var2 == 41) { // L: 61
+				var3 = var1.readUnsignedByte(); // L: 62
+				this.retextureFrom = new short[var3]; // L: 63
+				this.retextureTo = new short[var3]; // L: 64
 
-				for (var4 = 0; var4 < var3; ++var4) {
-					this.retextureFrom[var4] = (short)var1.readUnsignedShort();
-					this.retextureTo[var4] = (short)var1.readUnsignedShort();
+				for (var4 = 0; var4 < var3; ++var4) { // L: 65
+					this.retextureFrom[var4] = (short)var1.readUnsignedShort(); // L: 66
+					this.retextureTo[var4] = (short)var1.readUnsignedShort(); // L: 67
 				}
 			} else if (var2 >= 60 && var2 < 70) { // L: 70
 				this.models[var2 - 60] = var1.readUnsignedShort();
@@ -132,10 +126,10 @@ public class KitDefinition extends DualNode {
 
 	} // L: 72
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1129169926"
+		descriptor = "(S)Z",
+		garbageValue = "28242"
 	)
 	@Export("ready")
 	public boolean ready() {
@@ -145,7 +139,7 @@ public class KitDefinition extends DualNode {
 			boolean var1 = true; // L: 76
 
 			for (int var2 = 0; var2 < this.models2.length; ++var2) { // L: 77
-				if (!class227.KitDefinition_modelsArchive.tryLoadFile(this.models2[var2], 0)) {
+				if (!class266.KitDefinition_modelsArchive.tryLoadFile(this.models2[var2], 0)) {
 					var1 = false;
 				}
 			}
@@ -154,10 +148,10 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "(I)Les;",
-		garbageValue = "-1617446869"
+		descriptor = "(B)Lfs;",
+		garbageValue = "63"
 	)
 	@Export("getModelData")
 	public ModelData getModelData() {
@@ -167,7 +161,7 @@ public class KitDefinition extends DualNode {
 			ModelData[] var1 = new ModelData[this.models2.length]; // L: 83
 
 			for (int var2 = 0; var2 < this.models2.length; ++var2) { // L: 84
-				var1[var2] = ModelData.ModelData_get(class227.KitDefinition_modelsArchive, this.models2[var2], 0);
+				var1[var2] = ModelData.ModelData_get(class266.KitDefinition_modelsArchive, this.models2[var2], 0);
 			}
 
 			ModelData var4;
@@ -194,16 +188,16 @@ public class KitDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "-734430766"
+		garbageValue = "1694348620"
 	)
-	public boolean method4488() {
+	public boolean method4950() {
 		boolean var1 = true; // L: 102
 
 		for (int var2 = 0; var2 < 5; ++var2) { // L: 103
-			if (this.models[var2] != -1 && !class227.KitDefinition_modelsArchive.tryLoadFile(this.models[var2], 0)) { // L: 104
+			if (this.models[var2] != -1 && !class266.KitDefinition_modelsArchive.tryLoadFile(this.models[var2], 0)) { // L: 104
 				var1 = false;
 			}
 		}
@@ -211,10 +205,10 @@ public class KitDefinition extends DualNode {
 		return var1; // L: 106
 	}
 
-	@ObfuscatedName("n")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(I)Les;",
-		garbageValue = "148590883"
+		descriptor = "(I)Lfs;",
+		garbageValue = "-2136913772"
 	)
 	@Export("getKitDefinitionModels")
 	public ModelData getKitDefinitionModels() {
@@ -223,7 +217,7 @@ public class KitDefinition extends DualNode {
 
 		for (int var3 = 0; var3 < 5; ++var3) { // L: 112
 			if (this.models[var3] != -1) { // L: 113
-				var1[var2++] = ModelData.ModelData_get(class227.KitDefinition_modelsArchive, this.models[var3], 0);
+				var1[var2++] = ModelData.ModelData_get(class266.KitDefinition_modelsArchive, this.models[var3], 0);
 			}
 		}
 
@@ -243,37 +237,4 @@ public class KitDefinition extends DualNode {
 
 		return var5; // L: 126
 	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1929348115"
-	)
-	public static void method4491(int var0, int var1) {
-		VarbitDefinition var3 = (VarbitDefinition)VarbitDefinition.VarbitDefinition_cached.get((long)var0); // L: 48
-		VarbitDefinition var2;
-		if (var3 != null) { // L: 49
-			var2 = var3; // L: 50
-		} else {
-			byte[] var4 = VarbitDefinition.VarbitDefinition_archive.takeFile(14, var0); // L: 53
-			var3 = new VarbitDefinition(); // L: 54
-			if (var4 != null) { // L: 55
-				var3.decode(new Buffer(var4));
-			}
-
-			VarbitDefinition.VarbitDefinition_cached.put(var3, (long)var0); // L: 56
-			var2 = var3; // L: 57
-		}
-
-		int var8 = var2.baseVar; // L: 60
-		int var5 = var2.startBit; // L: 61
-		int var6 = var2.endBit; // L: 62
-		int var7 = Varps.Varps_masks[var6 - var5]; // L: 63
-		if (var1 < 0 || var1 > var7) { // L: 64
-			var1 = 0;
-		}
-
-		var7 <<= var5; // L: 65
-		Varps.Varps_main[var8] = Varps.Varps_main[var8] & ~var7 | var1 << var5 & var7; // L: 66
-	} // L: 67
 }

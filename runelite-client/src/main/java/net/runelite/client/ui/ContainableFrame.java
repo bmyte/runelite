@@ -47,7 +47,7 @@ public class ContainableFrame extends JFrame
 	{
 		ALWAYS,
 		RESIZING,
-		NEVER
+		NEVER;
 	}
 
 	private static final int SCREEN_EDGE_CLOSE_DISTANCE = 40;
@@ -75,10 +75,22 @@ public class ContainableFrame extends JFrame
 			javaVersion = javaVersion.substring(0, idx);
 		}
 		String[] s = javaVersion.split("\\.");
-		int major = Integer.parseInt(s[0]), minor = Integer.parseInt(s[1]), patch = Integer.parseInt(s[2]);
+		int major, minor, patch;
+		if (s.length == 3)
+		{
+			major = Integer.parseInt(s[0]);
+			minor = Integer.parseInt(s[1]);
+			patch = Integer.parseInt(s[2]);
+		}
+		else
+		{
+			major = Integer.parseInt(s[0]);
+			minor = -1;
+			patch = -1;
+		}
 		if (major == 12 || major == 13 || major == 14)
 		{
-			// These versions are since EOL & do not include JDK-8231564
+			// These versions are since EOL & do not include JDK-8231564, except for 13.0.4+
 			return false;
 		}
 		return major > 11 || (major == 11 && minor > 0) || (major == 11 && minor == 0 && patch >= 8);
@@ -88,17 +100,6 @@ public class ContainableFrame extends JFrame
 	private ExpandResizeType expandResizeType;
 	private Mode containedInScreen;
 	private boolean expandedClientOppositeDirection;
-
-	ContainableFrame()
-	{
-		addWindowStateListener(windowEvent ->
-		{
-			if (windowEvent.getNewState() == Frame.NORMAL)
-			{
-				revalidateMinimumSize();
-			}
-		});
-	}
 
 	public void setContainedInScreen(Mode value)
 	{
@@ -186,7 +187,6 @@ public class ContainableFrame extends JFrame
 
 				if (wouldExpandThroughEdge)
 				{
-
 					if (!isFrameCloseToRightEdge() || isFrameCloseToLeftEdge())
 					{
 						// Move the window to the edge

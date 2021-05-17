@@ -1,62 +1,37 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ii")
-public final class class236 {
-	@ObfuscatedName("h")
-	@Export("sleepExact")
-	public static final void sleepExact(long var0) {
-		if (var0 > 0L) { // L: 9
-			if (0L == var0 % 10L) { // L: 10
-				long var2 = var0 - 1L; // L: 11
+public class class236 {
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(Lir;Lir;III)Lkq;",
+		garbageValue = "-34187782"
+	)
+	public static Font method4378(AbstractArchive var0, AbstractArchive var1, int var2, int var3) {
+		byte[] var5 = var0.takeFile(var2, var3); // L: 122
+		boolean var4;
+		if (var5 == null) { // L: 123
+			var4 = false; // L: 124
+		} else {
+			class244.SpriteBuffer_decode(var5); // L: 127
+			var4 = true; // L: 128
+		}
 
-				try {
-					Thread.sleep(var2); // L: 14
-				} catch (InterruptedException var8) { // L: 16
-				}
-
-				try {
-					Thread.sleep(1L); // L: 20
-				} catch (InterruptedException var7) { // L: 22
-				}
+		if (!var4) { // L: 130
+			return null;
+		} else {
+			byte[] var6 = var1.takeFile(var2, var3); // L: 132
+			Font var8;
+			if (var6 == null) { // L: 134
+				var8 = null; // L: 135
 			} else {
-				try {
-					Thread.sleep(var0); // L: 27
-				} catch (InterruptedException var6) { // L: 29
-				}
+				Font var7 = new Font(var6, class0.SpriteBuffer_xOffsets, Interpreter.SpriteBuffer_yOffsets, class395.SpriteBuffer_spriteWidths, class157.SpriteBuffer_spriteHeights, Varps.SpriteBuffer_spritePalette, class223.SpriteBuffer_pixels); // L: 138
+				WorldMapDecorationType.method4370(); // L: 139
+				var8 = var7; // L: 140
 			}
 
+			return var8; // L: 142
 		}
-	} // L: 31
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lgv;",
-		garbageValue = "1686839438"
-	)
-	public static PacketBufferNode method4163() {
-		PacketBufferNode var0;
-		if (PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) { // L: 47
-			var0 = new PacketBufferNode(); // L: 48
-		} else {
-			var0 = PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount]; // L: 51
-		}
-
-		var0.clientPacket = null; // L: 54
-		var0.clientPacketLength = 0; // L: 55
-		var0.packetBuffer = new PacketBuffer(5000); // L: 56
-		return var0; // L: 57
-	}
-
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "(I)Lcj;",
-		garbageValue = "-2109446409"
-	)
-	@Export("worldListStart")
-	static World worldListStart() {
-		World.World_listCount = 0; // L: 247
-		return GrandExchangeEvents.getNextWorldListWorld(); // L: 248
 	}
 }

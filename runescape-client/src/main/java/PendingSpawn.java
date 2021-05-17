@@ -4,75 +4,81 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bp")
+@ObfuscatedName("cr")
 @Implements("PendingSpawn")
 public final class PendingSpawn extends Node {
-	@ObfuscatedName("h")
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "[Lnx;"
+	)
+	@Export("JagexCache_idxFiles")
+	public static BufferedFile[] JagexCache_idxFiles;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -561970277
+		intValue = 1308718051
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 2016613855
+		intValue = 45701607
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1300188483
-	)
-	@Export("y")
-	int y;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -1005104193
+		intValue = -155667971
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("t")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -179134245
+		intValue = 1448621267
+	)
+	@Export("y")
+	int y;
+	@ObfuscatedName("b")
+	@ObfuscatedGetter(
+		intValue = -1001354287
 	)
 	@Export("objectId")
 	int objectId;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 1421473345
+		intValue = 1329191507
 	)
-	int field929;
-	@ObfuscatedName("n")
+	int field1199;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1135196695
+		intValue = -184031209
 	)
-	int field935;
-	@ObfuscatedName("p")
+	int field1203;
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = 1885792769
+		intValue = -1951692743
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("l")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 281500635
+		intValue = 850261387
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("z")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1520740959
+		intValue = 1647401883
 	)
-	int field933;
-	@ObfuscatedName("u")
+	int field1196;
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -1918474747
+		intValue = 2107117867
 	)
 	@Export("delay")
 	int delay;
-	@ObfuscatedName("e")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -470194177
+		intValue = -317675493
 	)
 	@Export("hitpoints")
 	int hitpoints;
@@ -82,27 +88,12 @@ public final class PendingSpawn extends Node {
 		this.hitpoints = -1; // L: 17
 	} // L: 19
 
-	@ObfuscatedName("jy")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "([Lhe;Lhe;ZB)V",
-		garbageValue = "0"
+		descriptor = "(CB)C",
+		garbageValue = "56"
 	)
-	@Export("revalidateWidgetScroll")
-	static void revalidateWidgetScroll(Widget[] var0, Widget var1, boolean var2) {
-		int var3 = var1.scrollWidth != 0 ? var1.scrollWidth * 23997287 * -1515274153 : var1.width * -1889150965 * -832572509; // L: 9467
-		int var4 = var1.scrollHeight != 0 ? var1.scrollHeight * -1479373561 * -1602400073 : var1.height * 1772768209 * -1282937551; // L: 9468
-		Interpreter.resizeInterface(var0, var1.id, var3, var4, var2); // L: 9469
-		if (var1.children != null) { // L: 9470
-			Interpreter.resizeInterface(var1.children, var1.id, var3, var4, var2);
-		}
-
-		InterfaceParent var5 = (InterfaceParent)Client.interfaceParents.get((long)var1.id); // L: 9471
-		if (var5 != null) {
-			WorldMapManager.method686(var5.group, var3, var4, var2); // L: 9472
-		}
-
-		if (var1.contentType == 1337) { // L: 9473
-		}
-
-	} // L: 9474
+	static char method2152(char var0) {
+		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0; // L: 63 64
+	}
 }

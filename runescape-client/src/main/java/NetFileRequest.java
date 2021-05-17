@@ -4,65 +4,42 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ia")
+@ObfuscatedName("ic")
 @Implements("NetFileRequest")
 public class NetFileRequest extends DualNode {
-	@ObfuscatedName("eu")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lil;"
-	)
-	@Export("archive20")
-	static Archive archive20;
-	@ObfuscatedName("gc")
-	@ObfuscatedGetter(
-		intValue = 2065438809
-	)
-	@Export("baseX")
-	static int baseX;
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Lil;"
+		descriptor = "Lig;"
 	)
 	@Export("archive")
-	public Archive archive;
-	@ObfuscatedName("v")
+	Archive archive;
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -257937565
+		intValue = -8399381
 	)
 	@Export("crc")
-	public int crc;
-	@ObfuscatedName("x")
+	int crc;
+	@ObfuscatedName("u")
 	@Export("padding")
-	public byte padding;
+	byte padding;
 
 	NetFileRequest() {
 	} // L: 10
 
-	@ObfuscatedName("kw")
+	@ObfuscatedName("gc")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)Lbt;",
-		garbageValue = "102160869"
+		descriptor = "(I)V",
+		garbageValue = "-392050849"
 	)
-	static final InterfaceParent method4189(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent(); // L: 10798
-		var3.group = var1; // L: 10799
-		var3.type = var2; // L: 10800
-		Client.interfaceParents.put(var3, (long)var0); // L: 10801
-		class304.Widget_resetModelFrames(var1); // L: 10802
-		Widget var4 = CollisionMap.getWidget(var0); // L: 10803
-		CollisionMap.invalidateWidget(var4); // L: 10804
-		if (Client.meslayerContinueWidget != null) { // L: 10805
-			CollisionMap.invalidateWidget(Client.meslayerContinueWidget); // L: 10806
-			Client.meslayerContinueWidget = null; // L: 10807
+	static final void method4472() {
+		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) { // L: 6816 6817 6823
+			if (var0.hitpoints == -1) { // L: 6818
+				var0.delay = 0; // L: 6819
+				class341.method6017(var0); // L: 6820
+			} else {
+				var0.remove(); // L: 6822
+			}
 		}
 
-		WorldMapData_1.method767(); // L: 10809
-		PendingSpawn.revalidateWidgetScroll(class9.Widget_interfaceComponents[var0 >> 16], var4, false); // L: 10810
-		VarpDefinition.runWidgetOnLoadListener(var1); // L: 10811
-		if (Client.rootInterface != -1) { // L: 10812
-			WorldMapRectangle.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3; // L: 10813
-	}
+	} // L: 6825
 }

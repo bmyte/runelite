@@ -4,41 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("it")
+@ObfuscatedName("kf")
 @Implements("VerticalAlignment")
 public enum VerticalAlignment implements Enumerated {
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lit;"
+		descriptor = "Lkf;"
 	)
-	field3229(1, 0),
-	@ObfuscatedName("v")
+	field3517(1, 0),
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lit;"
+		descriptor = "Lkf;"
 	)
 	@Export("VerticalAlignment_centered")
-	VerticalAlignment_centered(2, 1),
-	@ObfuscatedName("x")
+	VerticalAlignment_centered(0, 1),
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lit;"
+		descriptor = "Lkf;"
 	)
-	field3225(0, 2);
+	field3514(2, 2);
 
-	@ObfuscatedName("bi")
-	@ObfuscatedSignature(
-		descriptor = "Llo;"
-	)
-	@Export("worldSelectLeftSprite")
-	static IndexedSprite worldSelectLeftSprite;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -525110533
+		intValue = 5650729
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1435294299
+		intValue = -974816521
 	)
 	@Export("id")
 	final int id;
@@ -48,13 +42,29 @@ public enum VerticalAlignment implements Enumerated {
 		this.id = var4; // L: 15
 	} // L: 16
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-275768542"
+		garbageValue = "-1000839247"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id; // L: 19
 	}
+
+	@ObfuscatedName("hj")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1799855349"
+	)
+	@Export("addCancelMenuEntry")
+	static void addCancelMenuEntry() {
+		Client.menuOptionsCount = 0; // L: 7769
+		Client.isMenuOpen = false; // L: 7770
+		Client.menuActions[0] = "Cancel"; // L: 7772
+		Client.menuTargets[0] = ""; // L: 7773
+		Client.menuOpcodes[0] = 1006; // L: 7774
+		Client.menuShiftClick[0] = false; // L: 7775
+		Client.menuOptionsCount = 1; // L: 7776
+	} // L: 7777
 }

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2017, Adam <Adam@sigterm.info>
- * Copyright (c) 2020, ThatGamerBlue <thatgamerblue@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,9 +24,9 @@
  */
 package net.runelite.client.plugins.xtea;
 
-import java.io.IOException;
-import java.util.HashMap;
 import com.google.inject.Provides;
+import java.util.HashSet;
+import java.util.Set;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
@@ -38,7 +37,8 @@ import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.http.api.xtea.XteaClient;
-import org.apache.commons.lang3.ArrayUtils;
+import net.runelite.http.api.xtea.XteaKey;
+import net.runelite.http.api.xtea.XteaRequest;
 import okhttp3.OkHttpClient;
 
 @PluginDescriptor(
@@ -48,29 +48,13 @@ import okhttp3.OkHttpClient;
 @Slf4j
 public class XteaPlugin extends Plugin
 {
-	@Inject
-	private XteaClient xteaClient;
+	private final Set<Integer> sentRegions = new HashSet<>();
 
 	@Inject
 	private Client client;
 
 	@Inject
-	private RuneLite rsclient;
-
-	private HashMap<Integer, Integer[]> xteas;
-
-	@Override
-	public void startUp()
-	{
-		try
-		{
-			xteas = xteaClient.get();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
+	private XteaClient xteaClient;
 
 	@Provides
 	XteaClient provideXteaClient(OkHttpClient okHttpClient)
@@ -79,28 +63,33 @@ public class XteaPlugin extends Plugin
 	}
 
 	@Subscribe
-	private void onGameStateChanged(GameStateChanged gameStateChanged)
+	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
 		if (gameStateChanged.getGameState() != GameState.LOGGED_IN)
 		{
 			return;
 		}
 
+		int revision = client.getRevision();
 		int[] regions = client.getMapRegions();
 		int[][] xteaKeys = client.getXteaKeys();
+
+		XteaRequest xteaRequest = new XteaRequest();
+		xteaRequest.setRevision(revision);
 
 		for (int idx = 0; idx < regions.length; ++idx)
 		{
 			int region = regions[idx];
 			int[] keys = xteaKeys[idx];
 
-			if (xteas.get(region) != null && areKeysEqual(xteas.get(region), keys))
+			if (sentRegions.contains(region))
 			{
 				continue;
 			}
 
-			xteas.put(region, ArrayUtils.toObject(keys));
+			sentRegions.add(region);
 
+<<<<<<< HEAD
 			//Don't post non encrypted regions
 			if (keys[0] == 0 && keys[1] == 0 && keys[2] == 0 && keys[3] == 0)
 			{
@@ -117,14 +106,21 @@ public class XteaPlugin extends Plugin
 				log.info("Submitting region {} keys {}, {}, {}, {}", region, keys[0], keys[1], keys[2], keys[3]);
 				xteaClient.submit(region, keys);
 			}
-		}
-	}
+=======
+			log.debug("Region {} keys {}, {}, {}, {}", region, keys[0], keys[1], keys[2], keys[3]);
 
-	private boolean areKeysEqual(Integer[] existingKeys, int[] newKeys)
-	{
-		return existingKeys[0] == newKeys[0] &&
-			existingKeys[1] == newKeys[1] &&
-			existingKeys[2] == newKeys[2] &&
-			existingKeys[3] == newKeys[3];
+			XteaKey xteaKey = new XteaKey();
+			xteaKey.setRegion(region);
+			xteaKey.setKeys(keys);
+			xteaRequest.addKey(xteaKey);
+		}
+
+		if (xteaRequest.getKeys().isEmpty())
+		{
+			return;
+>>>>>>> 829f0b134b80ad67628bc1031c3a8facef9fb568
+		}
+
+		xteaClient.submit(xteaRequest);
 	}
 }

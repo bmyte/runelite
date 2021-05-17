@@ -4,31 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
+@ObfuscatedName("fa")
 @Implements("Skeleton")
 public class Skeleton extends Node {
-	@ObfuscatedName("he")
+	@ObfuscatedName("ro")
 	@ObfuscatedGetter(
-		intValue = -502356211
+		intValue = 49328929
 	)
-	@Export("cameraPitch")
-	static int cameraPitch;
-	@ObfuscatedName("h")
+	static int field1927;
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "Low;"
+	)
+	@Export("options_buttons_2Sprite")
+	static IndexedSprite options_buttons_2Sprite;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1773427771
+		intValue = -1569878469
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1481451601
+		intValue = 1560016173
 	)
 	@Export("count")
 	int count;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@Export("transformTypes")
 	int[] transformTypes;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@Export("labels")
 	int[][] labels;
 
@@ -58,110 +63,59 @@ public class Skeleton extends Node {
 
 	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "-5"
+		descriptor = "(III)I",
+		garbageValue = "1482747310"
 	)
-	static final void method3155(String var0) {
-		PacketBufferNode var1 = ItemContainer.getPacketBufferNode(ClientPacket.field2319, Client.packetWriter.isaacCipher); // L: 194
-		var1.packetBuffer.writeByte(FloorDecoration.stringCp1252NullTerminatedByteSize(var0)); // L: 195
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 196
-		Client.packetWriter.addNode(var1); // L: 197
-	} // L: 198
-
-	@ObfuscatedName("ha")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-1484457450"
-	)
-	@Export("addNpcsToScene")
-	static final void addNpcsToScene(boolean var0) {
-		for (int var1 = 0; var1 < Client.npcCount; ++var1) { // L: 4752
-			NPC var2 = Client.npcs[Client.npcIndices[var1]]; // L: 4753
-			if (var2 != null && var2.isVisible() && var2.definition.isVisible == var0 && var2.definition.transformIsVisible()) { // L: 4754
-				int var3 = var2.x >> 7; // L: 4755
-				int var4 = var2.y >> 7; // L: 4756
-				if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) { // L: 4757
-					if (var2.field941 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) { // L: 4758
-						if (Client.tileLastDrawnActor[var3][var4] == Client.viewportDrawCount) { // L: 4759
-							continue;
-						}
-
-						Client.tileLastDrawnActor[var3][var4] = Client.viewportDrawCount; // L: 4760
-					}
-
-					long var5 = NPC.calculateTag(0, 0, 1, !var2.definition.isInteractable, Client.npcIndices[var1]); // L: 4762
-					var2.playerCycle = Client.cycle; // L: 4763
-					ArchiveLoader.scene.drawEntity(GameObject.Client_plane, var2.x, var2.y, SecureRandomFuture.getTileHeight(var2.field941 * 64 - 64 + var2.x, var2.field941 * 64 - 64 + var2.y, GameObject.Client_plane), var2.field941 * 64 - 64 + 60, var2, var2.rotation, var5, var2.isWalking); // L: 4764
-				}
+	public static int method3431(int var0, int var1) {
+		int var2;
+		for (var2 = 1; var1 > 1; var1 >>= 1) { // L: 24 25 28
+			if ((var1 & 1) != 0) {
+				var2 = var0 * var2; // L: 26
 			}
+
+			var0 *= var0; // L: 27
 		}
 
-	} // L: 4768
+		if (var1 == 1) { // L: 30
+			return var0 * var2;
+		} else {
+			return var2; // L: 31
+		}
+	}
 
-	@ObfuscatedName("ke")
+	@ObfuscatedName("iu")
 	@ObfuscatedSignature(
-		descriptor = "([Lhe;II)V",
-		garbageValue = "-1212206355"
+		descriptor = "(I)I",
+		garbageValue = "-259166904"
 	)
-	@Export("drawModelComponents")
-	static final void drawModelComponents(Widget[] var0, int var1) {
-		for (int var2 = 0; var2 < var0.length; ++var2) { // L: 10596
-			Widget var3 = var0[var2]; // L: 10597
-			if (var3 != null && var3.parentId == var1 && (!var3.isIf3 || !DevicePcmPlayerProvider.isComponentHidden(var3))) { // L: 10598 10599 10600
-				if (var3.type == 0) { // L: 10601
-					if (!var3.isIf3 && DevicePcmPlayerProvider.isComponentHidden(var3) && var3 != EnumDefinition.mousedOverWidgetIf1) { // L: 10602
-						continue;
-					}
+	static final int method3433() {
+		return Client.menuOptionsCount - 1; // L: 9018
+	}
 
-					drawModelComponents(var0, var3.id); // L: 10603
-					if (var3.children != null) { // L: 10604
-						drawModelComponents(var3.children, var3.id);
-					}
+	@ObfuscatedName("iz")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIII)V",
+		garbageValue = "353587604"
+	)
+	@Export("drawWidgets")
+	static final void drawWidgets(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		if (class15.loadInterface(var0)) { // L: 9407
+			WallDecoration.field2179 = null; // L: 9414
+			class2.drawInterface(Widget.Widget_interfaceComponents[var0], -1, var1, var2, var3, var4, var5, var6, var7); // L: 9415
+			if (WallDecoration.field2179 != null) { // L: 9416
+				class2.drawInterface(WallDecoration.field2179, -1412584499, var1, var2, var3, var4, class11.field106, class235.field2843, var7); // L: 9417
+				WallDecoration.field2179 = null; // L: 9418
+			}
 
-					InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id); // L: 10605
-					if (var4 != null) { // L: 10606
-						NPCDefinition.method4759(var4.group);
-					}
-				}
-
-				if (var3.type == 6) { // L: 10608
-					int var5;
-					if (var3.sequenceId != -1 || var3.sequenceId2 != -1) { // L: 10609
-						boolean var7 = class8.runCs1(var3); // L: 10610
-						if (var7) { // L: 10612
-							var5 = var3.sequenceId2;
-						} else {
-							var5 = var3.sequenceId; // L: 10613
-						}
-
-						if (var5 != -1) { // L: 10614
-							SequenceDefinition var6 = ParamDefinition.SequenceDefinition_get(var5); // L: 10615
-
-							for (var3.modelFrameCycle += Client.field850; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; CollisionMap.invalidateWidget(var3)) { // L: 10616 10617 10624
-								var3.modelFrameCycle -= var6.frameLengths[var3.modelFrame]; // L: 10618
-								++var3.modelFrame; // L: 10619
-								if (var3.modelFrame >= var6.frameIds.length) { // L: 10620
-									var3.modelFrame -= var6.frameCount; // L: 10621
-									if (var3.modelFrame < 0 || var3.modelFrame >= var6.frameIds.length) { // L: 10622
-										var3.modelFrame = 0;
-									}
-								}
-							}
-						}
-					}
-
-					if (var3.field2642 != 0 && !var3.isIf3) { // L: 10628
-						int var8 = var3.field2642 >> 16; // L: 10629
-						var5 = var3.field2642 << 16 >> 16; // L: 10630
-						var8 *= Client.field850; // L: 10631
-						var5 *= Client.field850; // L: 10632
-						var3.modelAngleX = var8 + var3.modelAngleX & 2047; // L: 10633
-						var3.modelAngleY = var5 + var3.modelAngleY & 2047; // L: 10634
-						CollisionMap.invalidateWidget(var3); // L: 10635
-					}
+		} else {
+			if (var7 != -1) { // L: 9408
+				Client.field811[var7] = true;
+			} else {
+				for (int var8 = 0; var8 < 100; ++var8) { // L: 9410
+					Client.field811[var8] = true;
 				}
 			}
-		}
 
-	} // L: 10639
+		}
+	} // L: 9412 9420
 }

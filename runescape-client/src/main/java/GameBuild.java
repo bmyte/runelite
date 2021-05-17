@@ -4,39 +4,39 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("io")
+@ObfuscatedName("im")
 @Implements("GameBuild")
 public class GameBuild {
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lio;"
+		descriptor = "Lim;"
 	)
 	@Export("LIVE")
 	static final GameBuild LIVE;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lio;"
+		descriptor = "Lim;"
 	)
 	@Export("BUILDLIVE")
 	static final GameBuild BUILDLIVE;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lio;"
+		descriptor = "Lim;"
 	)
 	@Export("RC")
 	static final GameBuild RC;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lio;"
+		descriptor = "Lim;"
 	)
 	@Export("WIP")
 	static final GameBuild WIP;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@Export("name")
 	public final String name;
-	@ObfuscatedName("j")
+	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 1867624169
+		intValue = 597489609
 	)
 	@Export("buildId")
 	final int buildId;
@@ -52,4 +52,28 @@ public class GameBuild {
 		this.name = var1; // L: 17
 		this.buildId = var2; // L: 18
 	} // L: 19
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)I",
+		garbageValue = "-107"
+	)
+	static int method4386(int var0, int var1) {
+		ItemContainer var2 = (ItemContainer)ItemContainer.itemContainers.get((long)var0); // L: 28
+		if (var2 == null) { // L: 29
+			return 0;
+		} else if (var1 == -1) { // L: 30
+			return 0;
+		} else {
+			int var3 = 0; // L: 31
+
+			for (int var4 = 0; var4 < var2.quantities.length; ++var4) { // L: 32
+				if (var2.ids[var4] == var1) {
+					var3 += var2.quantities[var4]; // L: 33
+				}
+			}
+
+			return var3; // L: 35
+		}
+	}
 }

@@ -1,132 +1,146 @@
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ec")
+@ObfuscatedName("fx")
 @Implements("Tile")
 public final class Tile extends Node {
-	@ObfuscatedName("h")
+	@ObfuscatedName("ba")
+	@ObfuscatedSignature(
+		descriptor = "[Loh;"
+	)
+	@Export("worldSelectBackSprites")
+	static SpritePixels[] worldSelectBackSprites;
+	@ObfuscatedName("gj")
 	@ObfuscatedGetter(
-		intValue = 518292921
+		intValue = 290208105
+	)
+	@Export("baseY")
+	static int baseY;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -1592009021
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -213521769
+		intValue = 1758245997
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 438104541
+		intValue = 528170581
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 772520193
+		intValue = 1400903317
 	)
 	@Export("originalPlane")
 	int originalPlane;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "Lew;"
+		descriptor = "Lgr;"
 	)
 	@Export("paint")
-	TilePaint paint;
-	@ObfuscatedName("j")
+	SceneTilePaint paint;
+	@ObfuscatedName("e")
 	@ObfuscatedSignature(
-		descriptor = "Leq;"
+		descriptor = "Lfj;"
 	)
 	@Export("model")
-	TileModel model;
-	@ObfuscatedName("n")
+	SceneTileModel model;
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lev;"
+		descriptor = "Lgs;"
 	)
 	@Export("boundaryObject")
 	BoundaryObject boundaryObject;
-	@ObfuscatedName("p")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "Ley;"
+		descriptor = "Lgh;"
 	)
 	@Export("wallDecoration")
 	WallDecoration wallDecoration;
-	@ObfuscatedName("l")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lem;"
+		descriptor = "Lfz;"
 	)
 	@Export("floorDecoration")
 	FloorDecoration floorDecoration;
-	@ObfuscatedName("z")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Ldz;"
+		descriptor = "Lfk;"
 	)
-	@Export("tileItemPile")
-	TileItemPile tileItemPile;
-	@ObfuscatedName("u")
+	@Export("itemLayer")
+	ItemLayer itemLayer;
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = 418075799
+		intValue = -1333584157
 	)
 	@Export("gameObjectsCount")
 	int gameObjectsCount;
-	@ObfuscatedName("e")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "[Lel;"
+		descriptor = "[Lgb;"
 	)
 	@Export("gameObjects")
 	GameObject[] gameObjects;
-	@ObfuscatedName("m")
+	@ObfuscatedName("d")
 	@Export("gameObjectEdgeMasks")
 	int[] gameObjectEdgeMasks;
 	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -306747105
+		intValue = 710748349
 	)
 	@Export("gameObjectsEdgeMask")
 	int gameObjectsEdgeMask;
-	@ObfuscatedName("i")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -1679914955
+		intValue = 1452251067
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("f")
+	@ObfuscatedName("r")
 	@Export("drawPrimary")
 	boolean drawPrimary;
-	@ObfuscatedName("a")
+	@ObfuscatedName("q")
 	@Export("drawSecondary")
 	boolean drawSecondary;
-	@ObfuscatedName("b")
+	@ObfuscatedName("t")
 	@Export("drawGameObjects")
 	boolean drawGameObjects;
-	@ObfuscatedName("y")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1147032241
+		intValue = 551470887
 	)
 	@Export("drawGameObjectEdges")
 	int drawGameObjectEdges;
-	@ObfuscatedName("r")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -14070267
+		intValue = -1164753335
 	)
-	int field1680;
-	@ObfuscatedName("q")
+	int field1889;
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = -1565392729
+		intValue = 210470001
 	)
-	int field1677;
-	@ObfuscatedName("g")
+	int field1890;
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1370229161
+		intValue = 1446822029
 	)
-	int field1679;
-	@ObfuscatedName("s")
+	int field1882;
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "Lec;"
+		descriptor = "Lfx;"
 	)
 	@Export("linkedBelowTile")
 	Tile linkedBelowTile;
@@ -140,49 +154,103 @@ public final class Tile extends Node {
 		this.y = var3; // L: 33
 	} // L: 34
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("b")
 	@ObfuscatedSignature(
-		descriptor = "([BI)V",
-		garbageValue = "-1819420058"
+		descriptor = "(B)[B",
+		garbageValue = "-20"
 	)
-	@Export("ByteArrayPool_release")
-	public static synchronized void ByteArrayPool_release(byte[] var0) {
-		if (var0.length == 100 && ByteArrayPool.ByteArrayPool_smallCount < 1000) { // L: 61
-			ByteArrayPool.ByteArrayPool_small[++ByteArrayPool.ByteArrayPool_smallCount - 1] = var0; // L: 62
-		} else if (var0.length == 5000 && ByteArrayPool.ByteArrayPool_mediumCount < 250) { // L: 65
-			ByteArrayPool.ByteArrayPool_medium[++ByteArrayPool.ByteArrayPool_mediumCount - 1] = var0; // L: 66
-		} else if (var0.length == 30000 && ByteArrayPool.ByteArrayPool_largeCount < 50) { // L: 69
-			ByteArrayPool.ByteArrayPool_large[++ByteArrayPool.ByteArrayPool_largeCount - 1] = var0; // L: 70
-		} else {
-			if (class23.ByteArrayPool_arrays != null) { // L: 73
-				for (int var1 = 0; var1 < SoundCache.ByteArrayPool_alternativeSizes.length; ++var1) { // L: 74
-					if (var0.length == SoundCache.ByteArrayPool_alternativeSizes[var1] && JagexCache.ByteArrayPool_altSizeArrayCounts[var1] < class23.ByteArrayPool_arrays[var1].length) { // L: 75
-						class23.ByteArrayPool_arrays[var1][JagexCache.ByteArrayPool_altSizeArrayCounts[var1]++] = var0; // L: 76
-						return; // L: 77
-					}
-				}
+	public static byte[] method3356() {
+		byte[] var0 = new byte[24]; // L: 275
+
+		try {
+			JagexCache.JagexCache_randomDat.seek(0L); // L: 277
+			JagexCache.JagexCache_randomDat.readFully(var0); // L: 278
+
+			int var1;
+			for (var1 = 0; var1 < 24 && var0[var1] == 0; ++var1) { // L: 279 280 281
 			}
 
+			if (var1 >= 24) { // L: 283
+				throw new IOException();
+			}
+		} catch (Exception var4) {
+			for (int var2 = 0; var2 < 24; ++var2) { // L: 286
+				var0[var2] = -1;
+			}
 		}
-	} // L: 63 67 71 81
 
-	@ObfuscatedName("c")
+		return var0; // L: 288
+	}
+
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)I",
-		garbageValue = "123"
+		descriptor = "(ILcc;ZI)I",
+		garbageValue = "-860783313"
 	)
-	static final int method2946(int var0, int var1) {
-		if (var0 == -1) { // L: 862
-			return 12345678;
+	static int method3358(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.SOUND_SYNTH) { // L: 1809
+			class16.Interpreter_intStackSize -= 3; // L: 1810
+			ArchiveDiskAction.queueSoundEffect(Interpreter.Interpreter_intStack[class16.Interpreter_intStackSize], Interpreter.Interpreter_intStack[class16.Interpreter_intStackSize + 1], Interpreter.Interpreter_intStack[class16.Interpreter_intStackSize + 2]); // L: 1811
+			return 1; // L: 1812
+		} else if (var0 == ScriptOpcodes.SOUND_SONG) { // L: 1814
+			class4.playSong(Interpreter.Interpreter_intStack[--class16.Interpreter_intStackSize]); // L: 1815
+			return 1; // L: 1816
+		} else if (var0 == ScriptOpcodes.SOUND_JINGLE) { // L: 1818
+			class16.Interpreter_intStackSize -= 2; // L: 1819
+			HealthBarUpdate.method2175(Interpreter.Interpreter_intStack[class16.Interpreter_intStackSize], Interpreter.Interpreter_intStack[class16.Interpreter_intStackSize + 1]); // L: 1820
+			return 1; // L: 1821
 		} else {
-			var1 = (var0 & 127) * var1 / 128; // L: 863
-			if (var1 < 2) { // L: 864
-				var1 = 2;
-			} else if (var1 > 126) { // L: 865
-				var1 = 126;
+			int var3;
+			if (var0 == 3203) { // L: 1823
+				var3 = Math.min(Math.max(Interpreter.Interpreter_intStack[--class16.Interpreter_intStackSize], 0), 100); // L: 1824
+				Messages.method2367(Math.round(2.55F * (float)var3)); // L: 1825
+				return 1; // L: 1826
+			} else if (var0 == 3204) { // L: 1828
+				Interpreter.Interpreter_intStack[++class16.Interpreter_intStackSize - 1] = Math.round((float)Login.clientPreferences.musicVolume / 2.55F); // L: 1829
+				return 1; // L: 1830
+			} else if (var0 == 3205) { // L: 1832
+				var3 = Math.min(Math.max(Interpreter.Interpreter_intStack[--class16.Interpreter_intStackSize], 0), 100); // L: 1833
+				Canvas.updateSoundEffectVolume(Math.round((float)var3 * 1.27F)); // L: 1834
+				return 1; // L: 1835
+			} else if (var0 == 3206) { // L: 1837
+				Interpreter.Interpreter_intStack[++class16.Interpreter_intStackSize - 1] = Math.round((float)Login.clientPreferences.soundEffectsVolume / 1.27F); // L: 1838
+				return 1; // L: 1839
+			} else if (var0 == 3207) { // L: 1841
+				var3 = Math.min(Math.max(Interpreter.Interpreter_intStack[--class16.Interpreter_intStackSize], 0), 100); // L: 1842
+				MusicPatchPcmStream.method4126(Math.round((float)var3 * 1.27F)); // L: 1843
+				return 1; // L: 1844
+			} else if (var0 == 3208) { // L: 1846
+				Interpreter.Interpreter_intStack[++class16.Interpreter_intStackSize - 1] = Math.round((float)Login.clientPreferences.areaSoundEffectsVolume / 1.27F); // L: 1847
+				return 1; // L: 1848
+			} else {
+				return 2; // L: 1850
 			}
-
-			return (var0 & 65408) + var1; // L: 866
 		}
 	}
+
+	@ObfuscatedName("fm")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "149089395"
+	)
+	@Export("setWindowedMode")
+	static void setWindowedMode(int var0) {
+		Client.field819 = 0L; // L: 3599
+		if (var0 >= 2) { // L: 3600
+			Client.isResizable = true;
+		} else {
+			Client.isResizable = false; // L: 3601
+		}
+
+		if (WorldMapScaleHandler.getWindowedMode() == 1) { // L: 3602
+			class10.client.setMaxCanvasSize(765, 503); // L: 3603
+		} else {
+			class10.client.setMaxCanvasSize(7680, 2160); // L: 3606
+		}
+
+		if (Client.gameState >= 25) { // L: 3608
+			ItemContainer.method2093();
+		}
+
+	} // L: 3609
 }

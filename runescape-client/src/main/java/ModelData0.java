@@ -1,95 +1,61 @@
-import java.io.File;
-import java.io.RandomAccessFile;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("et")
+@ObfuscatedName("gk")
 @Implements("ModelData0")
 public class ModelData0 {
-	@ObfuscatedName("k")
-	@ObfuscatedGetter(
-		intValue = 1312474223
-	)
-	@Export("canvasHeight")
-	public static int canvasHeight;
-
 	ModelData0() {
 	} // L: 4
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/io/File;",
-		garbageValue = "1637999764"
+		descriptor = "(Lir;III)Loh;",
+		garbageValue = "-2108875586"
 	)
-	@Export("getFile")
-	public static File getFile(String var0) {
-		if (!FileSystem.FileSystem_hasPermissions) { // L: 16
-			throw new RuntimeException("");
+	@Export("SpriteBuffer_getSprite")
+	public static SpritePixels SpriteBuffer_getSprite(AbstractArchive var0, int var1, int var2) {
+		byte[] var4 = var0.takeFile(var1, var2); // L: 91
+		boolean var3;
+		if (var4 == null) { // L: 92
+			var3 = false; // L: 93
 		} else {
-			File var1 = (File)FileSystem.FileSystem_cacheFiles.get(var0);
-			if (var1 != null) {
-				return var1;
-			} else {
-				File var2 = new File(FileSystem.FileSystem_cacheDir, var0); // L: 19
-				RandomAccessFile var3 = null; // L: 20
+			class244.SpriteBuffer_decode(var4); // L: 96
+			var3 = true; // L: 97
+		}
 
-				try {
-					File var4 = new File(var2.getParent()); // L: 22
-					if (!var4.exists()) { // L: 23
-						throw new RuntimeException("");
-					} else {
-						var3 = new RandomAccessFile(var2, "rw"); // L: 24
-						int var5 = var3.read(); // L: 25
-						var3.seek(0L); // L: 26
-						var3.write(var5); // L: 27
-						var3.seek(0L); // L: 28
-						var3.close(); // L: 29
-						FileSystem.FileSystem_cacheFiles.put(var0, var2); // L: 30
-						return var2; // L: 31
-					}
-				} catch (Exception var8) {
-					try {
-						if (var3 != null) { // L: 35
-							var3.close(); // L: 36
-							var3 = null; // L: 37
-						}
-					} catch (Exception var7) { // L: 40
-					}
+		if (!var3) { // L: 99
+			return null;
+		} else {
+			SpritePixels var5 = new SpritePixels(); // L: 102
+			var5.width = class395.SpriteBuffer_spriteWidth; // L: 103
+			var5.height = class395.SpriteBuffer_spriteHeight; // L: 104
+			var5.xOffset = class0.SpriteBuffer_xOffsets[0]; // L: 105
+			var5.yOffset = Interpreter.SpriteBuffer_yOffsets[0]; // L: 106
+			var5.subWidth = class395.SpriteBuffer_spriteWidths[0]; // L: 107
+			var5.subHeight = class157.SpriteBuffer_spriteHeights[0]; // L: 108
+			int var6 = var5.subWidth * var5.subHeight; // L: 109
+			byte[] var7 = class223.SpriteBuffer_pixels[0]; // L: 110
+			var5.pixels = new int[var6]; // L: 111
 
-					throw new RuntimeException(); // L: 42
-				}
+			for (int var8 = 0; var8 < var6; ++var8) { // L: 112
+				var5.pixels[var8] = Varps.SpriteBuffer_spritePalette[var7[var8] & 255];
 			}
+
+			WorldMapDecorationType.method4370(); // L: 113
+			return var5; // L: 116
 		}
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("ig")
 	@ObfuscatedSignature(
-		descriptor = "(Lib;Lib;I)V",
-		garbageValue = "402911181"
+		descriptor = "(IIIZI)V",
+		garbageValue = "-1135384010"
 	)
-	public static void method3331(AbstractArchive var0, AbstractArchive var1) {
-		SpotAnimationDefinition.SpotAnimationDefinition_archive = var0; // L: 32
-		SpotAnimationDefinition.SpotAnimationDefinition_modelArchive = var1; // L: 33
-	} // L: 34
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(Lib;I)V",
-		garbageValue = "2029131503"
-	)
-	public static void method3330(AbstractArchive var0) {
-		VarcInt.VarcInt_archive = var0; // L: 17
-	} // L: 18
-
-	@ObfuscatedName("jf")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "237482387"
-	)
-	static final String method3329(int var0) {
-		return var0 < 999999999 ? Integer.toString(var0) : "*"; // L: 9582 9583
-	}
+	static final void method3784(int var0, int var1, int var2, boolean var3) {
+		if (class15.loadInterface(var0)) { // L: 9976
+			Message.resizeInterface(Widget.Widget_interfaceComponents[var0], -1, var1, var2, var3); // L: 9977
+		}
+	} // L: 9978
 }

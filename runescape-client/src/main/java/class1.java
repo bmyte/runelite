@@ -1,211 +1,225 @@
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
-@ObfuscatedName("v")
-final class class1 implements class0 {
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Lib;"
+@ObfuscatedName("o")
+public class class1 extends class14 {
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = -1229554835
 	)
-	@Export("VarpDefinition_archive")
-	public static AbstractArchive VarpDefinition_archive;
+	@Export("pcmSampleLength")
+	public static int pcmSampleLength;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = 1803634055
+	)
+	int field11;
+	@ObfuscatedName("o")
+	@ObfuscatedGetter(
+		intValue = 1796954451
+	)
+	int field9;
+	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		intValue = 1821011721
+	)
+	int field14;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = -193244971
+	)
+	int field10;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lu;"
+	)
+	final class2 this$0;
+
+	@ObfuscatedSignature(
+		descriptor = "(Lu;)V"
+	)
+	class1(class2 var1) {
+		this.this$0 = var1; // L: 289
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(Lnu;I)V",
+		garbageValue = "-1383981708"
+	)
+	void vmethod371(Buffer var1) {
+		this.field11 = var1.readInt(); // L: 292
+		this.field10 = var1.readInt(); // L: 293
+		this.field9 = var1.readUnsignedByte(); // L: 294
+		this.field14 = var1.readUnsignedByte(); // L: 295
+	} // L: 296
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "(Lm;I)V",
+		garbageValue = "-1475503816"
+	)
+	void vmethod376(class11 var1) {
+		var1.method156(this.field11, this.field10, this.field9, this.field14); // L: 299
+	} // L: 300
+
 	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lib;"
+		descriptor = "(Lnu;II)V",
+		garbageValue = "1928874463"
 	)
-	@Export("Widget_spritesArchive")
-	public static AbstractArchive Widget_spritesArchive;
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "Lca;"
-	)
-	@Export("loginScreenRunesAnimation")
-	static LoginScreenAnimation loginScreenRunesAnimation;
+	@Export("readReflectionCheck")
+	public static void readReflectionCheck(Buffer var0, int var1) {
+		ReflectionCheck var2 = new ReflectionCheck(); // L: 129
+		var2.size = var0.readUnsignedByte(); // L: 130
+		var2.id = var0.readInt(); // L: 131
+		var2.operations = new int[var2.size]; // L: 132
+		var2.creationErrors = new int[var2.size]; // L: 133
+		var2.fields = new Field[var2.size]; // L: 134
+		var2.intReplaceValues = new int[var2.size]; // L: 135
+		var2.methods = new Method[var2.size]; // L: 136
+		var2.arguments = new byte[var2.size][][]; // L: 137
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;Lkj;I)V",
-		garbageValue = "781194334"
-	)
-	public void vmethod49(Object var1, Buffer var2) {
-		this.method6((Integer)var1, var2); // L: 20
-	} // L: 21
+		for (int var3 = 0; var3 < var2.size; ++var3) { // L: 138
+			try {
+				int var4 = var0.readUnsignedByte(); // L: 140
+				String var5;
+				String var6;
+				int var7;
+				if (var4 != 0 && var4 != 1 && var4 != 2) { // L: 141
+					if (var4 == 3 || var4 == 4) { // L: 151
+						var5 = var0.readStringCp1252NullTerminated(); // L: 152
+						var6 = var0.readStringCp1252NullTerminated(); // L: 153
+						var7 = var0.readUnsignedByte(); // L: 154
+						String[] var8 = new String[var7]; // L: 155
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(Lkj;B)Ljava/lang/Object;",
-		garbageValue = "12"
-	)
-	public Object vmethod48(Buffer var1) {
-		return var1.readInt(); // L: 16
-	}
+						for (int var9 = 0; var9 < var7; ++var9) { // L: 156
+							var8[var9] = var0.readStringCp1252NullTerminated();
+						}
 
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Integer;Lkj;I)V",
-		garbageValue = "-1179776664"
-	)
-	void method6(Integer var1, Buffer var2) {
-		var2.writeInt(var1); // L: 12
-	}
+						String var20 = var0.readStringCp1252NullTerminated(); // L: 157
+						byte[][] var10 = new byte[var7][]; // L: 158
+						int var12;
+						if (var4 == 3) { // L: 159
+							for (int var11 = 0; var11 < var7; ++var11) { // L: 160
+								var12 = var0.readInt(); // L: 161
+								var10[var11] = new byte[var12]; // L: 162
+								var0.readBytes(var10[var11], 0, var12); // L: 163
+							}
+						}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(B)[Lio;",
-		garbageValue = "0"
-	)
-	static GameBuild[] method11() {
-		return new GameBuild[]{GameBuild.BUILDLIVE, GameBuild.LIVE, GameBuild.WIP, GameBuild.RC}; // L: 13
-	}
+						var2.operations[var3] = var4; // L: 166
+						Class[] var21 = new Class[var7]; // L: 167
 
-	@ObfuscatedName("hl")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIIB)V",
-		garbageValue = "3"
-	)
-	@Export("drawObject")
-	static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
-		long var5 = ArchiveLoader.scene.getBoundaryObjectTag(var0, var1, var2); // L: 5489
-		int var7;
-		int var8;
-		int var9;
-		int var10;
-		int var12;
-		int var13;
-		if (0L != var5) { // L: 5490
-			var7 = ArchiveLoader.scene.getObjectFlags(var0, var1, var2, var5); // L: 5491
-			var8 = var7 >> 6 & 3; // L: 5492
-			var9 = var7 & 31; // L: 5493
-			var10 = var3; // L: 5494
-			if (FriendSystem.method1943(var5)) { // L: 5495
-				var10 = var4;
-			}
+						for (var12 = 0; var12 < var7; ++var12) { // L: 168
+							var21[var12] = FileSystem.loadClassFromDescriptor(var8[var12]);
+						}
 
-			int[] var11 = class25.sceneMinimapSprite.pixels; // L: 5496
-			var12 = var1 * 4 + (103 - var2) * 2048 + 24624; // L: 5497
-			var13 = Occluder.Entity_unpackID(var5); // L: 5498
-			ObjectDefinition var14 = WorldMapDecoration.getObjectDefinition(var13); // L: 5499
-			if (var14.mapSceneId != -1) { // L: 5500
-				IndexedSprite var15 = WorldMapRegion.mapSceneSprites[var14.mapSceneId]; // L: 5501
-				if (var15 != null) { // L: 5502
-					int var16 = (var14.sizeX * 4 - var15.subWidth) / 2; // L: 5503
-					int var17 = (var14.sizeY * 4 - var15.subHeight) / 2; // L: 5504
-					var15.drawAt(var1 * 4 + var16 + 48, (104 - var2 - var14.sizeY) * 4 + var17 + 48); // L: 5505
-				}
-			} else {
-				if (var9 == 0 || var9 == 2) { // L: 5509
-					if (var8 == 0) { // L: 5510
-						var11[var12] = var10; // L: 5511
-						var11[var12 + 512] = var10; // L: 5512
-						var11[var12 + 1024] = var10; // L: 5513
-						var11[var12 + 1536] = var10; // L: 5514
-					} else if (var8 == 1) { // L: 5516
-						var11[var12] = var10; // L: 5517
-						var11[var12 + 1] = var10; // L: 5518
-						var11[var12 + 2] = var10; // L: 5519
-						var11[var12 + 3] = var10; // L: 5520
-					} else if (var8 == 2) { // L: 5522
-						var11[var12 + 3] = var10; // L: 5523
-						var11[var12 + 512 + 3] = var10; // L: 5524
-						var11[var12 + 1024 + 3] = var10; // L: 5525
-						var11[var12 + 1536 + 3] = var10; // L: 5526
-					} else if (var8 == 3) { // L: 5528
-						var11[var12 + 1536] = var10; // L: 5529
-						var11[var12 + 1536 + 1] = var10; // L: 5530
-						var11[var12 + 1536 + 2] = var10; // L: 5531
-						var11[var12 + 1536 + 3] = var10; // L: 5532
+						Class var22 = FileSystem.loadClassFromDescriptor(var20); // L: 169
+						if (FileSystem.loadClassFromDescriptor(var5).getClassLoader() == null) { // L: 170
+							throw new SecurityException();
+						}
+
+						Method[] var13 = FileSystem.loadClassFromDescriptor(var5).getDeclaredMethods(); // L: 171
+						Method[] var14 = var13; // L: 173
+
+						for (int var15 = 0; var15 < var14.length; ++var15) { // L: 174
+							Method var16 = var14[var15]; // L: 175
+							if (Reflection.getMethodName(var16).equals(var6)) { // L: 177
+								Class[] var17 = Reflection.getParameterTypes(var16); // L: 178
+								if (var17.length == var21.length) { // L: 179
+									boolean var18 = true; // L: 180
+
+									for (int var19 = 0; var19 < var21.length; ++var19) { // L: 181
+										if (var17[var19] != var21[var19]) { // L: 182
+											var18 = false; // L: 183
+											break; // L: 184
+										}
+									}
+
+									if (var18 && var22 == var16.getReturnType()) { // L: 187
+										var2.methods[var3] = var16; // L: 188
+									}
+								}
+							}
+						}
+
+						var2.arguments[var3] = var10; // L: 195
 					}
-				}
-
-				if (var9 == 3) { // L: 5535
-					if (var8 == 0) { // L: 5536
-						var11[var12] = var10;
-					} else if (var8 == 1) { // L: 5537
-						var11[var12 + 3] = var10;
-					} else if (var8 == 2) { // L: 5538
-						var11[var12 + 1536 + 3] = var10;
-					} else if (var8 == 3) { // L: 5539
-						var11[var12 + 1536] = var10;
-					}
-				}
-
-				if (var9 == 2) { // L: 5541
-					if (var8 == 3) { // L: 5542
-						var11[var12] = var10; // L: 5543
-						var11[var12 + 512] = var10; // L: 5544
-						var11[var12 + 1024] = var10; // L: 5545
-						var11[var12 + 1536] = var10; // L: 5546
-					} else if (var8 == 0) { // L: 5548
-						var11[var12] = var10; // L: 5549
-						var11[var12 + 1] = var10; // L: 5550
-						var11[var12 + 2] = var10; // L: 5551
-						var11[var12 + 3] = var10; // L: 5552
-					} else if (var8 == 1) { // L: 5554
-						var11[var12 + 3] = var10; // L: 5555
-						var11[var12 + 512 + 3] = var10; // L: 5556
-						var11[var12 + 1024 + 3] = var10; // L: 5557
-						var11[var12 + 1536 + 3] = var10; // L: 5558
-					} else if (var8 == 2) { // L: 5560
-						var11[var12 + 1536] = var10; // L: 5561
-						var11[var12 + 1536 + 1] = var10; // L: 5562
-						var11[var12 + 1536 + 2] = var10; // L: 5563
-						var11[var12 + 1536 + 3] = var10; // L: 5564
-					}
-				}
-			}
-		}
-
-		var5 = ArchiveLoader.scene.getGameObjectTag(var0, var1, var2); // L: 5569
-		if (0L != var5) { // L: 5570
-			var7 = ArchiveLoader.scene.getObjectFlags(var0, var1, var2, var5); // L: 5571
-			var8 = var7 >> 6 & 3; // L: 5572
-			var9 = var7 & 31; // L: 5573
-			var10 = Occluder.Entity_unpackID(var5); // L: 5574
-			ObjectDefinition var24 = WorldMapDecoration.getObjectDefinition(var10); // L: 5575
-			int var19;
-			if (var24.mapSceneId != -1) { // L: 5576
-				IndexedSprite var20 = WorldMapRegion.mapSceneSprites[var24.mapSceneId]; // L: 5577
-				if (var20 != null) { // L: 5578
-					var13 = (var24.sizeX * 4 - var20.subWidth) / 2; // L: 5579
-					var19 = (var24.sizeY * 4 - var20.subHeight) / 2; // L: 5580
-					var20.drawAt(var1 * 4 + var13 + 48, (104 - var2 - var24.sizeY) * 4 + var19 + 48); // L: 5581
-				}
-			} else if (var9 == 9) { // L: 5584
-				var12 = 15658734; // L: 5585
-				if (FriendSystem.method1943(var5)) { // L: 5586
-					var12 = 15597568;
-				}
-
-				int[] var18 = class25.sceneMinimapSprite.pixels; // L: 5587
-				var19 = var1 * 4 + (103 - var2) * 2048 + 24624; // L: 5588
-				if (var8 != 0 && var8 != 2) { // L: 5589
-					var18[var19] = var12; // L: 5596
-					var18[var19 + 1 + 512] = var12; // L: 5597
-					var18[var19 + 1024 + 2] = var12; // L: 5598
-					var18[var19 + 1536 + 3] = var12; // L: 5599
 				} else {
-					var18[var19 + 1536] = var12; // L: 5590
-					var18[var19 + 1 + 1024] = var12; // L: 5591
-					var18[var19 + 512 + 2] = var12; // L: 5592
-					var18[var19 + 3] = var12; // L: 5593
+					var5 = var0.readStringCp1252NullTerminated(); // L: 142
+					var6 = var0.readStringCp1252NullTerminated(); // L: 143
+					var7 = 0; // L: 144
+					if (var4 == 1) { // L: 145
+						var7 = var0.readInt();
+					}
+
+					var2.operations[var3] = var4; // L: 146
+					var2.intReplaceValues[var3] = var7; // L: 147
+					if (FileSystem.loadClassFromDescriptor(var5).getClassLoader() == null) { // L: 148
+						throw new SecurityException();
+					}
+
+					var2.fields[var3] = Reflection.findField(FileSystem.loadClassFromDescriptor(var5), var6); // L: 149
 				}
+			} catch (ClassNotFoundException var24) { // L: 198
+				var2.creationErrors[var3] = -1; // L: 199
+			} catch (SecurityException var25) { // L: 201
+				var2.creationErrors[var3] = -2; // L: 202
+			} catch (NullPointerException var26) { // L: 204
+				var2.creationErrors[var3] = -3; // L: 205
+			} catch (Exception var27) { // L: 207
+				var2.creationErrors[var3] = -4; // L: 208
+			} catch (Throwable var28) { // L: 210
+				var2.creationErrors[var3] = -5; // L: 211
 			}
 		}
 
-		var5 = ArchiveLoader.scene.getFloorDecorationTag(var0, var1, var2); // L: 5603
-		if (0L != var5) { // L: 5604
-			var7 = Occluder.Entity_unpackID(var5); // L: 5605
-			ObjectDefinition var21 = WorldMapDecoration.getObjectDefinition(var7); // L: 5606
-			if (var21.mapSceneId != -1) { // L: 5607
-				IndexedSprite var22 = WorldMapRegion.mapSceneSprites[var21.mapSceneId]; // L: 5608
-				if (var22 != null) { // L: 5609
-					var10 = (var21.sizeX * 4 - var22.subWidth) / 2; // L: 5610
-					int var23 = (var21.sizeY * 4 - var22.subHeight) / 2; // L: 5611
-					var22.drawAt(var1 * 4 + var10 + 48, var23 + (104 - var2 - var21.sizeY) * 4 + 48); // L: 5612
-				}
+		class69.reflectionChecks.addFirst(var2); // L: 214
+	} // L: 215
+
+	@ObfuscatedName("kz")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1851920597"
+	)
+	@Export("FriendSystem_invalidateIgnoreds")
+	static final void FriendSystem_invalidateIgnoreds() {
+		Iterator var0 = Messages.Messages_hashTable.iterator(); // L: 11485
+
+		while (var0.hasNext()) {
+			Message var1 = (Message)var0.next(); // L: 11486
+			var1.clearIsFromIgnored(); // L: 11488
+		}
+
+		if (InterfaceParent.clanChat != null) { // L: 11492
+			InterfaceParent.clanChat.invalidateIgnoreds(); // L: 11493
+		}
+
+	} // L: 11495
+
+	@ObfuscatedName("la")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
+		garbageValue = "-1189472309"
+	)
+	static String method24(String var0) {
+		PlayerType[] var1 = WallDecoration.PlayerType_values(); // L: 11720
+
+		for (int var2 = 0; var2 < var1.length; ++var2) { // L: 11721
+			PlayerType var3 = var1[var2]; // L: 11722
+			if (var3.modIcon != -1 && var0.startsWith(class337.method5986(var3.modIcon))) { // L: 11724 11725
+				var0 = var0.substring(6 + Integer.toString(var3.modIcon).length()); // L: 11726
+				break;
 			}
 		}
 
-	} // L: 5616
+		return var0; // L: 11733
+	}
 }

@@ -1,29 +1,36 @@
+import java.util.LinkedHashMap;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kn")
+@ObfuscatedName("ls")
 @Implements("TriBool")
 public class TriBool {
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lkn;"
+		descriptor = "Lls;"
 	)
 	@Export("TriBool_unknown")
 	public static final TriBool TriBool_unknown;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "Lkn;"
+		descriptor = "Lls;"
 	)
 	@Export("TriBool_true")
 	public static final TriBool TriBool_true;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lkn;"
+		descriptor = "Lls;"
 	)
 	@Export("TriBool_false")
 	public static final TriBool TriBool_false;
+	@ObfuscatedName("dh")
+	@ObfuscatedSignature(
+		descriptor = "Lig;"
+	)
+	@Export("archive0")
+	static Archive archive0;
 
 	static {
 		TriBool_unknown = new TriBool(); // L: 4
@@ -34,19 +41,35 @@ public class TriBool {
 	TriBool() {
 	} // L: 8
 
-	@ObfuscatedName("u")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "538675617"
+		descriptor = "(IIB)Z",
+		garbageValue = "-45"
 	)
-	@Export("isCharPrintable")
-	public static boolean isCharPrintable(char var0) {
-		if (var0 >= ' ' && var0 <= '~') { // L: 188
-			return true;
-		} else if (var0 >= 160 && var0 <= 255) {
-			return true; // L: 189
-		} else {
-			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376; // L: 190
-		}
+	static boolean method5817(int var0, int var1) {
+		return var0 != 4 || var1 < 8; // L: 26
 	}
+
+	@ObfuscatedName("fe")
+	@ObfuscatedSignature(
+		descriptor = "(ZB)V",
+		garbageValue = "-17"
+	)
+	static final void method5818(boolean var0) {
+		if (var0) { // L: 2449
+			Client.field636 = Login.field1005 ? class125.field1456 : class125.field1457; // L: 2450
+		} else {
+			LinkedHashMap var1 = Login.clientPreferences.parameters; // L: 2453
+			String var3 = Login.Login_username; // L: 2455
+			int var4 = var3.length(); // L: 2457
+			int var5 = 0; // L: 2458
+
+			for (int var6 = 0; var6 < var4; ++var6) { // L: 2459
+				var5 = (var5 << 5) - var5 + var3.charAt(var6);
+			}
+
+			Client.field636 = var1.containsKey(var5) ? class125.field1459 : class125.field1458; // L: 2462
+		}
+
+	} // L: 2464
 }

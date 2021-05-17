@@ -4,30 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hs")
+@ObfuscatedName("hk")
 @Implements("Coord")
 public class Coord {
-	@ObfuscatedName("h")
+	@ObfuscatedName("ov")
+	@ObfuscatedSignature(
+		descriptor = "Lmk;"
+	)
+	static class338 field2591;
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -578473323
+		intValue = -227225909
 	)
 	@Export("plane")
 	public int plane;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -1743960415
+		intValue = -2147189971
 	)
 	@Export("x")
 	public int x;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = -1369689255
+		intValue = 5380173
 	)
 	@Export("y")
 	public int y;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhs;)V"
+		descriptor = "(Lhk;)V"
 	)
 	public Coord(Coord var1) {
 		this.plane = var1.plane; // L: 15
@@ -50,86 +55,57 @@ public class Coord {
 			this.y = var1 & 16383; // L: 25
 		}
 
-	}
+	} // L: 27
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-27"
+		descriptor = "(I)I",
+		garbageValue = "-1365130911"
 	)
 	@Export("packed")
 	public int packed() {
 		return this.plane << 28 | this.x << 14 | this.y; // L: 30
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(Lhs;I)Z",
-		garbageValue = "902297370"
+		descriptor = "(Lhk;I)Z",
+		garbageValue = "-1711331725"
 	)
 	@Export("equalsCoord")
 	boolean equalsCoord(Coord var1) {
-		if (this.plane != var1.plane) {
+		if (this.plane != var1.plane) { // L: 40
 			return false;
-		} else if (this.x != var1.x) {
+		} else if (this.x != var1.x) { // L: 41
 			return false;
 		} else {
-			return this.y == var1.y;
+			return this.y == var1.y; // L: 42
 		}
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;I)Ljava/lang/String;",
-		garbageValue = "-1856185425"
+		descriptor = "(Ljava/lang/String;B)Ljava/lang/String;",
+		garbageValue = "-9"
 	)
 	@Export("toString")
 	String toString(String var1) {
 		return this.plane + var1 + (this.x >> 6) + var1 + (this.y >> 6) + var1 + (this.x & 63) + var1 + (this.y & 63); // L: 55
 	}
 
-	public boolean equals(Object var1) {
-		if (this == var1) {
-			return true;
-		} else {
-			return !(var1 instanceof Coord) ? false : this.equalsCoord((Coord)var1); // L: 36
-		}
-	}
-
 	public int hashCode() {
 		return this.packed(); // L: 47
 	}
 
-	public String toString() {
-		return this.toString(","); // L: 51
+	public boolean equals(Object var1) {
+		if (this == var1) { // L: 34
+			return true;
+		} else {
+			return !(var1 instanceof Coord) ? false : this.equalsCoord((Coord)var1); // L: 35 36
+		}
 	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-676384531"
-	)
-	@Export("getVarbit")
-	public static int getVarbit(int var0) {
-		VarbitDefinition var2 = (VarbitDefinition)VarbitDefinition.VarbitDefinition_cached.get((long)var0); // L: 26
-		VarbitDefinition var1;
-		if (var2 != null) { // L: 27
-			var1 = var2; // L: 28
-		} else {
-			byte[] var3 = VarbitDefinition.VarbitDefinition_archive.takeFile(14, var0); // L: 31
-			var2 = new VarbitDefinition(); // L: 32
-			if (var3 != null) { // L: 33
-				var2.decode(new Buffer(var3));
-			}
-
-			VarbitDefinition.VarbitDefinition_cached.put(var2, (long)var0); // L: 34
-			var1 = var2; // L: 35
-		}
-
-		int var7 = var1.baseVar; // L: 38
-		int var4 = var1.startBit; // L: 39
-		int var5 = var1.endBit; // L: 40
-		int var6 = Varps.Varps_masks[var5 - var4]; // L: 41
-		return Varps.Varps_main[var7] >> var4 & var6; // L: 42
+	public String toString() {
+		return this.toString(","); // L: 51
 	}
 }

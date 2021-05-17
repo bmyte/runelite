@@ -1,49 +1,39 @@
-import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("a")
+@ObfuscatedName("jt")
 @Implements("GrandExchangeEvent")
 public class GrandExchangeEvent {
-	@ObfuscatedName("l")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 34061047
-	)
-	@Export("musicTrackVolume")
-	public static int musicTrackVolume;
-	@ObfuscatedName("ag")
-	@Export("fontHelvetica13")
-	static java.awt.Font fontHelvetica13;
-	@ObfuscatedName("h")
-	@ObfuscatedGetter(
-		intValue = 1823148411
+		intValue = 115126989
 	)
 	@Export("world")
 	public final int world;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		longValue = -1010127793754141401L
+		longValue = -3992330306822610567L
 	)
 	@Export("age")
 	public final long age;
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Ly;"
+		descriptor = "Ljn;"
 	)
 	@Export("grandExchangeOffer")
 	public final GrandExchangeOffer grandExchangeOffer;
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@Export("offerName")
 	String offerName;
-	@ObfuscatedName("t")
+	@ObfuscatedName("b")
 	@Export("previousOfferName")
 	String previousOfferName;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lkj;BI)V"
+		descriptor = "(Lnu;BI)V"
 	)
 	GrandExchangeEvent(Buffer var1, byte var2, int var3) {
 		this.offerName = var1.readStringCp1252NullTerminated(); // L: 111
@@ -53,8 +43,8 @@ public class GrandExchangeEvent {
 		int var4 = var1.readInt(); // L: 115
 		int var5 = var1.readInt(); // L: 116
 		this.grandExchangeOffer = new GrandExchangeOffer(); // L: 117
-		this.grandExchangeOffer.method171(2); // L: 118
-		this.grandExchangeOffer.method176(var2); // L: 119
+		this.grandExchangeOffer.method4631(2); // L: 118
+		this.grandExchangeOffer.method4632(var2); // L: 119
 		this.grandExchangeOffer.unitPrice = var4; // L: 120
 		this.grandExchangeOffer.totalQuantity = var5; // L: 121
 		this.grandExchangeOffer.currentQuantity = 0; // L: 122
@@ -62,83 +52,85 @@ public class GrandExchangeEvent {
 		this.grandExchangeOffer.id = var3; // L: 124
 	} // L: 125
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-819048279"
+		descriptor = "(B)Ljava/lang/String;",
+		garbageValue = "5"
 	)
 	@Export("getOfferName")
 	public String getOfferName() {
 		return this.offerName; // L: 128
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "(B)Ljava/lang/String;",
-		garbageValue = "5"
+		garbageValue = "6"
 	)
 	@Export("getPreviousOfferName")
 	public String getPreviousOfferName() {
 		return this.previousOfferName; // L: 132
 	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "2125539222"
-	)
-	@Export("loadWorlds")
-	static boolean loadWorlds() {
-		try {
-			if (World.World_request == null) { // L: 31
-				World.World_request = GrandExchangeOfferAgeComparator.urlRequester.request(new URL(GrandExchangeOfferTotalQuantityComparator.field75));
-			} else if (World.World_request.isDone()) { // L: 33
-				byte[] var0 = World.World_request.getResponse(); // L: 34
-				Buffer var1 = new Buffer(var0); // L: 35
-				var1.readInt(); // L: 36
-				World.World_count = var1.readUnsignedShort(); // L: 37
-				World.World_worlds = new World[World.World_count]; // L: 38
+	@ObfuscatedName("f")
+	@Export("sleepExact")
+	public static final void sleepExact(long var0) {
+		if (var0 > 0L) { // L: 9
+			if (var0 % 10L == 0L) { // L: 10
+				long var2 = var0 - 1L; // L: 11
 
-				World var3;
-				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) { // L: 39 47
-					var3 = World.World_worlds[var2] = new World(); // L: 40
-					var3.id = var1.readUnsignedShort(); // L: 41
-					var3.properties = var1.readInt(); // L: 42
-					var3.host = var1.readStringCp1252NullTerminated(); // L: 43
-					var3.activity = var1.readStringCp1252NullTerminated(); // L: 44
-					var3.location = var1.readUnsignedByte(); // L: 45
-					var3.population = var1.readShort(); // L: 46
+				try {
+					Thread.sleep(var2); // L: 14
+				} catch (InterruptedException var8) { // L: 16
 				}
 
-				ChatChannel.sortWorlds(World.World_worlds, 0, World.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2); // L: 49
-				World.World_request = null; // L: 50
-				return true; // L: 51
+				try {
+					Thread.sleep(1L); // L: 20
+				} catch (InterruptedException var7) { // L: 22
+				}
+			} else {
+				try {
+					Thread.sleep(var0); // L: 27
+				} catch (InterruptedException var6) { // L: 29
+				}
 			}
-		} catch (Exception var4) { // L: 55
-			var4.printStackTrace(); // L: 56
-			World.World_request = null; // L: 57
+
 		}
+	} // L: 31
 
-		return false; // L: 59
-	}
-
-	@ObfuscatedName("ae")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "31"
+		descriptor = "(II)I",
+		garbageValue = "1321413959"
 	)
-	protected static final void method153() {
-		class225.clock.mark(); // L: 421
-
-		int var0;
-		for (var0 = 0; var0 < 32; ++var0) { // L: 422
-			GameShell.graphicsTickTimes[var0] = 0L;
+	@Export("iLog")
+	public static int iLog(int var0) {
+		int var1 = 0; // L: 49
+		if (var0 < 0 || var0 >= 65536) { // L: 50
+			var0 >>>= 16; // L: 51
+			var1 += 16; // L: 52
 		}
 
-		for (var0 = 0; var0 < 32; ++var0) { // L: 423
-			GameShell.clientTickTimes[var0] = 0L;
+		if (var0 >= 256) { // L: 54
+			var0 >>>= 8; // L: 55
+			var1 += 8; // L: 56
 		}
 
-		class8.gameCyclesToDo = 0; // L: 424
-	} // L: 425
+		if (var0 >= 16) { // L: 58
+			var0 >>>= 4; // L: 59
+			var1 += 4; // L: 60
+		}
+
+		if (var0 >= 4) { // L: 62
+			var0 >>>= 2; // L: 63
+			var1 += 2; // L: 64
+		}
+
+		if (var0 >= 1) { // L: 66
+			var0 >>>= 1; // L: 67
+			++var1; // L: 68
+		}
+
+		return var0 + var1; // L: 70
+	}
 }

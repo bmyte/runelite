@@ -3,53 +3,48 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ki")
+@ObfuscatedName("lw")
 @Implements("Username")
 public class Username implements Comparable {
-	@ObfuscatedName("j")
-	@Export("Interpreter_stringLocals")
-	static String[] Interpreter_stringLocals;
-	@ObfuscatedName("n")
-	static byte[][][] field3663;
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@Export("name")
 	String name;
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@Export("cleanName")
 	String cleanName;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lmu;)V"
+		descriptor = "(Ljava/lang/String;Lmf;)V"
 	)
 	public Username(String var1, LoginType var2) {
 		this.name = var1; // L: 11
-		this.cleanName = VarbitDefinition.method4525(var1, var2); // L: 12
+		this.cleanName = class336.method5978(var1, var2); // L: 12
 	} // L: 13
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "-1189841453"
+		garbageValue = "-44870609"
 	)
 	@Export("getName")
 	public String getName() {
 		return this.name; // L: 16
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("o")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-4"
+		descriptor = "(I)Z",
+		garbageValue = "1020088991"
 	)
 	@Export("hasCleanName")
 	public boolean hasCleanName() {
 		return this.cleanName != null; // L: 20
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(Lki;I)I",
-		garbageValue = "-1152802722"
+		descriptor = "(Llw;I)I",
+		garbageValue = "1145898443"
 	)
 	@Export("compareToTyped")
 	public int compareToTyped(Username var1) {
@@ -79,11 +74,11 @@ public class Username implements Comparable {
 		return this.cleanName == null ? 0 : this.cleanName.hashCode(); // L: 35 36
 	}
 
-	public int compareTo(Object var1) {
-		return this.compareToTyped((Username)var1); // L: 53
-	}
-
 	public String toString() {
 		return this.getName(); // L: 40
+	}
+
+	public int compareTo(Object var1) {
+		return this.compareToTyped((Username)var1); // L: 53
 	}
 }
